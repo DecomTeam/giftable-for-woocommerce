@@ -1,0 +1,22 @@
+/*----------  Criteria  ----------*/
+
+// gift product type data tab icon
+#woocommerce-coupon-data ul.wc-tabs li.dgfw-gift-tab_options a:before, #woocommerce-product-data ul.wc-tabs li.dgfw-gift-tab_options a:before, .woocommerce ul.wc-tabs li a:before {
+    font-family: dashicons;
+    content: "\f312";
+}
+
+.dgfw-product-gift-categories {
+    display: inline-block;
+
+    .dgfw-product-gift-category-label {
+        float: none;
+        margin-left: 0;
+
+        .checkbox {
+            margin-right: 0.5em;
+        }
+    }
+
+
+}

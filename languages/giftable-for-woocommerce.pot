@@ -1,0 +1,349 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Giftable for WooCommerce\n"
+"POT-Creation-Date: 2016-06-03 15:54+0200\n"
+"PO-Revision-Date: 2016-04-04 16:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: giftable-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/ScreenEditCategory.php:46 admin/templates/edit-category.php:9
+msgid "Enabled"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:143
+msgid "Next"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:144
+msgid "Back"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:145
+msgid "Remove"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:146
+msgid "AND"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:147
+msgid "OR"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:148
+msgid "Choose condition type:"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:149
+msgid "First condition"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:150
+msgid "Are you sure you want do remove this condition and all its child conditions?"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:151
+msgid "Amounts"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:152
+msgid "Items"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:153
+msgid "Products"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:154
+msgid "Product Categories"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:155
+msgid "Time Period"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:156 admin/ScreenEditCategory.php:176
+msgid "Users"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:157
+msgid "User Roles"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:158
+msgid "Min amount"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:159
+msgid "Max amount"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:160
+msgid "Set amount range. Leve empty for no limits."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:161
+msgid "Min items"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:162
+msgid "Max items"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:163
+msgid "Set items range. Leave empty for no limits."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:164
+msgid "Start date"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:165
+msgid "End date"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:166
+msgid "Set start and end of this period."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:167
+msgid "Terms"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:168
+msgid "Select product categories this gift category applies for."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:169
+msgid "Posts"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:170
+msgid "Select Products"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:171
+msgid "Select products this gift category applies for."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:172
+msgid "Product Quantities"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:173
+msgid "Set minimum quantity for each selected product."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:174
+msgid "Roles"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:175
+msgid "Select user roles this gift category applies for."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:177
+msgid "Select users this gift category applies for."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:178
+msgid "Page "
+msgstr ""
+
+#: admin/ScreenEditCategory.php:179
+msgid " of "
+msgstr ""
+
+#: admin/ScreenEditCategory.php:180
+msgid " at "
+msgstr ""
+
+#: admin/ScreenEditProduct.php:59 public/Public.php:372
+msgid "Gift"
+msgstr ""
+
+#: admin/ScreenEditProduct.php:69
+msgid "Gift options"
+msgstr ""
+
+#: admin/ScreenEditProduct.php:82
+msgid "Giftable"
+msgstr ""
+
+#: admin/ScreenEditProduct.php:83
+msgid ""
+"Giftable products can be offered as free gifts for customers based on any "
+"combination of conditions set up as Gift categories..."
+msgstr ""
+
+#: admin/ScreenProducts.php:50
+msgid "Gifts and giftable products"
+msgstr ""
+
+#: admin/ScreenProducts.php:97
+msgid "Select a gift category"
+msgstr ""
+
+#: admin/Settings.php:19
+msgid "Gifts"
+msgstr ""
+
+#: admin/Settings.php:29
+msgid "Gifts Options"
+msgstr ""
+
+#: admin/Settings.php:32
+msgid "Enable Gifts"
+msgstr ""
+
+#: admin/Settings.php:33
+msgid "Enable gifts functionality for this shop"
+msgstr ""
+
+#: admin/templates/category-criteria.php:10
+msgid "Loading..."
+msgstr ""
+
+#: admin/templates/category-criteria.php:14 admin/templates/criteria-empty.php:10
+msgid "Add conditions"
+msgstr ""
+
+#: admin/templates/category-enabled.php:13
+msgid "Yes"
+msgstr ""
+
+#: admin/templates/category-enabled.php:13
+msgid "No"
+msgstr ""
+
+#: admin/templates/edit-category.php:15
+msgid "Number of gifts allowed"
+msgstr ""
+
+#: admin/templates/edit-category.php:21
+msgid "Gift category conditions"
+msgstr ""
+
+#: admin/templates/product-gift-options.php:17 includes/DGFW.php:90
+msgid "Gift categories"
+msgstr ""
+
+#: admin/templates/product-gift-options.php:36
+msgid "Show tabs"
+msgstr ""
+
+#: includes/Category.php:75
+msgid "No conditions added for this gift category yet."
+msgstr ""
+
+#: includes/DGFW.php:58
+msgid ""
+"<strong>Giftable for WooCommerce</strong> can‘t work without WooCommerce; the "
+"plug-in has been <strong>deactivated</strong>"
+msgstr ""
+
+#: includes/DGFW.php:80
+msgctxt "taxonomy general name"
+msgid "Gift categories"
+msgstr ""
+
+#: includes/DGFW.php:81
+msgctxt "taxonomy singular name"
+msgid "Gift category"
+msgstr ""
+
+#: includes/DGFW.php:82
+msgid "Search Gift categories"
+msgstr ""
+
+#: includes/DGFW.php:83
+msgid "All Gift categories"
+msgstr ""
+
+#: includes/DGFW.php:84
+msgid "Parent Gift category"
+msgstr ""
+
+#: includes/DGFW.php:85
+msgid "Parent Gift category:"
+msgstr ""
+
+#: includes/DGFW.php:86
+msgid "Edit Gift category"
+msgstr ""
+
+#: includes/DGFW.php:87
+msgid "Update Gift category"
+msgstr ""
+
+#: includes/DGFW.php:88
+msgid "Add New Gift category"
+msgstr ""
+
+#: includes/DGFW.php:89
+msgid "New Gift category Name"
+msgstr ""
+
+#: includes/DGFW.php:97
+msgid "gifts"
+msgstr ""
+
+#: public/Public.php:175
+msgid "Some gifts have been removed from your cart."
+msgstr ""
+
+#: public/Public.php:262
+msgid "Your free gift has been added."
+msgstr ""
+
+#: public/Public.php:361
+msgid "FREE!"
+msgstr ""
+
+#: public/Public.php:373
+msgid "Free gift..."
+msgstr ""
+
+#: public/templates/available-gifts.php:14
+msgid "Choose your free gift"
+msgstr ""
+
+#: public/templates/available-gifts.php:28
+msgid "Add to cart"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Giftable for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://decom.ba/wordpress-plugins/giftable-for-woocommerce"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Offer free gifts to your customers based on any number of easy to set up "
+"conditions (e.g. total amount and/or number of cart items on checkout)."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Decom"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://decom.ba"
+msgstr ""

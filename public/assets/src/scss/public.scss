@@ -1,0 +1,97 @@
+@import './slick/slick';
+
+.dgfw-available-gifts {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 1em;
+    background: #f8f8f8;
+
+    button.slick-arrow {
+        position: absolute;
+        top: 30%;
+        left: 0;
+        width: 2em;
+        height: 2em;
+        padding: 0;
+        margin: 0;
+        border-radius: 2em;
+        overflow: hidden;
+        z-index: 10;
+
+        &:before {
+            content: "«";
+            font-weight: bold;
+            display: inline-block;
+            width: 2em;
+            height: 2em;
+            line-height: 2em;
+            text-align: center;
+        }
+    }
+
+    button.slick-next {
+        right: 0;
+        left: auto;
+
+        &:before {
+            content: "»";
+        }
+    }
+
+    .slick-dots {
+        list-style-type: none;
+        text-align: center;
+
+        > li {
+            list-style-type: none;
+            display: inline-block;
+
+            > button {
+                display: inline-block;
+                overflow: hidden;
+                width: 10px;
+                height: 10px;
+                padding: 0 0 0 10px;
+                margin: 0 3px;
+                border-radius: 10px;
+            }
+
+            &:not(.slick-active) {
+                > button {
+                    background: rgba(0,0,0,0.3);
+                }
+            }
+        }
+    }
+}
+
+.dgfw-gift {
+    display: inline-block;
+    width: 20%;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    .slick-slider & {
+        opacity: 1;
+    }
+}
+
+.dgfw-gift-link {
+    display: block;
+    text-align: center;
+
+    .dgfw-gift-thumbnail img {
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.dgfw-available-gifts-title {
+    text-align: center;
+}
+
+
+

@@ -1,0 +1,42 @@
+{
+  "name": "giftable-for-woocommerce",
+  "version": "0.9.0",
+  "description": "Giftable for WooCommerce",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DecomTeam/giftable-for-woocommerce.git"
+  },
+  "keywords": [
+    "wordpress",
+    "woocommerce",
+    "plugin",
+    "gifts",
+    "giftable"
+  ],
+  "author": "Decom",
+  "license": "GPL2",
+  "homepage": "https://decom.ba/plugins/giftable-for-woocommerce",
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-babel": "^6.1.1",
+    "gulp-cache": "^0.4.1",
+    "gulp-clean-css": "^2.0.7",
+    "gulp-filter": "^4.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "rollup": "^0.26.3",
+    "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-uglify": "^0.3.1"
+  }
+}

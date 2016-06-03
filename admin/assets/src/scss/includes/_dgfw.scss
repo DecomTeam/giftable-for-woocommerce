@@ -1,0 +1,67 @@
+/*----------  Buttons  ----------*/
+
+.button {
+    &.dgfw-button {
+
+        &.dashicons-after:after {
+            display: inline-block;
+            margin-left: 0.5em;
+            width: 20px;
+            height: 20px;
+            font-size: 16px;
+            line-height: 1;
+            font-family: dashicons;
+            text-decoration: inherit;
+            font-weight: 400;
+            font-style: normal;
+            vertical-align: middle;
+            text-align: center;
+            -webkit-transition: color .1s ease-in 0;
+            transition: color .1s ease-in 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        &.dashicons-after:before {
+            display: none;
+        }
+
+        &.dashicons-arrow-right-alt:after {
+            content: "\f344";
+        }
+
+        &:before {
+            font-size: 16px;
+            vertical-align: middle;
+            margin-right: 0.5em;
+        }
+
+        margin: 0.5em 1em;
+        padding-left: 5px;
+
+        &.dashicons-after {
+            padding-right: 5px;
+            padding-left: 10px;
+        }
+    }
+
+    &.dgfw-button-secondary {
+        &, &:before, &:after {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-size: 32px;
+            border: none;
+            background: none;
+            box-shadow: none;
+            line-height: 32px;
+            width: auto;
+            height: 32px;
+        }
+
+        &:before, &:after {
+            width: 32px;
+        }
+    }
+}
+
