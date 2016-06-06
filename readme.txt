@@ -44,8 +44,8 @@ There is a 'Show tabs' options for each gift on the Edit product screen 'Gift op
 == Screenshots ==
 
 1. Adding new gift category
-2. Adding new gift products
-3. Setting up gift category conditions
+2. Setting up gift category conditions
+3. Adding new gift products
 
 == Changelog ==
 
