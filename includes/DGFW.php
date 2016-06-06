@@ -47,9 +47,14 @@ abstract class DGFW {
 	{
 		// deactivate self if there's no WooCommerce
 		if (!class_exists('WooCommerce')) {
+			add_action( 'admin_init', array($this, 'dependency_deactivation') );
 			add_action( 'admin_notices', array($this, 'dependency_deactivation_notice') );
-			deactivate_plugins( DGFW_PLUGIN_FILE );
 		}
+	}
+
+	public function dependency_deactivation()
+	{
+		deactivate_plugins( DGFW_PLUGIN_FILE );
 	}
 
 	public function dependency_deactivation_notice()
