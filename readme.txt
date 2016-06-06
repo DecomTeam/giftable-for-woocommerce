@@ -4,7 +4,7 @@ Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,5 +49,7 @@ There is a 'Show tabs' options for each gift on the Edit product screen 'Gift op
 
 == Changelog ==
 
+= 0.9.1 =
+* WooCommerce dependency deactivation bug fix
 = 0.9.0 =
 * Initial public release.
