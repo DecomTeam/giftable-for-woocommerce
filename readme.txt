@@ -3,8 +3,8 @@
 Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
-Tested up to: 4.5
-Stable tag: 0.9.2
+Tested up to: 4.5.2
+Stable tag: 0.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,10 @@ On the 'Product data' meta box in the product editing screen, you can mark any e
 
 There is a 'Show tabs' options for each gift on the Edit product screen 'Gift option' tab, and it's disabled by default.
 
+= Can I change the gift box and buttons titles? =
+
+Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts).
+
 == Screenshots ==
 
 1. Adding new gift category
@@ -51,6 +55,11 @@ There is a 'Show tabs' options for each gift on the Edit product screen 'Gift op
 
 == Changelog ==
 
+= 0.9.3 =
+* Added frontend carousel/button title settings (WooCommerce -> Settings -> Gifts)
+* Carousel styling improvements
+= 0.9.2 =
+* Minor bug fixes and improvements
 = 0.9.1 =
 * WooCommerce dependency deactivation bug fix
 = 0.9.0 =
