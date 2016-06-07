@@ -35,8 +35,27 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 				'default'       => 'yes',
 				'type'          => 'checkbox',
 				'checkboxgroup' => 'start',
-				'autoload'      => false
+				'autoload'      => false,
 			),
+
+			array(
+				'title'    => __( 'Gifts carousel title', DGFW::TRANSLATION ),
+				'desc'     => __( 'The title for the gifts carousel box shown to customers.', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_carousel_title',
+				'default'  => __( 'Choose your free gift', DGFW::TRANSLATION ),
+				'type'     => 'text',
+				'desc_tip' =>  true,
+			),
+
+			array(
+				'title'    => __( 'Add gift button title', DGFW::TRANSLATION ),
+				'desc'     => __( 'Text for add gift to cart buttons show to customers.', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_gift_button_title',
+				'default'  => __( 'Add to cart', DGFW::TRANSLATION ),
+				'type'     => 'text',
+				'desc_tip' =>  true,
+			),
+
 
 			array( 'type' => 'sectionend', 'id' => 'gift_options'),
 
