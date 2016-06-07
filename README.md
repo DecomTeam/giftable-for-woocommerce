@@ -10,6 +10,9 @@ This WooCommerce plugin enables you to offer free gifts to your customers on che
 * Set up gift categories and add their conditions
 * Select any of your existing products as giftable, or add new gift products, and assign them to one or more of predefined gift categories
 * Any customer seeing their cart page can select gifts if they meet the conditions set up for any of the enabled gift categories
+* Offer gifts based on cart amounts, number of items, date range, user roles, only for certain products or product categories, etc.
+* Unlimited numbers and combinations of gift categories, conditions, and gifts. 
+
 
 ## Installation
 
@@ -17,6 +20,7 @@ This WooCommerce plugin enables you to offer free gifts to your customers on che
 1. Activate the plugin through the 'Plugins' screen in WordPress
 1. Go to Products -> Gift categories and set up at least one gift category with the desired number of gifts allowed and conditions.
 You can then mark any of the existing products as 'Giftable', or add new 'Gift' type products, and add them to one of the previously defined Gift categories
+
 
 
 ## Frequently Asked Questions
@@ -32,3 +36,8 @@ On the 'Product data' meta box in the product editing screen, you can mark any e
 ### Can I hide product tabs for gifts?
 
 There is a 'Show tabs' options for each gift on the Edit product screen 'Gift option' tab, and it's disabled by default.
+
+### Can I change the gift box and buttons titles? 
+
+Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts).
+
