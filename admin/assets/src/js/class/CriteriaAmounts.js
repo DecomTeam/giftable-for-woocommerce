@@ -40,7 +40,7 @@ export default class CriteriaAmounts extends Criteria {
         this._steps = new Array();
 
         this._steps[0] = {
-            description: Translate.text('Set amount range. Leve empty for no limits.'),
+            description: Translate.text('Set amount range. Leave empty for no limits.'),
             elements: [
                 // {
                 //     tag: 'div',

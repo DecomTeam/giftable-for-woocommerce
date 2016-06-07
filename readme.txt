@@ -1,10 +1,10 @@
 === Giftable for WooCommerce ===
 
 Contributors: decomteam, pixelhappystudio
-Tags: gifts, giftable, free, woocommerce
+Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 0.9.1
+Stable tag: 0.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,8 @@ This WooCommerce plugin enables you to offer free gifts to your customers on che
 * Set up gift categories and add their conditions
 * Select any of your existing products as giftable, or add new gift products, and assign them to one or more of predefined gift categories
 * Any customer seeing their cart page can select gifts if they meet the conditions set up for any of the enabled gift categories
+* Offer gifts based on cart amounts, number of items, date range, user roles, only for certain products or product categories, etc.
+* Unlimited numbers and combinations of gift categories, conditions, and gifts. 
 
 == Installation ==
 

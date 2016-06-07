@@ -93,7 +93,7 @@ msgid "Max amount"
 msgstr ""
 
 #: admin/ScreenEditCategory.php:160
-msgid "Set amount range. Leve empty for no limits."
+msgid "Set amount range. Leave empty for no limits."
 msgstr ""
 
 #: admin/ScreenEditCategory.php:161

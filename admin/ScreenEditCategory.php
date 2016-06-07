@@ -167,7 +167,7 @@ class DGFW_ScreenEditCategory extends DGFW_Screen {
             'User Roles' => __('User Roles', DGFW::TRANSLATION),
             'Min amount' => __('Min amount', DGFW::TRANSLATION),
             'Max amount' => __('Max amount', DGFW::TRANSLATION),
-            'Set amount range. Leve empty for no limits.' => __('Set amount range. Leve empty for no limits.', DGFW::TRANSLATION),
+            'Set amount range. Leave empty for no limits.' => __('Set amount range. Leave empty for no limits.', DGFW::TRANSLATION),
             'Min items' => __('Min items', DGFW::TRANSLATION),
             'Max items' => __('Max items', DGFW::TRANSLATION),
             'Set items range. Leave empty for no limits.' => __('Set items range. Leave empty for no limits.', DGFW::TRANSLATION),
