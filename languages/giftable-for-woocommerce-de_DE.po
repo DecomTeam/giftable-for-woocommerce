@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Giftable for WooCommerce\n"
-"POT-Creation-Date: 2016-06-03 15:54+0200\n"
-"PO-Revision-Date: 2016-06-03 16:09+0200\n"
+"POT-Creation-Date: 2016-06-07 19:51+0200\n"
+"PO-Revision-Date: 2016-06-07 20:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -24,160 +24,160 @@ msgstr ""
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: admin/ScreenEditCategory.php:143
+#: admin/ScreenEditCategory.php:153
 msgid "Next"
 msgstr "Weiter"
 
-#: admin/ScreenEditCategory.php:144
+#: admin/ScreenEditCategory.php:154
 msgid "Back"
 msgstr "Zurück"
 
-#: admin/ScreenEditCategory.php:145
+#: admin/ScreenEditCategory.php:155
 msgid "Remove"
 msgstr "Entfernen"
 
-#: admin/ScreenEditCategory.php:146
+#: admin/ScreenEditCategory.php:156
 msgid "AND"
 msgstr "UND"
 
-#: admin/ScreenEditCategory.php:147
+#: admin/ScreenEditCategory.php:157
 msgid "OR"
 msgstr "ODER"
 
-#: admin/ScreenEditCategory.php:148
+#: admin/ScreenEditCategory.php:158
 msgid "Choose condition type:"
 msgstr "Wählen Sie einen Bedingungstyp:"
 
-#: admin/ScreenEditCategory.php:149
+#: admin/ScreenEditCategory.php:159
 msgid "First condition"
 msgstr "Erste Bedingung"
 
-#: admin/ScreenEditCategory.php:150
+#: admin/ScreenEditCategory.php:160
 msgid ""
 "Are you sure you want do remove this condition and all its child conditions?"
 msgstr ""
 "Sind Sie sicher, dass Sie diese und alle untergeordneten Bedingungen "
 "entfernen möchten?"
 
-#: admin/ScreenEditCategory.php:151
+#: admin/ScreenEditCategory.php:161
 msgid "Amounts"
 msgstr "Betrag"
 
-#: admin/ScreenEditCategory.php:152
+#: admin/ScreenEditCategory.php:162
 msgid "Items"
 msgstr "Anzahl"
 
-#: admin/ScreenEditCategory.php:153
+#: admin/ScreenEditCategory.php:163
 msgid "Products"
 msgstr "Produkte"
 
-#: admin/ScreenEditCategory.php:154
+#: admin/ScreenEditCategory.php:164
 msgid "Product Categories"
 msgstr "Produktkategorien"
 
-#: admin/ScreenEditCategory.php:155
+#: admin/ScreenEditCategory.php:165
 msgid "Time Period"
 msgstr "Zeitraum"
 
-#: admin/ScreenEditCategory.php:156 admin/ScreenEditCategory.php:176
+#: admin/ScreenEditCategory.php:166 admin/ScreenEditCategory.php:186
 msgid "Users"
 msgstr "Benutzer"
 
-#: admin/ScreenEditCategory.php:157
+#: admin/ScreenEditCategory.php:167
 msgid "User Roles"
 msgstr "Benutzerrollen"
 
-#: admin/ScreenEditCategory.php:158
+#: admin/ScreenEditCategory.php:168
 msgid "Min amount"
 msgstr "Min. Betrag"
 
-#: admin/ScreenEditCategory.php:159
+#: admin/ScreenEditCategory.php:169
 msgid "Max amount"
 msgstr "Max. Betrag"
 
-#: admin/ScreenEditCategory.php:160
+#: admin/ScreenEditCategory.php:170
 msgid "Set amount range. Leave empty for no limits."
 msgstr "Betrag eintragen oder frei lassen für uneingeschränkt"
 
-#: admin/ScreenEditCategory.php:161
+#: admin/ScreenEditCategory.php:171
 msgid "Min items"
 msgstr "Min. Anzahl"
 
-#: admin/ScreenEditCategory.php:162
+#: admin/ScreenEditCategory.php:172
 msgid "Max items"
 msgstr "Max. Anzahl"
 
-#: admin/ScreenEditCategory.php:163
+#: admin/ScreenEditCategory.php:173
 msgid "Set items range. Leave empty for no limits."
 msgstr "Anzahl eintragen oder frei lassen für uneingeschränkt"
 
-#: admin/ScreenEditCategory.php:164
+#: admin/ScreenEditCategory.php:174
 msgid "Start date"
 msgstr "Anfangsdatum"
 
-#: admin/ScreenEditCategory.php:165
+#: admin/ScreenEditCategory.php:175
 msgid "End date"
 msgstr "Enddatum"
 
-#: admin/ScreenEditCategory.php:166
+#: admin/ScreenEditCategory.php:176
 msgid "Set start and end of this period."
 msgstr "Legen Sie Anfang- und Enddatum dieses Zeitraums fest."
 
-#: admin/ScreenEditCategory.php:167
+#: admin/ScreenEditCategory.php:177
 msgid "Terms"
 msgstr "Bedingungen"
 
-#: admin/ScreenEditCategory.php:168
+#: admin/ScreenEditCategory.php:178
 msgid "Select product categories this gift category applies for."
 msgstr ""
 "Wählen sie die Produkt-Kategorien auf welche sich diese Geschenk-Kategorie "
 "bezieht"
 
-#: admin/ScreenEditCategory.php:169
+#: admin/ScreenEditCategory.php:179
 msgid "Posts"
 msgstr "Beiträge"
 
-#: admin/ScreenEditCategory.php:170
+#: admin/ScreenEditCategory.php:180
 msgid "Select Products"
 msgstr "Produkte auswählen"
 
-#: admin/ScreenEditCategory.php:171
+#: admin/ScreenEditCategory.php:181
 msgid "Select products this gift category applies for."
 msgstr ""
 "Wählen sie die Produkte auf welche sich diese Geschenk-Kategorie bezieht"
 
-#: admin/ScreenEditCategory.php:172
+#: admin/ScreenEditCategory.php:182
 msgid "Product Quantities"
 msgstr "Produkt anzahl"
 
-#: admin/ScreenEditCategory.php:173
+#: admin/ScreenEditCategory.php:183
 msgid "Set minimum quantity for each selected product."
 msgstr "Mindestbestellmenge für jedes ausgewählte Produkt."
 
-#: admin/ScreenEditCategory.php:174
+#: admin/ScreenEditCategory.php:184
 msgid "Roles"
 msgstr "Rollen"
 
-#: admin/ScreenEditCategory.php:175
+#: admin/ScreenEditCategory.php:185
 msgid "Select user roles this gift category applies for."
 msgstr ""
 "Wählen sie die Benutzerrollen auf welche sich diese Geschenk-Kategorie "
 "bezieht"
 
-#: admin/ScreenEditCategory.php:177
+#: admin/ScreenEditCategory.php:187
 msgid "Select users this gift category applies for."
 msgstr ""
 "Wählen sie die Benutzer auf welche sich diese Geschenk-Kategorie bezieht"
 
-#: admin/ScreenEditCategory.php:178
+#: admin/ScreenEditCategory.php:188
 msgid "Page "
 msgstr "Seite"
 
-#: admin/ScreenEditCategory.php:179
+#: admin/ScreenEditCategory.php:189
 msgid " of "
 msgstr " von "
 
-#: admin/ScreenEditCategory.php:180
+#: admin/ScreenEditCategory.php:190
 msgid " at "
 msgstr " um "
 
@@ -226,6 +226,31 @@ msgstr "Geschenke aktivieren"
 msgid "Enable gifts functionality for this shop"
 msgstr "Geschenke-Funktionalität für diesen Shop aktivieren"
 
+#: admin/Settings.php:42
+msgid "Gifts carousel title"
+msgstr "Geschenk Karussell Überschrift"
+
+#: admin/Settings.php:43
+msgid "The title for the gifts carousel box shown to customers."
+msgstr ""
+"Titel für den Geschenk Karussel der für den besucher dargesstelt wird."
+
+#: admin/Settings.php:45 public/templates/available-gifts.php:14
+msgid "Choose your free gift"
+msgstr "Wählen Sie Ihr Geschenk"
+
+#: admin/Settings.php:51
+msgid "Add gift button title"
+msgstr "Titel für Button Geschenk hinzufügen "
+
+#: admin/Settings.php:52
+msgid "Text for add gift to cart buttons show to customers."
+msgstr "Text für den Button„Geschenk zum Warenkorb hinzufügen“"
+
+#: admin/Settings.php:54 public/templates/available-gifts.php:28
+msgid "Add to cart"
+msgstr "In Warenkorb"
+
 #: admin/templates/category-criteria.php:10
 msgid "Loading..."
 msgstr "Laden..."
@@ -251,7 +276,7 @@ msgstr "Anzahl der erlaubten Gratis Artikel"
 msgid "Gift category conditions"
 msgstr "Geschenk Kategorie Bedingungen"
 
-#: admin/templates/product-gift-options.php:17 includes/DGFW.php:90
+#: admin/templates/product-gift-options.php:17 includes/DGFW.php:95
 msgid "Gift categories"
 msgstr "Geschenk Kategorien"
 
@@ -264,7 +289,7 @@ msgid "No conditions added for this gift category yet."
 msgstr ""
 "Es wurde noch keine Bedingungen hinzugefügt für diese Geschenk-Kategorie."
 
-#: includes/DGFW.php:58
+#: includes/DGFW.php:63
 msgid ""
 "<strong>Giftable for WooCommerce</strong> can‘t work without WooCommerce; "
 "the plug-in has been <strong>deactivated</strong>"
@@ -272,49 +297,49 @@ msgstr ""
 "<strong>Giftable für WooCommerce</strong> funktioniert nicht ohne "
 "WooCommerce; das Plug-in wurde <strong>deaktiviert</strong>"
 
-#: includes/DGFW.php:80
+#: includes/DGFW.php:85
 msgctxt "taxonomy general name"
 msgid "Gift categories"
 msgstr "Geschenk-Kategorien"
 
-#: includes/DGFW.php:81
+#: includes/DGFW.php:86
 msgctxt "taxonomy singular name"
 msgid "Gift category"
 msgstr "Geschenk-Kategorie"
 
-#: includes/DGFW.php:82
+#: includes/DGFW.php:87
 msgid "Search Gift categories"
 msgstr "Geschenk-Kategorien suchen"
 
-#: includes/DGFW.php:83
+#: includes/DGFW.php:88
 msgid "All Gift categories"
 msgstr "Alle Geschenk-Kategorien"
 
-#: includes/DGFW.php:84
+#: includes/DGFW.php:89
 msgid "Parent Gift category"
 msgstr "Übergeordnete Geschenk-Kategorie"
 
-#: includes/DGFW.php:85
+#: includes/DGFW.php:90
 msgid "Parent Gift category:"
 msgstr "Übergeordnete Geschenk-Kategorie:"
 
-#: includes/DGFW.php:86
+#: includes/DGFW.php:91
 msgid "Edit Gift category"
 msgstr "Geschenk-Kategorie bearbeiten"
 
-#: includes/DGFW.php:87
+#: includes/DGFW.php:92
 msgid "Update Gift category"
 msgstr "Geschenk-Kategorie aktualisieren"
 
-#: includes/DGFW.php:88
+#: includes/DGFW.php:93
 msgid "Add New Gift category"
 msgstr "Neue Geschenk-Kategorie hinzufügen"
 
-#: includes/DGFW.php:89
+#: includes/DGFW.php:94
 msgid "New Gift category Name"
 msgstr "Neuer Geschenk-Kategorie Name"
 
-#: includes/DGFW.php:97
+#: includes/DGFW.php:102
 msgid "gifts"
 msgstr "geschenke"
 
@@ -333,14 +358,6 @@ msgstr "KOSTENLOS!"
 #: public/Public.php:373
 msgid "Free gift..."
 msgstr "Kostenloses Geschenk"
-
-#: public/templates/available-gifts.php:14
-msgid "Choose your free gift"
-msgstr "Wählen Sie Ihr Geschenk"
-
-#: public/templates/available-gifts.php:28
-msgid "Add to cart"
-msgstr "In Warenkorb"
 
 #. Plugin Name of the plugin/theme
 msgid "Giftable for WooCommerce"
