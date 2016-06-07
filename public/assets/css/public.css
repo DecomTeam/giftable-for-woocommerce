@@ -141,6 +141,7 @@
 .dgfw-available-gifts .slick-dots {
   list-style-type: none;
   text-align: center;
+  margin: 0.5em 0;
 }
 
 .dgfw-available-gifts .slick-dots > li {
@@ -164,13 +165,32 @@
 
 .dgfw-gift {
   display: inline-block;
-  width: 20%;
+  width: 75%;
   padding: 10px;
   opacity: 0;
   transition: opacity 0.5s;
 }
 
-.slick-slider .dgfw-gift {
+@media screen and (min-width: 480px) {
+  .dgfw-gift {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .dgfw-gift {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .dgfw-gift {
+    width: 19%;
+  }
+}
+
+.slick-slider .dgfw-gift,
+.no-slick-needed .dgfw-gift {
   opacity: 1;
 }
 
