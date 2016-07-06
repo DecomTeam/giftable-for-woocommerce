@@ -15,12 +15,14 @@
                 // we're going to need the form element for later
                 $cartForm = $(this).closest('form');
 
-                // this submits the form for WC2.5-
-                $cartForm.trigger('submit');
-
-                // for WC2.6+ the above form submit does nothing, we need to
-                // trigger the new wc_update_cart event
-                $(document).trigger('wc_update_cart');
+                // check if we're working with WC2.6 ajax cart or older version
+                if (typeof wc_cart_params === 'undefined') {
+                    // if older submit form
+                    $cartForm.trigger('submit');
+                } else {
+                    // trigger ajax event
+                    $(document).trigger('wc_update_cart');
+                }
             });
 
             function slidesToShowForCurrentWidth() {
