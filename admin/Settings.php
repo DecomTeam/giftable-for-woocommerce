@@ -56,6 +56,15 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 				'desc_tip' =>  true,
 			),
 
+			array(
+				'title'    => __( 'Select options button title', DGFW::TRANSLATION ),
+				'desc'     => __( 'Text for select options buttons (for gifts with variations).', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_gift_select_button_title',
+				'default'  => __( 'Select options', DGFW::TRANSLATION ),
+				'type'     => 'text',
+				'desc_tip' =>  true,
+			),
+
 
 			array( 'type' => 'sectionend', 'id' => 'gift_options'),
 

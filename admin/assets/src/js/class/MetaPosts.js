@@ -32,10 +32,10 @@ export default class MetaPosts extends Meta {
         this._productsPerPage = 5;
         var productElements = new Array();
 
-        if (decomGifts.screen.data.products) {
-            this._totalProducts = decomGifts.screen.data.products.length;
+        if (decomGiftable.screen.data.products) {
+            this._totalProducts = decomGiftable.screen.data.products.length;
             this._totalPages = Math.ceil(this._totalProducts/this._productsPerPage);
-            decomGifts.screen.data.products.forEach((product, index, collection) => {
+            decomGiftable.screen.data.products.forEach((product, index, collection) => {
                 productElements[Math.floor((index)/this._productsPerPage)] = productElements[Math.floor((index)/this._productsPerPage)] || new Array();
                 productElements[Math.floor((index)/this._productsPerPage)].push(this.productElement(product));
             });
@@ -414,7 +414,7 @@ export default class MetaPosts extends Meta {
     post(postId) {
         var product = false;
 
-        decomGifts.screen.data.products.forEach((post, index, products) => {
+        decomGiftable.screen.data.products.forEach((post, index, products) => {
             if (post.id === postId) {
                 product = post;
             }

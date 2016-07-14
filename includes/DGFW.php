@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 abstract class DGFW {
 
-	const NAME_TEXT = 'Decom Gifts for WooCommerce';
+	const NAME_TEXT = 'Giftable for WooCommerce';
 	const NAME_SLUG = 'giftable-for-woocommerce';
-	const NAME_JSON = 'decomGifts';
+	const NAME_JSON = 'decomGiftable';
 	const NAME_VARS = 'giftable_for_woocommerce';
 	const TRANSLATION = 'giftable-for-woocommerce';
 
@@ -24,6 +24,8 @@ abstract class DGFW {
 	const GIFTS_TAXONOMY = 'dgfw_gift_categories';
 	const GIFT_PRODUCT_TYPE = 'dgfw_gift';
 	const GIFT_PRODUCT_OPTION = 'dgfw_giftable';
+	const GIFT_VARIATION_OPTION = 'dgfw_giftable_variation';
+	const GIFT_POST_STATUS = 'dgfw_internal';
 
 	protected static $_templates_dir;
 	protected static $_assets_dir;
@@ -40,6 +42,17 @@ abstract class DGFW {
 		// WooCommerce needs our product type class in various places, but only
 		// after init...
         add_action( 'init', array($this, 'require_product_type_class'), 10);
+
+      	// ajax hooks (admin and public)
+      	add_action( 'wp_ajax_dgfw_get_giftable_variations_html', array('DGFW', 'get_giftable_variations_html'));
+      	add_action( 'wp_ajax_nopriv_dgfw_get_giftable_variations_html', array('DGFW', 'get_giftable_variations_html'));
+
+      	// these are actually used on the cart page, so they should really be
+      	// in the Public version of the class, but since cart now works with
+      	// ajax, and ajax works on the 'is_admin' side in WordPress, we add them here...
+
+      	// make our giftable variables 'addable' to cart
+      	add_filter( 'woocommerce_variation_is_purchasable', array($this, 'variation_is_purchasable'), 10, 2);
 
 	}
 
@@ -106,6 +119,13 @@ abstract class DGFW {
 		foreach ($taxonomies as $taxonomy_name => $taxonomy_args) {
 			register_taxonomy($taxonomy_name, $taxonomy_args['post_type'], $taxonomy_args);
 		}
+
+		// a custom internal post status for giftable product variations
+		register_post_status(DGFW::GIFT_POST_STATUS, array(
+			'public' => false,
+			'internal' => true,
+			'exclude_from_search' => true,
+		));
 	}
 
 	/**
@@ -283,6 +303,145 @@ abstract class DGFW {
 		}
 
 		return $terms;
+	}
+
+	public static function get_giftable_variations_html()
+	{
+		$product_id = isset($_POST['product_id']) ? absint($_POST['product_id']) : false;
+
+		$response = array(
+			'data' => array(),
+			'error' => false,
+		);
+
+		if ($product_id && $giftable_variations = self::get_product_giftable_variations($product_id)) {
+
+			// with ajax, we're technically working on the 'is_admin' side,
+			// but wee need the public templates and assets for this
+			self::$_templates_dir = plugin_dir_path( dirname( __FILE__ ) ) . 'public/templates/';
+			self::$_assets_dir = plugin_dir_path( dirname( __FILE__ ) ) . 'public/assets/';
+
+
+			// we'll be using the WC product summary template, so we need to
+			// set up some things first...
+			// WC actions work with global $post and $product?
+			global $post, $product;
+			$post = get_post($product_id);
+			$product = WC()->product_factory->get_product($product_id);
+
+			// no quantities for giftable variations
+			add_filter( 'woocommerce_is_sold_individually', '__return_true', 99, 2 );
+
+			// display only giftable variations
+			add_filter( 'woocommerce_get_children', array('DGFW', 'get_product_giftable_variations'), 9999, 3 );
+
+			// modify variation attributes
+			add_filter( 'woocommerce_available_variation', array('DGFW', 'modify_giftable_variation'), 99, 1);
+
+			// make sure we get all variation data, so we don't load them
+			// via ajax (that would make it much harder to filter/modify
+			// our giftable variations)
+			add_filter( 'woocommerce_ajax_variation_threshold', array('DGFW', 'ajax_variation_threshold'), 2 );
+
+
+			$variations_html = self::get_template('giftable-variations', array('post' => get_post($product_id), 'product' => $product, 'variations' => $giftable_variations));
+
+			// replace form tag with div, since we're appending it inside of the
+			// existing cart form...
+			$response['data']['html'] = str_replace('<form', '<div', $variations_html);
+
+		}
+
+		wp_send_json($response);
+	}
+
+	/**
+	 *
+	 * Filter product variations to include only giftable ones
+	 *
+	 */
+	public static function get_product_giftable_variations($children, $product = false, $visible_only = false)
+	{
+		if ($product) {
+			$product_is_giftable = get_post_meta($product->id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
+			if ($product_is_giftable !== 'yes') {
+				// not all variations are giftable, get only giftable variations
+				$variation_args = array(
+					'post_parent' => $product->id,
+					'post_type' => 'product_variation',
+					'meta_query' => array(
+						array(
+							'key' => '_' . DGFW::GIFT_VARIATION_OPTION,
+							'value' => 'yes',
+						)
+					),
+					'fields' => 'ids',
+					'posts_per_page' => -1
+				);
+
+
+				$children = get_posts($variation_args);
+
+			}
+		}
+		return $children;
+	}
+
+	/**
+	 *
+	 * Modify variations (set price to 0, change IDs to free versions for the cart)
+	 *
+	 */
+	public static function modify_giftable_variation($variation)
+	{
+		$giftable_variation = get_posts(array(
+			'post_type' => 'product_variation',
+			'post_status' => DGFW::GIFT_POST_STATUS,
+			'meta_key' => '_' . DGFW::GIFT_VARIATION_OPTION . '_original',
+			'meta_value' => $variation['variation_id'],
+			'posts_per_page' => 1
+		));
+
+		if (!empty($giftable_variation)) {
+			$giftable_variation = $giftable_variation[0];
+			$variation['variation_id'] = $giftable_variation->ID;
+		}
+
+
+		$variation['price_html'] = '';
+
+		return $variation;
+	}
+
+	/**
+	 *
+	 * Make sure we include *all* of our variation data on initial load
+	 * of giftable variations on the cart page, since we can't really filter
+	 * them properly if they're loaded afterwards via ajax, so it may slow it down
+	 * a little if there's A LOT of variations for a gift (which should’t happen
+	 * too often I think, but this way we get to use the WC add-do-cart-variation.js
+	 * script for choosing between variations, instead of writing our own...)
+	 *
+	 */
+	public static function ajax_variation_threshold($treshold)
+	{
+		return 999999;
+	}
+
+	/**
+	 *
+	 * (WC) allows only variables with post status 'publish' to be added to cart,
+	 * but we have our own custom post status for giftable variations, so we
+	 * need to allow that here
+	 *
+	 */
+	public function variation_is_purchasable($purchasable, $variation)
+	{
+		if (get_post_status($variation->variation_id) === DGFW::GIFT_POST_STATUS) {
+			$purchasable = true;
+		}
+
+		return $purchasable;
 	}
 
 }

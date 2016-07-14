@@ -13,8 +13,8 @@ export default class MetaRoles extends Meta {
 
         var roleElements = new Array();
 
-        if (decomGifts.screen.data.roles) {
-            decomGifts.screen.data.roles.forEach((role, index, collection) => {
+        if (decomGiftable.screen.data.roles) {
+            decomGiftable.screen.data.roles.forEach((role, index, collection) => {
                 roleElements.push(this.roleElement(role));
             });
         }

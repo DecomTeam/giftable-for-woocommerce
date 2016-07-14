@@ -641,4 +641,9 @@
   margin-right: 0.5em;
 }
 
+table.wp-list-table span.product-type.dgfw_gift:before {
+  font-family: dashicons;
+  content: "\f312";
+}
+
 /*# sourceMappingURL=admin.css.map */

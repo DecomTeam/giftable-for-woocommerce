@@ -1,6 +1,6 @@
 export default class Translate {
     static loadTranslations() {
-        this._translations = this._translations || decomGifts.screen.translations || new Object();
+        this._translations = this._translations || decomGiftable.screen.translations || new Object();
     }
 
     static text(original) {

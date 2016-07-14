@@ -17,6 +17,10 @@
             margin-right: 0.5em;
         }
     }
+}
 
-
+// change icon for gift product type on the products screen
+table.wp-list-table span.product-type.dgfw_gift:before {
+    font-family: dashicons;
+    content: "\f312";
 }

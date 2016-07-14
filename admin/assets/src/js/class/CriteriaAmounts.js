@@ -18,7 +18,7 @@ export default class CriteriaAmounts extends Criteria {
         //     ['eur', { text: 'EUR', symbol: '€'}]
         // ]);
 
-        this._currency = decomGifts.screen.data.currency;
+        this._currency = decomGiftable.screen.data.currency;
         // this._currencySelectId = 'dgfw_criteria_currency_' + this._id;
         // this._$currencySelect = null;
 

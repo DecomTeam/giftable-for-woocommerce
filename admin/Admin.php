@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/DGFW.php';
 require_once 'ScreenFactory.php';
 require_once 'ScreenProducts.php';
+require_once 'ScreenEditProduct.php';
 
 class DGFW_Admin extends DGFW {
 
@@ -37,6 +38,16 @@ class DGFW_Admin extends DGFW {
 		// all admin ajax actions as static methods here)
 		add_action( 'woocommerce_product_quick_edit_save', array('DGFW_ScreenProducts', 'product_quick_edit_save'), 10, 1 );
 		add_action( 'woocommerce_product_bulk_edit_save', array('DGFW_ScreenProducts', 'product_quick_edit_save'), 10, 1 );
+
+		// add giftable option to variations
+		add_action( 'woocommerce_variation_options', array('DGFW_ScreenEditProduct', 'variation_giftable_option'), 10, 3 );
+
+		// save giftable variations
+		add_action( 'woocommerce_ajax_save_product_variations', array(
+			'DGFW_ScreenEditProduct', 'save_giftable_variations'), 10, 1 );
+
+		// delete giftable variations when giftable product is deleted
+		add_action( 'before_delete_post', array($this, 'delete_giftable_variations'), 10, 1);
 
 	}
 
@@ -63,4 +74,45 @@ class DGFW_Admin extends DGFW {
 			'debug' => defined('SCRIPT_DEBUG') && SCRIPT_DEBUG,
 		);
 	}
+
+	/**
+	 *
+	 * Delete giftable variations when a product is deleted
+	 *
+	 */
+	public function delete_giftable_variations($post_id)
+	{
+		$product = WC()->product_factory->get_product($post_id);
+
+		if ($product) {
+
+			$variation_args = array(
+				'post_type' => 'product_variation',
+				'post_parent' => $product->id,
+				'post_status' => DGFW::GIFT_POST_STATUS,
+				'posts_per_page' => -1,
+				'fields' => 'ids',
+				'meta_query' => array(),
+			);
+
+			// variations
+			if ($product->get_type() === 'variation') {
+
+				$variation_args['meta_query'][] = array(
+					'key' => '_' . DGFW::GIFT_VARIATION_OPTION . '_original',
+					'value' => $product->variation_id,
+				);
+
+			}
+
+			$variations = get_posts($variation_args);
+
+			foreach ($variations as $variation_id) {
+				wp_delete_post($variation_id);
+			}
+
+		}
+	}
+
+
 }

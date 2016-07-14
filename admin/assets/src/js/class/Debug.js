@@ -1,6 +1,6 @@
 export default class Debug {
     static isEnabled() {
-        return this._enabled = this._enabled || decomGifts.debug || false;
+        return this._enabled = this._enabled || decomGiftable.debug || false;
     }
 
     static info(debugObject) {

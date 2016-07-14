@@ -5,8 +5,8 @@ import Debug from './Debug.js';
 export default class Admin {
 
     constructor() {
-        if (decomGifts && decomGifts.screen) {
-            this._screen = ScreenFactory.create(decomGifts.screen);
+        if (decomGiftable && decomGiftable.screen) {
+            this._screen = ScreenFactory.create(decomGiftable.screen);
 
             this.init();
         }

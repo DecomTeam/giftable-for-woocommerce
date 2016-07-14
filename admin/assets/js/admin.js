@@ -84,7 +84,7 @@
       createClass(Debug, null, [{
           key: "isEnabled",
           value: function isEnabled() {
-              return this._enabled = this._enabled || decomGifts.debug || false;
+              return this._enabled = this._enabled || decomGiftable.debug || false;
           }
       }, {
           key: "info",
@@ -197,7 +197,7 @@
       createClass(Translate, null, [{
           key: "loadTranslations",
           value: function loadTranslations() {
-              this._translations = this._translations || decomGifts.screen.translations || new Object();
+              this._translations = this._translations || decomGiftable.screen.translations || new Object();
           }
       }, {
           key: "text",
@@ -1127,7 +1127,7 @@
               //     ['eur', { text: 'EUR', symbol: '€'}]
               // ]);
 
-              this._currency = decomGifts.screen.data.currency;
+              this._currency = decomGiftable.screen.data.currency;
               // this._currencySelectId = 'dgfw_criteria_currency_' + this._id;
               // this._$currencySelect = null;
 
@@ -1462,10 +1462,10 @@
               this._productsPerPage = 5;
               var productElements = new Array();
 
-              if (decomGifts.screen.data.products) {
-                  this._totalProducts = decomGifts.screen.data.products.length;
+              if (decomGiftable.screen.data.products) {
+                  this._totalProducts = decomGiftable.screen.data.products.length;
                   this._totalPages = Math.ceil(this._totalProducts / this._productsPerPage);
-                  decomGifts.screen.data.products.forEach(function (product, index, collection) {
+                  decomGiftable.screen.data.products.forEach(function (product, index, collection) {
                       productElements[Math.floor(index / _this2._productsPerPage)] = productElements[Math.floor(index / _this2._productsPerPage)] || new Array();
                       productElements[Math.floor(index / _this2._productsPerPage)].push(_this2.productElement(product));
                   });
@@ -1824,7 +1824,7 @@
           value: function post(postId) {
               var product = false;
 
-              decomGifts.screen.data.products.forEach(function (post, index, products) {
+              decomGiftable.screen.data.products.forEach(function (post, index, products) {
                   if (post.id === postId) {
                       product = post;
                   }
@@ -1985,8 +1985,8 @@
 
               var termElements = new Array();
 
-              if (decomGifts.screen.data.productCategories) {
-                  decomGifts.screen.data.productCategories.forEach(function (term, index, collection) {
+              if (decomGiftable.screen.data.productCategories) {
+                  decomGiftable.screen.data.productCategories.forEach(function (term, index, collection) {
                       termElements.push(_this2.termElement(term));
                   });
               }
@@ -2129,10 +2129,10 @@
               this._usersPerPage = 5;
               var userElements = new Array();
 
-              if (decomGifts.screen.data.users) {
-                  this._totalUsers = decomGifts.screen.data.users.length;
+              if (decomGiftable.screen.data.users) {
+                  this._totalUsers = decomGiftable.screen.data.users.length;
                   this._totalPages = Math.ceil(this._totalUsers / this._usersPerPage);
-                  decomGifts.screen.data.users.forEach(function (user, index, collection) {
+                  decomGiftable.screen.data.users.forEach(function (user, index, collection) {
                       userElements[Math.floor(index / _this2._usersPerPage)] = userElements[Math.floor(index / _this2._usersPerPage)] || new Array();
                       userElements[Math.floor(index / _this2._usersPerPage)].push(_this2.userElement(user));
                   });
@@ -2416,7 +2416,7 @@
           value: function user(userId) {
               var user = false;
 
-              decomGifts.screen.data.users.forEach(function (userData, index, users) {
+              decomGiftable.screen.data.users.forEach(function (userData, index, users) {
                   if (userData.id === userId) {
                       user = userData;
                   }
@@ -2554,8 +2554,8 @@
 
               var roleElements = new Array();
 
-              if (decomGifts.screen.data.roles) {
-                  decomGifts.screen.data.roles.forEach(function (role, index, collection) {
+              if (decomGiftable.screen.data.roles) {
+                  decomGiftable.screen.data.roles.forEach(function (role, index, collection) {
                       roleElements.push(_this2.roleElement(role));
                   });
               }
@@ -3014,9 +3014,11 @@
           value: function init() {
               this._giftableOptionId = '_dgfw_giftable';
               this._productTypeSelectId = 'product-type';
+              this._hasGiftableVariationsId = '_dgfw_has_giftable_variations';
 
               this._$giftableOption = $(document.getElementById(this._giftableOptionId));
               this._$producTypeSelect = $(document.getElementById(this._productTypeSelectId));
+              this._$hasGiftableVariations = $(document.getElementById(this._hasGiftableVariationsId));
 
               this._bindings.push({
                   selector: '#' + this._giftableOptionId,
@@ -3033,6 +3035,16 @@
                   event: 'change',
                   object: this,
                   method: 'productTypeChange'
+              }, {
+                  selector: 'input.variable_is_giftable',
+                  event: 'change',
+                  object: this,
+                  method: 'toggleGiftable'
+              }, {
+                  selector: '#woocommerce-product-data',
+                  event: 'woocommerce_variations_loaded',
+                  object: this,
+                  method: 'toggleGiftable'
               });
 
               get(Object.getPrototypeOf(ScreenEditProduct.prototype), 'init', this).call(this);
@@ -3041,8 +3053,34 @@
           key: 'toggleGiftable',
           value: function toggleGiftable() {
               var show, hide;
+              var $giftableOptions,
+                  haveGiftableVariations = false;
 
-              if (this._$giftableOption.prop('checked')) {
+              $giftableOptions = $('input.variable_is_giftable');
+
+              for (var i = 0; i < $giftableOptions.length; i++) {
+                  var $giftableOption = $($giftableOptions[i]);
+                  var $giftableLabel = $giftableOption.closest('.woocommerce_variation').find('.dgfw_giftable_label');
+                  if ($giftableOption.prop('checked')) {
+                      haveGiftableVariations = true;
+                      this._$hasGiftableVariations.val('yes');
+
+                      // add giftable label (if it's not there already)
+                      if (!$giftableLabel.length) {
+                          $giftableOption.closest('.woocommerce_variation').find('h3').append(this.giftableVariationLabel());
+                      }
+                  } else {
+                      $giftableLabel.remove();
+                  }
+              }
+
+              if ($giftableOptions.length && !haveGiftableVariations) {
+                  this._$hasGiftableVariations.val('no');
+              }
+
+              // show gift options if product giftable option is checked
+              // or at least one variation is marked as giftable (if any)
+              if (this._$giftableOption.prop('checked') || $giftableOptions.length && haveGiftableVariations || this._$hasGiftableVariations.val() === 'yes') {
                   show = 'show_if';
                   hide = 'hide_if';
               } else {
@@ -3052,6 +3090,13 @@
 
               $(document.getElementsByClassName(show + this._giftableOptionId)).show();
               $(document.getElementsByClassName(hide + this._giftableOptionId)).hide();
+
+              // show the notice if product is not giftable but has giftable variations
+              if (!this._$giftableOption.prop('checked') && this._$hasGiftableVariations.val() === 'yes') {
+                  $(document.getElementsByClassName('show_if_has_giftable_variations_only')).show();
+              } else {
+                  $(document.getElementsByClassName('show_if_has_giftable_variations_only')).hide();
+              }
           }
       }, {
           key: 'productTypeChange',
@@ -3059,6 +3104,11 @@
               if (this._$giftableOption.is(':visible')) {
                   this.toggleGiftable();
               }
+          }
+      }, {
+          key: 'giftableVariationLabel',
+          value: function giftableVariationLabel() {
+              return '<strong class="dgfw_giftable_label">(' + Translate.text('Giftable') + ')</strong>';
           }
       }]);
       return ScreenEditProduct;
@@ -3087,8 +3137,8 @@
       function Admin() {
           classCallCheck(this, Admin);
 
-          if (decomGifts && decomGifts.screen) {
-              this._screen = ScreenFactory.create(decomGifts.screen);
+          if (decomGiftable && decomGiftable.screen) {
+              this._screen = ScreenFactory.create(decomGiftable.screen);
 
               this.init();
           }

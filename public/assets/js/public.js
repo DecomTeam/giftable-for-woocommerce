@@ -5,6 +5,7 @@
 
         $(document).ready(function () {
             var $dgfwCarousel = $('#dgfw-gifts-carousel');
+            var $dgfwVariations = $('#dgfw-gift-variations');
             var $cartForm = false;
 
             $('body').on('click', '.dgfw-add-gift-button', function (event) {
@@ -12,6 +13,10 @@
 
                 $('#dgfw_chosen_gift').val($(this).data('gift'));
 
+                submitCartForm();
+            });
+
+            function submitCartForm() {
                 // we're going to need the form element for later
                 $cartForm = $(this).closest('form');
 
@@ -23,7 +28,7 @@
                     // trigger ajax event
                     $(document).trigger('wc_update_cart');
                 }
-            });
+            }
 
             function slidesToShowForCurrentWidth() {
                 var currentWindowWidth = $(window).width();
@@ -83,6 +88,56 @@
                     }
                 }
             }
+
+            // select options for gifts with variations
+            $('body').on('click', '.dgfw-select-gift-button', function (event) {
+                event.preventDefault();
+
+                // make sure we're working with the latest reference to the element
+                $dgfwVariations = $('#dgfw-gift-variations');
+
+                var productId = $(this).data('gift');
+
+                loadAndDisplayGiftableVariations(productId);
+            });
+
+            function loadAndDisplayGiftableVariations(productId) {
+                $dgfwVariations.addClass('loading');
+
+                $.ajax(decomGiftable.ajaxUrl, {
+                    type: 'POST',
+                    data: {
+                        action: 'dgfw_get_giftable_variations_html',
+                        security: decomGiftable.security,
+                        product_id: productId
+                    },
+                    success: function displayGiftableVariations(response) {
+                        $dgfwVariations.html(response.data.html);
+                        if (typeof wc_add_to_cart_variation_params !== 'undefined') {
+                            $dgfwVariations.find('.variations_form').each(function () {
+                                $(this).wc_variation_form().find('.variations select:eq(0)').change();
+                            });
+                        }
+                        $dgfwVariations.removeClass('loading');
+                    }
+                });
+            }
+
+            // handle variation add to car button
+            $('body').on('click', '#dgfw-gift-variations .single_add_to_cart_button', function (event) {
+                // if disabled the wc script takes care of blocking it
+                // we need to handle only the final form submission
+                var $this = $(this);
+
+                if (!$this.is('.disabled')) {
+                    event.preventDefault();
+
+                    var variation_id = $dgfwVariations.find('input[name="variation_id"]').val();
+                    $('#dgfw_chosen_gift').val(variation_id);
+
+                    submitCartForm();
+                }
+            });
 
             initNewCarousel();
 

@@ -8,6 +8,7 @@
  * $available_gifts
  *
  */
+// TODO: normal add to cart button if only one variation...
 ?>
 <div class="dgfw-available-gifts">
     <div id="dgfw-choose-gift">
@@ -25,10 +26,15 @@
                         </div>
                         <p class="product-name"><?php echo esc_html($gift->post->post_title); ?></p>
                     </a>
-                    <button id="dgfw-gift-link-<?php echo $gift->id; ?>" name="update_cart" class="button dgfw-add-gift-button" data-gift="<?php echo $gift->get_id(); ?>"><?php esc_html_e(WC_Admin_Settings::get_option('woocommerce_dgfw_gift_button_title', __( 'Add to cart', DGFW::TRANSLATION ))); ?></button>
+                    <?php if (DGFW_Public::gift_has_giftable_variations($gift)) : ?>
+                        <button id="dgfw-gift-link-<?php echo $gift->id; ?>" name="update_cart" class="button dgfw-select-gift-button" data-gift="<?php echo $gift->get_id(); ?>"><?php esc_html_e(WC_Admin_Settings::get_option('woocommerce_dgfw_gift_select_button_title', __( 'Select options', DGFW::TRANSLATION ))); ?></button>
+                    <?php else: ?>
+                        <button id="dgfw-gift-link-<?php echo $gift->id; ?>" name="update_cart" class="button dgfw-add-gift-button" data-gift="<?php echo $gift->get_id(); ?>"><?php esc_html_e(WC_Admin_Settings::get_option('woocommerce_dgfw_gift_button_title', __( 'Add to cart', DGFW::TRANSLATION ))); ?></button>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>
         <input type="hidden" id="dgfw_chosen_gift" name="dgfw_chosen_gift" value=""/>
     </div>
+    <div id="dgfw-gift-variations"><!-- populated by JavaScript --></div>
 </div>

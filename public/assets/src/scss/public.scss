@@ -107,5 +107,27 @@
     text-align: center;
 }
 
+.dgfw-product-giftable-variations {
+    clear: both;
+    margin-top: 30px;
+    text-align: left;
 
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 
+    .images {
+        width: 41.1764705882%;
+        float: left;
+        margin-right: 5.8823529412%;
+        margin-bottom: 3.631em;
+    }
+
+    .summary {
+        width: 52.9411764706%;
+        float: right;
+        margin-right: 0;
+    }
+}

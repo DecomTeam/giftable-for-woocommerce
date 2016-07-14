@@ -13,8 +13,8 @@ export default class MetaTerms extends Meta {
 
         var termElements = new Array();
 
-        if (decomGifts.screen.data.productCategories) {
-            decomGifts.screen.data.productCategories.forEach((term, index, collection) => {
+        if (decomGiftable.screen.data.productCategories) {
+            decomGiftable.screen.data.productCategories.forEach((term, index, collection) => {
                 termElements.push(this.termElement(term));
             });
         }

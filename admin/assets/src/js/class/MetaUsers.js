@@ -33,10 +33,10 @@ export default class MetaUsers extends Meta {
         this._usersPerPage = 5;
         var userElements = new Array();
 
-        if (decomGifts.screen.data.users) {
-            this._totalUsers = decomGifts.screen.data.users.length;
+        if (decomGiftable.screen.data.users) {
+            this._totalUsers = decomGiftable.screen.data.users.length;
             this._totalPages = Math.ceil(this._totalUsers/this._usersPerPage);
-            decomGifts.screen.data.users.forEach((user, index, collection) => {
+            decomGiftable.screen.data.users.forEach((user, index, collection) => {
                 userElements[Math.floor((index)/this._usersPerPage)] = userElements[Math.floor((index)/this._usersPerPage)] || new Array();
                 userElements[Math.floor((index)/this._usersPerPage)].push(this.userElement(user));
             });
@@ -334,7 +334,7 @@ export default class MetaUsers extends Meta {
     user(userId) {
         var user = false;
 
-        decomGifts.screen.data.users.forEach((userData, index, users) => {
+        decomGiftable.screen.data.users.forEach((userData, index, users) => {
             if (userData.id === userId) {
                 user = userData;
             }
