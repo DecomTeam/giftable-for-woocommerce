@@ -54,6 +54,12 @@ abstract class DGFW {
       	// make our giftable variables 'addable' to cart
       	add_filter( 'woocommerce_variation_is_purchasable', array($this, 'variation_is_purchasable'), 10, 2);
 
+      	// switch internal giftable variations for appropriate real items in orders
+      	// (and let WC do its thing with stock quantities and downloads, etc.)
+      	// used both on admin and public side, so we put it here
+      	add_filter( 'woocommerce_order_get_items', array($this, 'order_get_items'), 0, 2 );
+
+
 	}
 
 	public function check_for_woocommerce()
@@ -443,5 +449,78 @@ abstract class DGFW {
 
 		return $purchasable;
 	}
+
+
+	protected function is_gift($product)
+	{
+		$giftable = 'no';
+
+		if ($product->get_type() === DGFW::GIFT_PRODUCT_TYPE) {
+			$giftable = 'yes';
+		}
+
+		if ($product->get_type() === 'variation') {
+
+			if ($product->parent->get_type() === 'variable') {
+				$is_giftable_product_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
+				$is_giftable_variation_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
+
+				return $is_giftable_product_variation === 'yes' || $is_giftable_variation_variation;
+			} else {
+				$giftable = get_post_meta($product->id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
+			}
+		}
+
+		return $giftable === 'yes';
+	}
+
+
+	public function order_get_items($items, $order)
+	{
+		foreach ($items as $key => $item) { // loop 1
+
+			$product_variation_id = empty($item['variation_id']) ? $item['product_id'] : $item['variation_id'];
+
+			$item_product = WC()->product_factory->get_product($product_variation_id);
+
+			if ($item_product && $this->is_gift($item_product)) {
+
+				// since we're switching giftable variations to original variations/products
+				// we'll need a flag for giftable items in some filters/actions later on
+				$items[$key]['item_meta']['_is_giftable'] = 'yes';
+
+				// for gift type products, no need to modify item
+				if ($item_product->get_type() === DGFW::GIFTS_POST_TYPE) {
+					continue; // loop 1
+				}
+
+				// for giftable variations, replace with original variation
+				// we have two types of giftable variations:
+				// 1. variation of a giftable variation
+				// 2. variation of a giftable product
+				// so check which one it is and do the appropriate replacement
+				if ($item_product->get_type() === 'variation') {
+					$original_variation_id = get_post_meta($item_product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
+
+					if (!$original_variation_id) {
+						$original_variation_id = '0';
+					}
+
+					$items[$key]['variation_id'] = $original_variation_id;
+					$items[$key]['item_meta']['_variation_id'][0] = $original_variation_id;
+					foreach ($items[$key]['item_meta_array'] as $meta_key => $meta) { // loop 2
+						if ($meta->key === '_variation_id') {
+							$items[$key]['item_meta_array'][$meta_key]->value = $original_variation_id;
+							break; // loop 2
+						}
+					}
+				}
+			}
+		}
+
+		return $items;
+	}
+
+
 
 }

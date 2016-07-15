@@ -10,6 +10,7 @@ require_once 'ScreenProducts.php';
 require_once 'ScreenEditGift.php';
 require_once 'ScreenEditProduct.php';
 require_once 'ScreenSettings.php';
+require_once 'ScreenShopOrder.php';
 
 
 /**
@@ -36,6 +37,9 @@ class DGFW_ScreenFactory {
         ),
         'woocommerce_page_wc-settings' => array(
             'class' => 'DGFW_ScreenSettings',
+        ),
+        'shop_order' => array(
+            'class' => 'DGFW_ScreenShopOrder',
         ),
     );
 

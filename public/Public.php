@@ -35,6 +35,11 @@ class DGFW_Public extends DGFW {
 		self::$_assets_dir = plugin_dir_url( __FILE__ ) . 'assets/';
 	}
 
+	/**
+	 *
+	 * Filters run on public side (all pages)
+	 *
+	 */
 	protected function define_hooks() {
 		parent::define_hooks();
 		add_action( 'wp', array($this, 'process_cart') );
@@ -43,11 +48,21 @@ class DGFW_Public extends DGFW {
 
 		// product hooks
 		add_filter( 'woocommerce_product_tabs', array($this, 'check_gift_tabs'), 9999, 1 );
+
+		// for orders, switch giftable variations with real products
+		// add_action( 'woocommerce_order_add_product', array($this, 'order_add_product'), 99, 5 );
+
+		// get original files for downloadable variations
+		// add_filter( 'woocommerce_product_files', array($this, 'product_files'), 20, 2 );
 	}
 
+	/**
+	 *
+	 * Filters run only on the cart page
+	 *
+	 */
 	private function add_cart_filters()
 	{
-
 		// Cart item filters for gifts
 		add_filter( 'woocommerce_cart_product_price', array($this, 'gift_cart_price'), 9999, 2 );
 		add_filter( 'woocommerce_cart_product_subtotal', array($this, 'gift_cart_price'), 9999, 2 );
@@ -90,42 +105,6 @@ class DGFW_Public extends DGFW {
 		$this->analyze_cart_contents();
 		$this->load_available_gifts();
 	}
-
-	private function is_gift($product)
-	{
-		$giftable = 'no';
-
-		if ($product->get_type() === DGFW::GIFT_PRODUCT_TYPE) {
-			$giftable = 'yes';
-		}
-
-		if ($product->get_type() === 'variation') {
-
-			if ($product->parent->get_type() === 'variable') {
-				$is_giftable_product_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
-				$is_giftable_variation_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
-
-				return $is_giftable_product_variation === 'yes' || $is_giftable_variation_variation;
-			} else {
-				$giftable = get_post_meta($product->id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
-			}
-		}
-
-		return $giftable === 'yes';
-	}
-
-	// private function variation_is_gift($product)
-	// {
-	// 	$is_giftable_product_variation = 'no';
-	// 	$is_giftable_variation_variation = 'no';
-
-	// 	if ($product->get_type() === 'variation') {
-	// 		$is_giftable_product_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
-	// 		$is_giftable_variation_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
-	// 	}
-
-	// 	return $is_giftable_product_variation === 'yes' || $is_giftable_variation_variation;
-	// }
 
 	private function analyze_cart_contents()
 	{
@@ -488,5 +467,32 @@ class DGFW_Public extends DGFW {
 		return __( 'Your free gift has been added.', DGFW::TRANSLATION );
 	}
 
+	/**
+	 *
+	 * Switch 'fake' giftable variations with real products in orders
+	 *
+	 */
+	public function order_add_product($order_id, $item_id, $product, $qty, $args)
+	{
+		if ($this->is_gift($product)) {
+
+			$order = WC()->order_factory->get_order($order_id);
+			$order_items = $order->get_items();
+
+			die(var_dump($order_items));
+			die(var_dump($order_id, $item_id, $product, $qty, $args));
+		}
+	}
+
+
+	/**
+	 *
+	 * Get original files for downloadable variations
+	 *
+	 */
+	public function product_files($downloadable_files, $product)
+	{
+		die(var_dump($product));
+	}
 
 }

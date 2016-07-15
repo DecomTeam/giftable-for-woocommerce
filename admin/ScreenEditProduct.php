@@ -119,6 +119,7 @@ class DGFW_ScreenEditProduct extends DGFW_Screen {
         $is_giftable = isset( $_POST['_' . DGFW::GIFT_PRODUCT_OPTION] ) ? 'yes' : 'no';
         $was_giftable = isset( $_POST['_dgfw_was_giftable']) ? wc_clean($_POST['_dgfw_was_giftable']) : 'no';
         $has_giftable_variations = isset( $_POST['_dgfw_has_giftable_variations'] ) && $_POST['_dgfw_has_giftable_variations'] === 'yes' ? 'yes' : 'no';
+
         $gift_categories = array();
 
         // set gift categories only if product is marked as giftable in any way

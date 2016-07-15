@@ -646,4 +646,8 @@ table.wp-list-table span.product-type.dgfw_gift:before {
   content: "\f312";
 }
 
+.dgfw-order-item-note {
+  color: #888;
+}
+
 /*# sourceMappingURL=admin.css.map */
