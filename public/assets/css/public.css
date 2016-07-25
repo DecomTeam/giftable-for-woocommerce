@@ -142,6 +142,7 @@
   list-style-type: none;
   text-align: center;
   margin: 0.5em 0;
+  padding: 0;
 }
 
 .dgfw-available-gifts .slick-dots > li {
@@ -185,7 +186,7 @@
 
 @media screen and (min-width: 1024px) {
   .dgfw-gift {
-    width: 19%;
+    width: 23%;
   }
 }
 
@@ -194,14 +195,27 @@
   opacity: 1;
 }
 
+.dgfw-gift .dgfw-add-gift-button,
+.dgfw-gift .dgfw-select-gift-button {
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal !important;
+}
+
 .dgfw-gift-link {
   display: block;
   text-align: center;
 }
 
-.dgfw-gift-link .dgfw-gift-thumbnail img {
-  display: inline-block;
+.dgfw-gift-link .dgfw-gift-thumbnail {
+  width: 100%;
   text-align: center;
+}
+
+.dgfw-gift-link .dgfw-gift-thumbnail img {
+  float: none;
+  display: inline-block;
+  margin: 0;
 }
 
 .dgfw-available-gifts-title {
@@ -223,7 +237,6 @@
 .dgfw-product-giftable-variations .images {
   width: 41.1764705882%;
   float: left;
-  margin-right: 5.8823529412%;
   margin-bottom: 3.631em;
 }
 
@@ -231,6 +244,29 @@
   width: 52.9411764706%;
   float: right;
   margin-right: 0;
+}
+
+.woocommerce div.product div.cart .variations {
+  margin-bottom: 1em;
+  border: 0;
+  width: 100%;
+}
+
+.woocommerce div.product div.cart .variations .label {
+  color: inherit;
+}
+
+.woocommerce div.product div.cart .variations select {
+  max-width: 100%;
+  min-width: 75%;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.woocommerce div.product div.cart table,
+.woocommerce div.product div.cart tr,
+.woocommerce div.product div.cart td {
+  border-width: 0;
 }
 
 /*# sourceMappingURL=public.css.map */

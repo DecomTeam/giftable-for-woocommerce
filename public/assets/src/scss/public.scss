@@ -44,6 +44,7 @@
         list-style-type: none;
         text-align: center;
         margin: 0.5em 0;
+        padding: 0;
 
         > li {
             list-style-type: none;
@@ -84,22 +85,36 @@
     }
 
     @media screen and (min-width: 1024px) {
-       width: 19%;
+       width: 23%;
     }
 
     .slick-slider &,
     .no-slick-needed & {
         opacity: 1;
     }
+
+    .dgfw-add-gift-button,
+    .dgfw-select-gift-button {
+        max-width: 100%;
+        word-break: break-word;
+        white-space: normal !important;
+    }
+
 }
 
 .dgfw-gift-link {
     display: block;
     text-align: center;
 
-    .dgfw-gift-thumbnail img {
-        display: inline-block;
+    .dgfw-gift-thumbnail {
+        width: 100%;
         text-align: center;
+    }
+
+    .dgfw-gift-thumbnail img {
+        float: none;
+        display: inline-block;
+        margin: 0;
     }
 }
 
@@ -121,7 +136,6 @@
     .images {
         width: 41.1764705882%;
         float: left;
-        margin-right: 5.8823529412%;
         margin-bottom: 3.631em;
     }
 
@@ -129,5 +143,33 @@
         width: 52.9411764706%;
         float: right;
         margin-right: 0;
+    }
+}
+
+// we're using div.product instead of wc form.product, so wee need to duplicate
+// some css from woocommerce.css
+.woocommerce div.product div.cart  {
+    .variations {
+        margin-bottom: 1em;
+        border: 0;
+        width: 100%;
+
+        .label {
+            color: inherit;
+        }
+
+        select {
+            max-width: 100%;
+            min-width: 75%;
+            display: inline-block;
+            margin-right: 1em;
+        }
+
+    }
+
+    table,
+    tr,
+    td {
+        border-width: 0;
     }
 }

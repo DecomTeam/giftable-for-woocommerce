@@ -41,7 +41,7 @@
                     return 3;
                 }
 
-                return 5;
+                return 4;
             }
 
             function initNewCarousel() {
@@ -57,8 +57,8 @@
                             dots: true,
                             infinite: false,
                             speed: 300,
-                            slidesToShow: 5,
-                            slidesToScroll: 5,
+                            slidesToShow: 4,
+                            slidesToScroll: 4,
                             responsive: [{
                                 breakpoint: 1024,
                                 settings: {
