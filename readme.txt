@@ -3,8 +3,8 @@
 Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
-Tested up to: 4.5.2
-Stable tag: 0.9.3
+Tested up to: 4.5.3
+Stable tag: 0.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,7 @@ Conditions are added to gift categories (Products -> Gift categories). There you
 
 = How do I assign a gift category to a gift? =
 
-On the 'Product data' meta box in the product editing screen, you can mark any existing WooCommerce product as 'Giftable', or add new products and select 'Gift' as product type. You will then see a new product options tab called 'Gift options', where you can select and assign Gift categories for a gift or a giftable product.
+On the 'Product data' meta box in the product editing screen, you can mark any existing WooCommerce product as 'Giftable', or add new products and select 'Gift' as product type. You will then see a new product options tab called 'Gift options', where you can select and assign Gift categories for a gift or a giftable product. Gifts and giftable products unassigned to at least one enabled Gift category will not be available to customers.
 
 = Can I hide product tabs for gifts? =
 
@@ -45,7 +45,15 @@ There is a 'Show tabs' options for each gift on the Edit product screen 'Gift op
 
 = Can I change the gift box and buttons titles? =
 
-Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts).
+Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts). You'll find a number of other useful settings on that page too.
+
+= Does it work with variable products? =
+
+Yes. (Since version 0.9.4). You can mark any variable products as giftable, or only a number of its specific variations. If a variable product is marked as giftable, all of its variations will be available as gifts (within the Gift categories assigned). If the product is not marked as giftable, but some of its variations are, only those variations will be offered.
+
+= Why is this plugin free? =
+
+This plugin is completely free, and will remain so. We make enough money developing custom solutions for WordPress and WooCommerce, and this is our way to give back to the community.
 
 == Screenshots ==
 
@@ -55,6 +63,10 @@ Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts
 
 == Changelog ==
 
+= 0.9.4 =
+* Full suport for variable products (customers can now select between product variations when choosing a variable product as their gift)
+* Downloadable products bug fix (download was not available if awarded as giftable product)
+* Minor css bug fixes for better compatibility with various themes
 = 0.9.3 =
 * Added frontend carousel/button title settings (WooCommerce -> Settings -> Gifts)
 * Carousel styling improvements
