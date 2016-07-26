@@ -54,6 +54,9 @@ class DGFW_Public extends DGFW {
 
 		// get original files for downloadable variations
 		// add_filter( 'woocommerce_product_files', array($this, 'product_files'), 20, 2 );
+
+		// modify add to cart message for variations added on the cart page
+		add_filter( 'wc_add_to_cart_message', array($this, 'add_to_cart_message'), 99, 2 );
 	}
 
 	/**
@@ -70,9 +73,6 @@ class DGFW_Public extends DGFW {
 		add_filter( 'woocommerce_cart_item_name', array($this, 'gift_cart_title'), 9999, 3 );
 		// modify giftable variations cart data (use original variation images, etc)
 		add_filter( 'woocommerce_cart_item_thumbnail', array($this, 'gift_cart_thumbnail'), 10, 3);
-
-		// modify add to cart message for variations added on the cart page
-		add_filter( 'wc_add_to_cart_message', array($this, 'add_to_cart_message'), 99, 2 );
 
 	}
 
@@ -469,7 +469,13 @@ class DGFW_Public extends DGFW {
 	 */
 	public function add_to_cart_message($message, $product_id)
 	{
-		return __( 'Your free gift has been added.', DGFW::TRANSLATION );
+		// only on the cart page, but we can't use is_cart if the product
+		// is added via ajax, so we check for our own hidden input
+		if (isset($_REQUEST['dgfw_chosen_gift'])) {
+			$message = __( 'Your free gift has been added.', DGFW::TRANSLATION );
+		}
+
+		return $message;
 	}
 
 	/**

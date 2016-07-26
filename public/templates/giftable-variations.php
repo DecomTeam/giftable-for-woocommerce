@@ -11,16 +11,15 @@
  */
 // We use WC's single-product template, just remove stuff we don't need here
 
-/**
- * After Single Products Summary Div.
- *
- * @see woocommerce_output_product_data_tabs()
- * @see woocommerce_upsell_display()
- * @see woocommerce_output_related_products()
- */
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+// no tumbnails
+remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
+
+// clear all after_single_product_summary hooks
+// we do it this way because there's no way to know what's added by custom themes
+global $wp_filter;
+if (isset($wp_filter['woocommerce_after_single_product_summary'])) {
+    $wp_filter['woocommerce_after_single_product_summary'] = array();
+}
 
 /**
  * Product Summary Box.

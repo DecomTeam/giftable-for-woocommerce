@@ -13,6 +13,10 @@
 
                 $('#dgfw_chosen_gift').val($(this).data('gift'));
 
+                // clear giftable variations div so as not to submit its form
+                // values in case it has been opened
+                $('#dgfw-gift-variations').html('');
+
                 submitCartForm();
             });
 
@@ -123,6 +127,7 @@
 
                 if (!$this.is('.disabled')) {
                     event.preventDefault();
+                    event.stopPropagation();
 
                     var variation_id = $dgfwVariations.find('input[name="variation_id"]').val();
                     $('#dgfw_chosen_gift').val(variation_id);
