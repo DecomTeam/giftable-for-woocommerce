@@ -414,7 +414,9 @@ abstract class DGFW {
 		if (!empty($giftable_variation)) {
 			$giftable_variation = $giftable_variation[0];
 			$variation['variation_id'] = $giftable_variation->ID;
-			$variation['is_purcasahble'] = true;
+			// make sure we can add the variation to cart
+			$variation['variation_is_visible'] = true;
+			$variation['is_purchasable'] = true;
 			$variation['availability_html'] = '';
 		}
 
