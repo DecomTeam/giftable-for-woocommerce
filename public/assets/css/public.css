@@ -218,6 +218,11 @@
   margin: 0;
 }
 
+.dgfw-gift-link .product-name {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .dgfw-available-gifts-title {
   text-align: center;
 }
@@ -261,6 +266,10 @@
   min-width: 75%;
   display: inline-block;
   margin-right: 1em;
+}
+
+.woocommerce div.product div.cart .variations tr {
+  background: none;
 }
 
 .woocommerce div.product div.cart table,

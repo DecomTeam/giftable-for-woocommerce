@@ -349,6 +349,9 @@ abstract class DGFW {
 			// our giftable variations)
 			add_filter( 'woocommerce_ajax_variation_threshold', array('DGFW', 'ajax_variation_threshold'), 2 );
 
+			// we'll make sure we're working with the default WC product summary template
+			// so we don't have to worry about any custom theme variation html/css
+			add_filter( 'wc_get_template_part', array('DGFW', 'giftable_variations_default_template'), 99, 3);
 
 			$variations_html = self::get_template('giftable-variations', array('post' => get_post($product_id), 'product' => $product, 'variations' => $giftable_variations));
 
@@ -521,6 +524,15 @@ abstract class DGFW {
 		return $items;
 	}
 
-
+	/**
+	 *
+	 * Always use default WC single product template for giftable variations
+	 * so we don't have any problems with theme custom html/css
+	 *
+	 */
+	public static function giftable_variations_default_template($template, $slug, $name) {
+		$template_name = $slug . '-' . $name . '.php';
+		return WC()->plugin_path() . '/templates/' . $template_name;
+	}
 
 }

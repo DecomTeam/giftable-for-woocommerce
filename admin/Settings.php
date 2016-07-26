@@ -16,7 +16,7 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 	public function __construct() {
 
 		$this->id    = 'gifts';
-		$this->label = __( 'Gifts', DGFW::TRANSLATION );
+		$this->label = __( 'Giftable', DGFW::TRANSLATION );
 
 		add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'woocommerce_settings_' . $this->id, array( $this, 'output' ) );
@@ -48,6 +48,16 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 			),
 
 			array(
+				'title'    => __( 'Gifts carousel description', DGFW::TRANSLATION ),
+				'desc'     => __( 'Description of the available gifts box on the cart page.', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_carousel_description',
+				'css'         => 'width:300px; height: 75px;',
+				'default'  => '',
+				'type'     => 'textarea',
+				'desc_tip' =>  true,
+			),
+
+			array(
 				'title'    => __( 'Add gift button title', DGFW::TRANSLATION ),
 				'desc'     => __( 'Text for add gift to cart buttons show to customers.', DGFW::TRANSLATION ),
 				'id'       => 'woocommerce_dgfw_gift_button_title',
@@ -63,6 +73,27 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 				'default'  => __( 'Select options', DGFW::TRANSLATION ),
 				'type'     => 'text',
 				'desc_tip' =>  true,
+			),
+
+			array(
+				'title'    => __( 'Number of gifts per page on large screens (desktop)', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_carousel_gifts_large',
+				'default'  => 4,
+				'type'     => 'number',
+			),
+
+			array(
+				'title'    => __( 'Number of gifts per page on medium screens (tablet)', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_carousel_gifts_medium',
+				'default'  => 3,
+				'type'     => 'number',
+			),
+
+			array(
+				'title'    => __( 'Number of gifts per page on small screens (phone)', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_carousel_gifts_small',
+				'default'  => 1,
+				'type'     => 'number',
 			),
 
 

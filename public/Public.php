@@ -84,11 +84,16 @@ class DGFW_Public extends DGFW {
 			wp_enqueue_script( DGFW::NAME_VARS . '_slick', DGFW_Public::script_src('slick/slick'), array( 'jquery' ), DGFW::VERSION, false );
 			wp_enqueue_script( DGFW::NAME_VARS, DGFW_Public::script_src('public'), array( DGFW::NAME_VARS . '_slick', 'jquery', 'wc-add-to-cart-variation' ), DGFW::VERSION, false );
 			wp_localize_script( DGFW::NAME_VARS, DGFW::NAME_JSON,
-					array(
-						'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-						'security' => wp_create_nonce( DGFW::NAME_VARS . '_secure' )
-						)
-					);
+				array(
+					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+					'security' => wp_create_nonce( DGFW::NAME_VARS . '_secure' ),
+					'carouselSlides' => array(
+						'large' => WC_Admin_Settings::get_option('woocommerce_dgfw_carousel_gifts_large', 4),
+						'medium' => WC_Admin_Settings::get_option('woocommerce_dgfw_carousel_gifts_medium', 3),
+						'small' => WC_Admin_Settings::get_option('woocommerce_dgfw_carousel_gifts_small', 1),
+					),
+				)
+			);
 		}
 	}
 

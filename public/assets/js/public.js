@@ -33,15 +33,13 @@
             function slidesToShowForCurrentWidth() {
                 var currentWindowWidth = $(window).width();
 
-                if (currentWindowWidth <= 480) {
-                    return 1;
-                } else if (currentWindowWidth <= 600) {
-                    return 2;
+                if (currentWindowWidth <= 600) {
+                    return parseInt(decomGiftable.carouselSlides.small);
                 } else if (currentWindowWidth <= 1024) {
-                    return 3;
+                    return parseInt(decomGiftable.carouselSlides.medium);
                 }
 
-                return 4;
+                return parseInt(decomGiftable.carouselSlides.large);
             }
 
             function initNewCarousel() {
@@ -57,27 +55,21 @@
                             dots: true,
                             infinite: false,
                             speed: 300,
-                            slidesToShow: 4,
-                            slidesToScroll: 4,
+                            slidesToShow: parseInt(decomGiftable.carouselSlides.large),
+                            slidesToScroll: parseInt(decomGiftable.carouselSlides.large),
                             responsive: [{
                                 breakpoint: 1024,
                                 settings: {
-                                    slidesToShow: 3,
-                                    slidesToScroll: 3,
+                                    slidesToShow: parseInt(decomGiftable.carouselSlides.medium),
+                                    slidesToScroll: parseInt(decomGiftable.carouselSlides.medium),
                                     infinite: true,
                                     dots: true
                                 }
                             }, {
                                 breakpoint: 600,
                                 settings: {
-                                    slidesToShow: 2,
-                                    slidesToScroll: 2
-                                }
-                            }, {
-                                breakpoint: 480,
-                                settings: {
-                                    slidesToShow: 1,
-                                    slidesToScroll: 1
+                                    slidesToShow: parseInt(decomGiftable.carouselSlides.small),
+                                    slidesToScroll: parseInt(decomGiftable.carouselSlides.small)
                                 }
                             }]
                         });

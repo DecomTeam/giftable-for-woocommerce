@@ -13,6 +13,11 @@
 <div class="dgfw-available-gifts">
     <div id="dgfw-choose-gift">
         <h3 class="dgfw-available-gifts-title"><?php esc_html_e(WC_Admin_Settings::get_option('woocommerce_dgfw_carousel_title', __( 'Choose your free gift', DGFW::TRANSLATION ))); ?></h3>
+        <?php if ($description = WC_ADMIN_SETTINGS::get_option('woocommerce_dgfw_carousel_description', '')) : ?>
+            <div class="dgfw-available-gifts-description">
+                <?php echo wpautop($description); ?>
+            </div>
+        <?php endif; ?>
         <div id="dgfw-gifts-carousel" class="dgfw-gifts-carousel">
             <?php foreach ($available_gifts as $gift) : ?>
                 <div id="dgfw-gift-<?php echo $gift->id; ?>" class="dgfw-gift">
@@ -24,7 +29,7 @@
                                 echo $thumbnail;
                             ?>
                         </div>
-                        <p class="product-name"><?php echo esc_html($gift->post->post_title); ?></p>
+                        <h5 class="product-name"><?php echo esc_html($gift->post->post_title); ?></h5>
                     </a>
                     <?php if (DGFW_Public::gift_has_giftable_variations($gift)) : ?>
                         <button id="dgfw-gift-link-<?php echo $gift->id; ?>" name="update_cart" class="button dgfw-select-gift-button" data-gift="<?php echo $gift->get_id(); ?>"><?php esc_html_e(WC_Admin_Settings::get_option('woocommerce_dgfw_gift_select_button_title', __( 'Select options', DGFW::TRANSLATION ))); ?></button>

@@ -116,6 +116,11 @@
         display: inline-block;
         margin: 0;
     }
+
+    .product-name {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 }
 
 .dgfw-available-gifts-title {
@@ -163,6 +168,10 @@
             min-width: 75%;
             display: inline-block;
             margin-right: 1em;
+        }
+
+        tr {
+            background: none;
         }
 
     }
