@@ -650,4 +650,8 @@ table.wp-list-table span.product-type.dgfw_gift:before {
   color: #888;
 }
 
+.show_if_has_giftable_variations_only {
+  display: none;
+}
+
 /*# sourceMappingURL=admin.css.map */
