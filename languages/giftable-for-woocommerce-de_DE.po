@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Giftable for WooCommerce\n"
-"POT-Creation-Date: 2016-06-07 19:51+0200\n"
-"PO-Revision-Date: 2016-06-07 20:01+0200\n"
+"POT-Creation-Date: 2016-07-27 11:05+0200\n"
+"PO-Revision-Date: 2016-07-27 11:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -15,8 +15,8 @@ msgstr ""
 "X-Poedit-WPHeader: giftable-for-woocommerce.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -181,26 +181,27 @@ msgstr " von "
 msgid " at "
 msgstr " um "
 
-#: admin/ScreenEditProduct.php:59 public/Public.php:372
-msgid "Gift"
-msgstr "Geschenk"
-
-#: admin/ScreenEditProduct.php:69
-msgid "Gift options"
-msgstr "Geschenkoptionen"
-
-#: admin/ScreenEditProduct.php:82
+#: admin/ScreenEditProduct.php:68 admin/ScreenEditProduct.php:97
+#: admin/Settings.php:19 admin/templates/variation-giftable-option.php:14
 msgid "Giftable"
 msgstr "Verschenkbar"
 
-#: admin/ScreenEditProduct.php:83
+#: admin/ScreenEditProduct.php:74
+msgid "Gift"
+msgstr "Geschenk"
+
+#: admin/ScreenEditProduct.php:84
+msgid "Gift options"
+msgstr "Geschenkoptionen"
+
+#: admin/ScreenEditProduct.php:98
 msgid ""
 "Giftable products can be offered as free gifts for customers based on any "
-"combination of conditions set up as Gift categories..."
+"combination of conditions set up as Gift categories (assigned to a product "
+"in the Gift options tab below). If a variable product is marked as giftable, "
+"all of its variations will be giftable too. To mark only some variations as "
+"giftable, edit them in the Variations tab."
 msgstr ""
-"Verschenkbare Produkte können angeboten werden für Kunden, basierend auf "
-"einer vielzahl von Bedingungen, die als Geschenk Kategorien festgelegt "
-"wurden."
 
 #: admin/ScreenProducts.php:50
 msgid "Gifts and giftable products"
@@ -209,10 +210,6 @@ msgstr "Geschenke und verschenkbare produkte"
 #: admin/ScreenProducts.php:97
 msgid "Select a gift category"
 msgstr "Wählen Sie eine Geschenk-Kategorie "
-
-#: admin/Settings.php:19
-msgid "Gifts"
-msgstr "Geschenke"
 
 #: admin/Settings.php:29
 msgid "Gifts Options"
@@ -232,24 +229,55 @@ msgstr "Geschenk Karussell Überschrift"
 
 #: admin/Settings.php:43
 msgid "The title for the gifts carousel box shown to customers."
-msgstr ""
-"Titel für den Geschenk Karussel der für den besucher dargesstelt wird."
+msgstr "Titel für den Geschenk Karussel der für den besucher dargesstelt wird."
 
-#: admin/Settings.php:45 public/templates/available-gifts.php:14
+#: admin/Settings.php:45 public/templates/available-gifts.php:15
 msgid "Choose your free gift"
 msgstr "Wählen Sie Ihr Geschenk"
 
 #: admin/Settings.php:51
+msgid "Gifts carousel description"
+msgstr ""
+
+#: admin/Settings.php:52
+msgid "Description of the available gifts box on the cart page."
+msgstr ""
+
+#: admin/Settings.php:61
 msgid "Add gift button title"
 msgstr "Titel für Button Geschenk hinzufügen "
 
-#: admin/Settings.php:52
+#: admin/Settings.php:62
 msgid "Text for add gift to cart buttons show to customers."
 msgstr "Text für den Button„Geschenk zum Warenkorb hinzufügen“"
 
-#: admin/Settings.php:54 public/templates/available-gifts.php:28
+#: admin/Settings.php:64 public/templates/available-gifts.php:37
 msgid "Add to cart"
 msgstr "In Warenkorb"
+
+#: admin/Settings.php:70
+msgid "Select options button title"
+msgstr ""
+
+#: admin/Settings.php:71
+msgid "Text for select options buttons (for gifts with variations)."
+msgstr ""
+
+#: admin/Settings.php:73 public/templates/available-gifts.php:35
+msgid "Select options"
+msgstr ""
+
+#: admin/Settings.php:79
+msgid "Number of gifts per page on large screens (desktop)"
+msgstr ""
+
+#: admin/Settings.php:86
+msgid "Number of gifts per page on medium screens (tablet)"
+msgstr ""
+
+#: admin/Settings.php:93
+msgid "Number of gifts per page on small screens (phone)"
+msgstr ""
 
 #: admin/templates/category-criteria.php:10
 msgid "Loading..."
@@ -276,20 +304,50 @@ msgstr "Anzahl der erlaubten Gratis Artikel"
 msgid "Gift category conditions"
 msgstr "Geschenk Kategorie Bedingungen"
 
-#: admin/templates/product-gift-options.php:17 includes/DGFW.php:95
+#: admin/templates/order-giftable-note.php:8
+msgid "Note:"
+msgstr ""
+
+#: admin/templates/order-giftable-note.php:8
+msgid ""
+"This item was awarded as a free gift via the Giftable for WooCommerce plugin."
+msgstr ""
+
+#: admin/templates/product-gift-options.php:20
+msgid ""
+"NOTE: This product is not marked as giftable, but some of its variations "
+"are. Only those variations marked as giftable will be available as gifts "
+"when selected gift categories’ conditions are met."
+msgstr ""
+
+#: admin/templates/product-gift-options.php:23 includes/DGFW.php:114
 msgid "Gift categories"
 msgstr "Geschenk Kategorien"
 
-#: admin/templates/product-gift-options.php:36
+#: admin/templates/product-gift-options.php:42
 msgid "Show tabs"
 msgstr "Tabs anzeigen"
+
+#: admin/templates/variable-actions.php:14
+msgid "Giftable variations"
+msgstr ""
+
+#: admin/templates/variable-actions.php:15
+msgid "Show giftable variations only"
+msgstr ""
+
+#: admin/templates/variation-giftable-option.php:14
+msgid ""
+"If more than one product variation is marked as giftable, customers can "
+"select between them when they choose this product as their gift."
+msgstr ""
 
 #: includes/Category.php:75
 msgid "No conditions added for this gift category yet."
 msgstr ""
 "Es wurde noch keine Bedingungen hinzugefügt für diese Geschenk-Kategorie."
 
-#: includes/DGFW.php:63
+#: includes/DGFW.php:82
 msgid ""
 "<strong>Giftable for WooCommerce</strong> can‘t work without WooCommerce; "
 "the plug-in has been <strong>deactivated</strong>"
@@ -297,67 +355,71 @@ msgstr ""
 "<strong>Giftable für WooCommerce</strong> funktioniert nicht ohne "
 "WooCommerce; das Plug-in wurde <strong>deaktiviert</strong>"
 
-#: includes/DGFW.php:85
+#: includes/DGFW.php:104
 msgctxt "taxonomy general name"
 msgid "Gift categories"
 msgstr "Geschenk-Kategorien"
 
-#: includes/DGFW.php:86
+#: includes/DGFW.php:105
 msgctxt "taxonomy singular name"
 msgid "Gift category"
 msgstr "Geschenk-Kategorie"
 
-#: includes/DGFW.php:87
+#: includes/DGFW.php:106
 msgid "Search Gift categories"
 msgstr "Geschenk-Kategorien suchen"
 
-#: includes/DGFW.php:88
+#: includes/DGFW.php:107
 msgid "All Gift categories"
 msgstr "Alle Geschenk-Kategorien"
 
-#: includes/DGFW.php:89
+#: includes/DGFW.php:108
 msgid "Parent Gift category"
 msgstr "Übergeordnete Geschenk-Kategorie"
 
-#: includes/DGFW.php:90
+#: includes/DGFW.php:109
 msgid "Parent Gift category:"
 msgstr "Übergeordnete Geschenk-Kategorie:"
 
-#: includes/DGFW.php:91
+#: includes/DGFW.php:110
 msgid "Edit Gift category"
 msgstr "Geschenk-Kategorie bearbeiten"
 
-#: includes/DGFW.php:92
+#: includes/DGFW.php:111
 msgid "Update Gift category"
 msgstr "Geschenk-Kategorie aktualisieren"
 
-#: includes/DGFW.php:93
+#: includes/DGFW.php:112
 msgid "Add New Gift category"
 msgstr "Neue Geschenk-Kategorie hinzufügen"
 
-#: includes/DGFW.php:94
+#: includes/DGFW.php:113
 msgid "New Gift category Name"
 msgstr "Neuer Geschenk-Kategorie Name"
 
-#: includes/DGFW.php:102
+#: includes/DGFW.php:121
 msgid "gifts"
 msgstr "geschenke"
 
-#: public/Public.php:175
+#: public/Public.php:186
 msgid "Some gifts have been removed from your cart."
 msgstr "Einige Geschenke wurden aus Ihrem Warenkorb entfernt."
 
-#: public/Public.php:262
+#: public/Public.php:279 public/Public.php:475
 msgid "Your free gift has been added."
 msgstr "Ihr Geschenk wurde hinzugefügt."
 
-#: public/Public.php:361
+#: public/Public.php:378
 msgid "FREE!"
 msgstr "KOSTENLOS!"
 
-#: public/Public.php:373
-msgid "Free gift..."
-msgstr "Kostenloses Geschenk"
+#: public/Public.php:389
+msgid "Note"
+msgstr ""
+
+#: public/Public.php:390
+msgid "This product is a free gift."
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Giftable for WooCommerce"
@@ -383,6 +445,20 @@ msgstr "Decom"
 #. Author URI of the plugin/theme
 msgid "http://decom.ba"
 msgstr "http://decom.ba"
+
+#~ msgid ""
+#~ "Giftable products can be offered as free gifts for customers based on any "
+#~ "combination of conditions set up as Gift categories..."
+#~ msgstr ""
+#~ "Verschenkbare Produkte können angeboten werden für Kunden, basierend auf "
+#~ "einer vielzahl von Bedingungen, die als Geschenk Kategorien festgelegt "
+#~ "wurden."
+
+#~ msgid "Gifts"
+#~ msgstr "Geschenke"
+
+#~ msgid "Free gift..."
+#~ msgstr "Kostenloses Geschenk"
 
 #~ msgid "WooCommerce plugin not installed"
 #~ msgstr "WooCommerce Plugin nicht installiert"
