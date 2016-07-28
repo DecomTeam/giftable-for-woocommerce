@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Giftable for WooCommerce\n"
 "POT-Creation-Date: 2016-07-27 11:05+0200\n"
-"PO-Revision-Date: 2016-07-27 11:05+0200\n"
+"PO-Revision-Date: 2016-07-27 12:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -202,6 +202,13 @@ msgid ""
 "all of its variations will be giftable too. To mark only some variations as "
 "giftable, edit them in the Variations tab."
 msgstr ""
+"Sie können Geschenke an ihre Kunden vergeben basierend auf einer beliebigen "
+"Anzahl an Kombination von Bedingungen die sie den Geschenk-Kategorien "
+"zuweisen. Basis angeboten werden (Produkte können sie unter der Geschenk-"
+"Schaltfläche verwalten). Wenn eine variables Produkt als Verschenkbar "
+"markiert ist, werden alle seine Variationen Verschenkbar sein. Um nur einige "
+"Varianten als Verschenkbar zu markieren, bearbeiten Sie sie diese Variation "
+"unter der Variation Schaltfläche."
 
 #: admin/ScreenProducts.php:50
 msgid "Gifts and giftable products"
@@ -237,11 +244,11 @@ msgstr "Wählen Sie Ihr Geschenk"
 
 #: admin/Settings.php:51
 msgid "Gifts carousel description"
-msgstr ""
+msgstr "Geschenk Karussell beschreibung"
 
 #: admin/Settings.php:52
 msgid "Description of the available gifts box on the cart page."
-msgstr ""
+msgstr "Beschreibung der Geschenke-Box auf der Warenkorb-Seite."
 
 #: admin/Settings.php:61
 msgid "Add gift button title"
@@ -257,27 +264,27 @@ msgstr "In Warenkorb"
 
 #: admin/Settings.php:70
 msgid "Select options button title"
-msgstr ""
+msgstr "Option Button Überschrift"
 
 #: admin/Settings.php:71
 msgid "Text for select options buttons (for gifts with variations)."
-msgstr ""
+msgstr "Text für Variations-Optionen Button (für Geschenke mit Variationen)."
 
 #: admin/Settings.php:73 public/templates/available-gifts.php:35
 msgid "Select options"
-msgstr ""
+msgstr "Produkt wählen"
 
 #: admin/Settings.php:79
 msgid "Number of gifts per page on large screens (desktop)"
-msgstr ""
+msgstr "Anzahl der Geschenke pro Seite auf großen Bildschirmen (Desktop)"
 
 #: admin/Settings.php:86
 msgid "Number of gifts per page on medium screens (tablet)"
-msgstr ""
+msgstr "Anzahl der Geschenke pro Seite auf Medium-Bildschirme (Tablet)"
 
 #: admin/Settings.php:93
 msgid "Number of gifts per page on small screens (phone)"
-msgstr ""
+msgstr "Anzahl der Geschenke pro Seite auf kleinen Bildschirmen (Handy)"
 
 #: admin/templates/category-criteria.php:10
 msgid "Loading..."
@@ -306,12 +313,14 @@ msgstr "Geschenk Kategorie Bedingungen"
 
 #: admin/templates/order-giftable-note.php:8
 msgid "Note:"
-msgstr ""
+msgstr "Bemerkungen"
 
 #: admin/templates/order-giftable-note.php:8
 msgid ""
 "This item was awarded as a free gift via the Giftable for WooCommerce plugin."
 msgstr ""
+"Dieser Artikel wurde als Geschenk zugeteilt über das Giftable für "
+"WooCommerce Plugin."
 
 #: admin/templates/product-gift-options.php:20
 msgid ""
@@ -319,6 +328,10 @@ msgid ""
 "are. Only those variations marked as giftable will be available as gifts "
 "when selected gift categories’ conditions are met."
 msgstr ""
+"Hinweis: Dieses Produkt ist nicht als Verschenkbar markiert, aber einige "
+"seiner Variationen sind es. Nur Verschenkbar markiert Variationen werden als "
+"Geschenke verfügbar sein, wenn die vorgegebenen Geschenk Bedingungen erfüllt "
+"sind."
 
 #: admin/templates/product-gift-options.php:23 includes/DGFW.php:114
 msgid "Gift categories"
@@ -330,17 +343,20 @@ msgstr "Tabs anzeigen"
 
 #: admin/templates/variable-actions.php:14
 msgid "Giftable variations"
-msgstr ""
+msgstr "Verschenkbar Variationen"
 
 #: admin/templates/variable-actions.php:15
 msgid "Show giftable variations only"
-msgstr ""
+msgstr "Verschenkbar Variationen Nur"
 
 #: admin/templates/variation-giftable-option.php:14
 msgid ""
 "If more than one product variation is marked as giftable, customers can "
 "select between them when they choose this product as their gift."
 msgstr ""
+"Wenn mehr als eine Produktvariation als Verschenkbar markiert ist, kann der "
+"Kunde zwischen ihnen auswählen, wenn er dieses Produkt als Geschenk "
+"ausgewählt hat."
 
 #: includes/Category.php:75
 msgid "No conditions added for this gift category yet."
@@ -415,11 +431,11 @@ msgstr "KOSTENLOS!"
 
 #: public/Public.php:389
 msgid "Note"
-msgstr ""
+msgstr "Bemerkung"
 
 #: public/Public.php:390
 msgid "This product is a free gift."
-msgstr ""
+msgstr "Dieses Produkt ist ein Geschenk."
 
 #. Plugin Name of the plugin/theme
 msgid "Giftable for WooCommerce"
