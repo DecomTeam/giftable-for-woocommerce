@@ -24,7 +24,7 @@
                     <a href="<?php echo $gift->get_permalink(); ?>" class="dgfw-gift-link">
                         <div class="dgfw-gift-thumbnail product-thumbnail">
                             <?php
-                                $thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $gift->get_image());
+                                $thumbnail = $gift->get_image();
 
                                 echo $thumbnail;
                             ?>
