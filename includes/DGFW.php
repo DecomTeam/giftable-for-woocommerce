@@ -18,7 +18,7 @@ abstract class DGFW {
 	const NAME_VARS = 'giftable_for_woocommerce';
 	const TRANSLATION = 'giftable-for-woocommerce';
 
-	const VERSION = '0.9.5';
+	const VERSION = '0.9.8';
 
 	const GIFTS_POST_TYPE = 'dgfw_gifts';
 	const GIFTS_TAXONOMY = 'dgfw_gift_categories';
@@ -485,6 +485,11 @@ abstract class DGFW {
 	public function order_get_items($items, $order)
 	{
 		foreach ($items as $key => $item) { // loop 1
+
+			// don't process shipping and similar items
+			if (empty($item['variation_id']) && empty($item['product_id'])) {
+				continue;
+			}
 
 			$product_variation_id = empty($item['variation_id']) ? $item['product_id'] : $item['variation_id'];
 

@@ -4,7 +4,7 @@ Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
 Tested up to: 4.5.3
-Stable tag: 0.9.7
+Stable tag: 0.9.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,8 @@ This plugin is completely free, and will remain so. We make enough money develop
 
 == Changelog ==
 
+= 0.9.8 =
+* Order review shipping cost notice bug fix
 = 0.9.7 =
 * Minor code improvements for better compatibility with other WooCommerce plugins
 = 0.9.6 =
