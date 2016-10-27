@@ -23,6 +23,11 @@ class DGFW_MetaTerms extends DGFW_Meta {
 
     public function __construct($raw_meta)
     {
+        // make sure we have an empty value array if there is none
+        if (!isset($raw_meta['value'])) {
+            $raw_meta['value'] = array();
+        }
+
         parent::__construct($raw_meta, 'array');
 
         $this->_taxonomy = $this->check_string($raw_meta['taxonomy']);

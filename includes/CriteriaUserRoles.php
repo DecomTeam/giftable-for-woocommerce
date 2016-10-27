@@ -21,6 +21,13 @@ class DGFW_CriteriaUserRoles extends DGFW_Criteria {
     {
         parent::__construct($conditions);
 
+        // add empty roles array if none are selected...
+        if (!isset($conditions['roles'])) {
+            $conditions['roles'] = array(
+                'value' => array(),
+            );
+        }
+
         $this->_roles = new DGFW_MetaUserRoles($conditions['roles']);
     }
 
