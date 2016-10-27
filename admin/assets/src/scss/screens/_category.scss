@@ -523,7 +523,8 @@
 
 
 .dgfw-checkbox-group-wrapper {
-    width: 30%;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
 
     .dgfw-roles-select,
