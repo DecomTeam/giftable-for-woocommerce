@@ -63,8 +63,9 @@ export default class MetaUsers extends Meta {
 
         if (Object.keys(this._value).length) {
             for (var selectedUserId in this._value) {
-                if (this._value[selectedUserId]) {
-                    selectedUsersElement.children.push(this.selectedUserElement(this.user(parseInt(selectedUserId)), false));
+                let selectedUser = this.user(parseInt(selectedUserId));
+                if (this._value[selectedUserId] && selectedUser) {
+                    selectedUsersElement.children.push(this.selectedUserElement(selectedUser, false));
                 }
             }
         } else {
@@ -87,7 +88,7 @@ export default class MetaUsers extends Meta {
                 attributes: {
                     name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][value]',
                     type: 'hidden',
-                    value: Object.getOwnPropertyNames(this._value).join(','),
+                    value: Object.keys(this._value).join(','),
                 },
             },
         ];
@@ -217,7 +218,7 @@ export default class MetaUsers extends Meta {
                 {
                     tag: 'h4',
                     classes: ['dgfw-users-select-user-name'],
-                    text: user.displayName,
+                    text: user.displayName.length < 30 ? user.displayName : user.displayName.slice(0, 30) + '…',
                 },
                 {
                     tag: 'div',
@@ -248,7 +249,7 @@ export default class MetaUsers extends Meta {
                 {
                     tag: 'h4',
                     classes: ['dgfw-users-select-user-name'],
-                    text: user.displayName,
+                    text: user.displayName.length < 30 ? user.displayName : user.displayName.slice(0, 30) + '…',
                 },
                 {
                     tag: 'div',

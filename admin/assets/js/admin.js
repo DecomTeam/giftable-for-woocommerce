@@ -1763,7 +1763,7 @@
                   children: [{
                       tag: 'h4',
                       classes: ['dgfw-posts-select-post-title'],
-                      text: product.title
+                      text: product.title.length < 30 ? product.title : product.title.slice(0, 30) + '…'
                   }, {
                       tag: 'div',
                       classes: ['dgfw-posts-select-post-img'],
@@ -1794,7 +1794,7 @@
                   children: [{
                       tag: 'h4',
                       classes: ['dgfw-posts-select-post-title'],
-                      text: product.title
+                      text: product.title.length < 30 ? product.title : product.title.slice(0, 30) + '…'
                   }, {
                       tag: 'div',
                       classes: ['dgfw-posts-select-post-img'],
@@ -1832,7 +1832,7 @@
                   children: [{
                       tag: 'h4',
                       classes: ['dgfw-posts-select-post-title'],
-                      text: product.title
+                      text: product.title.length < 20 ? product.title : product.title.slice(0, 40) + '…'
                   }, {
                       tag: 'div',
                       classes: ['dgfw-posts-select-post-img'],
@@ -2272,8 +2272,9 @@
 
               if (Object.keys(this._value).length) {
                   for (var selectedUserId in this._value) {
-                      if (this._value[selectedUserId]) {
-                          selectedUsersElement.children.push(this.selectedUserElement(this.user(parseInt(selectedUserId)), false));
+                      var selectedUser = this.user(parseInt(selectedUserId));
+                      if (this._value[selectedUserId] && selectedUser) {
+                          selectedUsersElement.children.push(this.selectedUserElement(selectedUser, false));
                       }
                   }
               } else {
@@ -2292,7 +2293,7 @@
                   attributes: {
                       name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][value]',
                       type: 'hidden',
-                      value: Object.getOwnPropertyNames(this._value).join(',')
+                      value: Object.keys(this._value).join(',')
                   }
               }];
 
@@ -2405,7 +2406,7 @@
                   children: [{
                       tag: 'h4',
                       classes: ['dgfw-users-select-user-name'],
-                      text: user.displayName
+                      text: user.displayName.length < 30 ? user.displayName : user.displayName.slice(0, 30) + '…'
                   }, {
                       tag: 'div',
                       classes: ['dgfw-users-select-user-img'],
@@ -2436,7 +2437,7 @@
                   children: [{
                       tag: 'h4',
                       classes: ['dgfw-users-select-user-name'],
-                      text: user.displayName
+                      text: user.displayName.length < 30 ? user.displayName : user.displayName.slice(0, 30) + '…'
                   }, {
                       tag: 'div',
                       classes: ['dgfw-users-select-user-img'],

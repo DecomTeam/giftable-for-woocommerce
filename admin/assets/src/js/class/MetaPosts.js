@@ -244,7 +244,7 @@ export default class MetaPosts extends Meta {
                 {
                     tag: 'h4',
                     classes: ['dgfw-posts-select-post-title'],
-                    text: product.title,
+                    text: product.title.length < 30 ? product.title : product.title.slice(0, 30) + '…',
                 },
                 {
                     tag: 'div',
@@ -275,7 +275,7 @@ export default class MetaPosts extends Meta {
                 {
                     tag: 'h4',
                     classes: ['dgfw-posts-select-post-title'],
-                    text: product.title,
+                    text: product.title.length < 30 ? product.title : product.title.slice(0, 30) + '…',
                 },
                 {
                     tag: 'div',
@@ -316,7 +316,7 @@ export default class MetaPosts extends Meta {
                 {
                     tag: 'h4',
                     classes: ['dgfw-posts-select-post-title'],
-                    text: product.title,
+                    text: product.title.length < 20 ? product.title : product.title.slice(0, 40) + '…',
                 },
                 {
                     tag: 'div',

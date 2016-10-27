@@ -251,7 +251,7 @@
 .dgfw-select-posts,
 .dgfw-select-users {
     position: relative;
-    height: 140px;
+    height: 180px;
     padding: 10px 5%
 }
 
@@ -274,10 +274,11 @@
     max-width: 180px;
     background: #ffffff;
     outline: 2px solid #e8e8e8;
-    padding: 110px 15px 0;
+    padding: 110px 5px 0;
     position: relative;
     text-align: center;
     cursor: pointer;
+    vertical-align: top;
     transition: all 0.25s;
 
     .dgfw-posts-select-post-img,
@@ -318,6 +319,8 @@
     .dgfw-posts-select-post-title,
     .dgfw-users-select-user-name {
         font-weight: normal;
+        line-height: 1.5em;
+        min-height: 3em;
     }
 
     &.selected {
@@ -422,9 +425,9 @@
     position: relative;
     top: 0;
     box-sizing: border-box;
-    padding: 1em 2em 1em 50px;
+    padding: 10px 30px 10px 60px;
     margin: 0 1em 1em 0;
-    height: 40px;
+    height: 50px;
     width: auto;
     background: white;
     outline: 1px solid #e8e8e8;
@@ -445,6 +448,7 @@
     .dgfw-users-select-user-name {
         margin: 0;
         font-weight: normal;
+        line-height: 30px;
     }
 
     .dgfw-posts-select-post-img,
@@ -453,8 +457,8 @@
         top: 0;
         left: 0;
         bottom: 0;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         background-position: center;
         background-size: cover;
     }
@@ -462,7 +466,7 @@
     .dgfw-posts-selected-remove,
     .dgfw-users-selected-remove {
         position: absolute;
-        top: 12px;
+        top: 15px;
         right: 3px;
         cursor: pointer;
         color: red;
@@ -477,13 +481,19 @@
     text-align: left;
 
     .dgfw-posts-select-post-title,
-    .dgfw-products-advanced-min-items {
+    .dgfw-posts-advanced-min-items {
         display: inline-block;
         margin-right: 1em;
         vertical-align: middle;
     }
 
-    .dgfw-products-advanced-min-items {
+    .dgfw-posts-select-post-title {
+        max-width: calc(100% - 5em);
+        max-height: 30px;
+        overflow: hidden;
+    }
+
+    .dgfw-posts-advanced-min-items {
         text-align: right;
     }
 
@@ -491,6 +501,15 @@
         width: 4em !important;
         float: right;
         margin: 0 !important;
+
+        padding: {
+            top: 5px;
+            bottom: 5px;
+        }
+
+        height: 30px;
+        line-height: 20px;
+
     }
 
     .dgfw-posts-select-post-img {
