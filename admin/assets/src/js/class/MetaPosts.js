@@ -68,9 +68,10 @@ export default class MetaPosts extends Meta {
 
         if (Object.keys(this._value).length) {
             for (var selectedProductId in this._value) {
-                if (this._value[selectedProductId]) {
-                    selectedProductsElement.children.push(this.selectedProductElement(this.post(parseInt(selectedProductId)), false));
-                    advancedElement.children.push(this.advancedProductElement(this.post(parseInt(selectedProductId)), this._value[selectedProductId]));
+                let selectedProduct = this.post(parseInt(selectedProductId));
+                if (this._value[selectedProductId] && selectedProduct) {
+                    selectedProductsElement.children.push(this.selectedProductElement(selectedProduct, false));
+                    advancedElement.children.push(this.advancedProductElement(selectedProduct, this._value[selectedProductId]));
                 }
             }
         } else {
@@ -92,7 +93,7 @@ export default class MetaPosts extends Meta {
                 attributes: {
                     name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][value]',
                     type: 'hidden',
-                    value: Object.getOwnPropertyNames(this._value).join(','),
+                    value: Object.keys(this._value).join(','),
                 },
             },
             {

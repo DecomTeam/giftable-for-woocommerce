@@ -3,6 +3,119 @@
 
   var $ = jQuery;
 
+  var asyncGenerator = function () {
+    function AwaitValue(value) {
+      this.value = value;
+    }
+
+    function AsyncGenerator(gen) {
+      var front, back;
+
+      function send(key, arg) {
+        return new Promise(function (resolve, reject) {
+          var request = {
+            key: key,
+            arg: arg,
+            resolve: resolve,
+            reject: reject,
+            next: null
+          };
+
+          if (back) {
+            back = back.next = request;
+          } else {
+            front = back = request;
+            resume(key, arg);
+          }
+        });
+      }
+
+      function resume(key, arg) {
+        try {
+          var result = gen[key](arg);
+          var value = result.value;
+
+          if (value instanceof AwaitValue) {
+            Promise.resolve(value.value).then(function (arg) {
+              resume("next", arg);
+            }, function (arg) {
+              resume("throw", arg);
+            });
+          } else {
+            settle(result.done ? "return" : "normal", result.value);
+          }
+        } catch (err) {
+          settle("throw", err);
+        }
+      }
+
+      function settle(type, value) {
+        switch (type) {
+          case "return":
+            front.resolve({
+              value: value,
+              done: true
+            });
+            break;
+
+          case "throw":
+            front.reject(value);
+            break;
+
+          default:
+            front.resolve({
+              value: value,
+              done: false
+            });
+            break;
+        }
+
+        front = front.next;
+
+        if (front) {
+          resume(front.key, front.arg);
+        } else {
+          back = null;
+        }
+      }
+
+      this._invoke = send;
+
+      if (typeof gen.return !== "function") {
+        this.return = undefined;
+      }
+    }
+
+    if (typeof Symbol === "function" && Symbol.asyncIterator) {
+      AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+        return this;
+      };
+    }
+
+    AsyncGenerator.prototype.next = function (arg) {
+      return this._invoke("next", arg);
+    };
+
+    AsyncGenerator.prototype.throw = function (arg) {
+      return this._invoke("throw", arg);
+    };
+
+    AsyncGenerator.prototype.return = function (arg) {
+      return this._invoke("return", arg);
+    };
+
+    return {
+      wrap: function (fn) {
+        return function () {
+          return new AsyncGenerator(fn.apply(this, arguments));
+        };
+      },
+      await: function (value) {
+        return new AwaitValue(value);
+      }
+    };
+  }();
+
   var classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -113,12 +226,12 @@
 
   var BoundElement = function () {
       function BoundElement() {
-          var parent = arguments.length <= 0 || arguments[0] === undefined ? 'body' : arguments[0];
+          var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'body';
           var selector = arguments[1];
           var event = arguments[2];
           var object = arguments[3];
           var method = arguments[4];
-          var preventDefault = arguments.length <= 5 || arguments[5] === undefined ? true : arguments[5];
+          var preventDefault = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
           classCallCheck(this, BoundElement);
 
           this._parent = parent;
@@ -213,8 +326,8 @@
       function Criteria(id) {
           var _this = this;
 
-          var conditions = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-          var sourceCriteria = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
+          var conditions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+          var sourceCriteria = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
           classCallCheck(this, Criteria);
 
           this._id = id;
@@ -251,7 +364,6 @@
 
           this._types = new Map([['amounts', Translate.text('Amounts')], ['items', Translate.text('Items')], ['products', Translate.text('Products')], ['product_categories', Translate.text('Product Categories')], ['periods', Translate.text('Time Period')], ['users', Translate.text('Users')], ['user_roles', Translate.text('User Roles')]]);
 
-          // ['countries', 'Countries'],
           this._chooseTypeData = {
               tag: 'div',
               id: 'dgfw_choose_type_wrap_' + this._id,
@@ -566,7 +678,7 @@
       }, {
           key: 'incrementStep',
           value: function incrementStep() {
-              var steps = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+              var steps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
               this._currentStep += steps;
               if (this._currentStep > this._lastStep) {
@@ -579,7 +691,7 @@
       }, {
           key: 'decrementStep',
           value: function decrementStep() {
-              var steps = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+              var steps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
               this._currentStep -= steps;
               if (this._currentStep < 0) {
@@ -959,7 +1071,7 @@
 
       function MetaCurrency() {
           classCallCheck(this, MetaCurrency);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(MetaCurrency).apply(this, arguments));
+          return possibleConstructorReturn(this, (MetaCurrency.__proto__ || Object.getPrototypeOf(MetaCurrency)).apply(this, arguments));
       }
 
       createClass(MetaCurrency, [{
@@ -1027,12 +1139,12 @@
                   }
               });
 
-              get(Object.getPrototypeOf(MetaCurrency.prototype), 'init', this).call(this);
+              get(MetaCurrency.prototype.__proto__ || Object.getPrototypeOf(MetaCurrency.prototype), 'init', this).call(this);
           }
       }, {
           key: 'hookElements',
           value: function hookElements() {
-              get(Object.getPrototypeOf(MetaCurrency.prototype), 'hookElements', this).call(this);
+              get(MetaCurrency.prototype.__proto__ || Object.getPrototypeOf(MetaCurrency.prototype), 'hookElements', this).call(this);
               this._$prefixElement = this._$prefixElement || $(document.getElementById(this._prefixElementId));
               this._$currencyElement = this._$currencyElement || $(document.getElementById(this._currencyElementId));
           }
@@ -1061,7 +1173,7 @@
       }, {
           key: 'value',
           value: function value() {
-              var newValue = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+              var newValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
               if (newValue) {
                   this._value = parseFloat(newValue);
@@ -1109,7 +1221,7 @@
 
       function CriteriaAmounts() {
           classCallCheck(this, CriteriaAmounts);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaAmounts).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaAmounts.__proto__ || Object.getPrototypeOf(CriteriaAmounts)).apply(this, arguments));
       }
 
       createClass(CriteriaAmounts, [{
@@ -1141,6 +1253,7 @@
               //         text: currency.text
               //     });
               // });
+
 
               this._minAmount = new MetaCurrency(this._id + '-min_amount', { currency: this._currency, label: Translate.text('Min amount'), value: this._conditions.min_amount ? this._conditions.min_amount.value : 0 });
               this._maxAmount = new MetaCurrency(this._id + '-max_amount', { currency: this._currency, label: Translate.text('Max amount'), value: this._conditions.max_amount ? this._conditions.max_amount.value : 0 });
@@ -1209,7 +1322,7 @@
                   method: 'updateMaxAmount'
               });
 
-              get(Object.getPrototypeOf(CriteriaAmounts.prototype), 'init', this).call(this);
+              get(CriteriaAmounts.prototype.__proto__ || Object.getPrototypeOf(CriteriaAmounts.prototype), 'init', this).call(this);
           }
       }, {
           key: 'changeCurrency',
@@ -1249,7 +1362,7 @@
 
   	function MetaQuantity() {
   		classCallCheck(this, MetaQuantity);
-  		return possibleConstructorReturn(this, Object.getPrototypeOf(MetaQuantity).apply(this, arguments));
+  		return possibleConstructorReturn(this, (MetaQuantity.__proto__ || Object.getPrototypeOf(MetaQuantity)).apply(this, arguments));
   	}
 
   	createClass(MetaQuantity, [{
@@ -1283,7 +1396,7 @@
   				}
   			}];
 
-  			get(Object.getPrototypeOf(MetaQuantity.prototype), 'init', this).call(this);
+  			get(MetaQuantity.prototype.__proto__ || Object.getPrototypeOf(MetaQuantity.prototype), 'init', this).call(this);
   		}
   	}, {
   		key: 'validate',
@@ -1302,7 +1415,7 @@
   	}, {
   		key: 'value',
   		value: function value() {
-  			var newValue = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+  			var newValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
   			if (newValue) {
   				this._value = parseFloat(newValue);
@@ -1350,7 +1463,7 @@
 
       function CriteriaItems() {
           classCallCheck(this, CriteriaItems);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaItems).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaItems.__proto__ || Object.getPrototypeOf(CriteriaItems)).apply(this, arguments));
       }
 
       createClass(CriteriaItems, [{
@@ -1400,7 +1513,7 @@
 
               // );
 
-              get(Object.getPrototypeOf(CriteriaItems.prototype), 'init', this).call(this);
+              get(CriteriaItems.prototype.__proto__ || Object.getPrototypeOf(CriteriaItems.prototype), 'init', this).call(this);
           }
       }, {
           key: 'updateMinItems',
@@ -1429,7 +1542,7 @@
 
       function MetaPosts() {
           classCallCheck(this, MetaPosts);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(MetaPosts).apply(this, arguments));
+          return possibleConstructorReturn(this, (MetaPosts.__proto__ || Object.getPrototypeOf(MetaPosts)).apply(this, arguments));
       }
 
       createClass(MetaPosts, [{
@@ -1498,9 +1611,10 @@
 
               if (Object.keys(this._value).length) {
                   for (var selectedProductId in this._value) {
-                      if (this._value[selectedProductId]) {
-                          selectedProductsElement.children.push(this.selectedProductElement(this.post(parseInt(selectedProductId)), false));
-                          advancedElement.children.push(this.advancedProductElement(this.post(parseInt(selectedProductId)), this._value[selectedProductId]));
+                      var selectedProduct = this.post(parseInt(selectedProductId));
+                      if (this._value[selectedProductId] && selectedProduct) {
+                          selectedProductsElement.children.push(this.selectedProductElement(selectedProduct, false));
+                          advancedElement.children.push(this.advancedProductElement(selectedProduct, this._value[selectedProductId]));
                       }
                   }
               } else {
@@ -1519,7 +1633,7 @@
                   attributes: {
                       name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][value]',
                       type: 'hidden',
-                      value: Object.getOwnPropertyNames(this._value).join(',')
+                      value: Object.keys(this._value).join(',')
                   }
               }, {
                   tag: 'input',
@@ -1608,12 +1722,12 @@
                   method: 'removeSelectedPost'
               });
 
-              get(Object.getPrototypeOf(MetaPosts.prototype), 'init', this).call(this);
+              get(MetaPosts.prototype.__proto__ || Object.getPrototypeOf(MetaPosts.prototype), 'init', this).call(this);
           }
       }, {
           key: 'hookElements',
           value: function hookElements() {
-              get(Object.getPrototypeOf(MetaPosts.prototype), 'hookElements', this).call(this);
+              get(MetaPosts.prototype.__proto__ || Object.getPrototypeOf(MetaPosts.prototype), 'hookElements', this).call(this);
               this._$containerElement = this._$containerElement || $(document.getElementById(this._containerId));
               this._$selectedListElement = this._$selectedListElement || $(document.getElementById(this._selectedListId));
               this._$currentPageStatus = this._$currentPageStatus || $(document.getElementById(this._statusCurrentPageId));
@@ -1662,7 +1776,7 @@
       }, {
           key: 'selectedProductElement',
           value: function selectedProductElement(product) {
-              var invisible = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+              var invisible = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
               var selectedClasses = ['dgfw-posts-selected-post'];
 
@@ -1906,7 +2020,7 @@
 
       function CriteriaProducts() {
           classCallCheck(this, CriteriaProducts);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaProducts).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaProducts.__proto__ || Object.getPrototypeOf(CriteriaProducts)).apply(this, arguments));
       }
 
       createClass(CriteriaProducts, [{
@@ -1958,7 +2072,7 @@
                   method: 'readjustSize'
               });
 
-              get(Object.getPrototypeOf(CriteriaProducts.prototype), 'init', this).call(this);
+              get(CriteriaProducts.prototype.__proto__ || Object.getPrototypeOf(CriteriaProducts.prototype), 'init', this).call(this);
           }
       }]);
       return CriteriaProducts;
@@ -1969,7 +2083,7 @@
 
       function MetaTerms() {
           classCallCheck(this, MetaTerms);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(MetaTerms).apply(this, arguments));
+          return possibleConstructorReturn(this, (MetaTerms.__proto__ || Object.getPrototypeOf(MetaTerms)).apply(this, arguments));
       }
 
       createClass(MetaTerms, [{
@@ -2007,7 +2121,7 @@
                   }
               }];
 
-              get(Object.getPrototypeOf(MetaTerms.prototype), 'init', this).call(this);
+              get(MetaTerms.prototype.__proto__ || Object.getPrototypeOf(MetaTerms.prototype), 'init', this).call(this);
           }
       }, {
           key: 'termElement',
@@ -2054,7 +2168,7 @@
 
       function CriteriaProductCategories() {
           classCallCheck(this, CriteriaProductCategories);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaProductCategories).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaProductCategories.__proto__ || Object.getPrototypeOf(CriteriaProductCategories)).apply(this, arguments));
       }
 
       createClass(CriteriaProductCategories, [{
@@ -2084,7 +2198,7 @@
 
               this._bindings = this._bindings.concat(this._terms.bindings());
 
-              get(Object.getPrototypeOf(CriteriaProductCategories.prototype), 'init', this).call(this);
+              get(CriteriaProductCategories.prototype.__proto__ || Object.getPrototypeOf(CriteriaProductCategories.prototype), 'init', this).call(this);
           }
       }]);
       return CriteriaProductCategories;
@@ -2095,7 +2209,7 @@
 
       function MetaUsers() {
           classCallCheck(this, MetaUsers);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(MetaUsers).apply(this, arguments));
+          return possibleConstructorReturn(this, (MetaUsers.__proto__ || Object.getPrototypeOf(MetaUsers)).apply(this, arguments));
       }
 
       createClass(MetaUsers, [{
@@ -2251,12 +2365,12 @@
                   method: 'removeSelectedUser'
               });
 
-              get(Object.getPrototypeOf(MetaUsers.prototype), 'init', this).call(this);
+              get(MetaUsers.prototype.__proto__ || Object.getPrototypeOf(MetaUsers.prototype), 'init', this).call(this);
           }
       }, {
           key: 'hookElements',
           value: function hookElements() {
-              get(Object.getPrototypeOf(MetaUsers.prototype), 'hookElements', this).call(this);
+              get(MetaUsers.prototype.__proto__ || Object.getPrototypeOf(MetaUsers.prototype), 'hookElements', this).call(this);
               this._$containerElement = this._$containerElement || $(document.getElementById(this._containerId));
               this._$selectedListElement = this._$selectedListElement || $(document.getElementById(this._selectedListId));
               this._$currentPageStatus = this._$currentPageStatus || $(document.getElementById(this._statusCurrentPageId));
@@ -2304,7 +2418,7 @@
       }, {
           key: 'selectedUserElement',
           value: function selectedUserElement(user) {
-              var invisible = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+              var invisible = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
               var selectedClasses = ['dgfw-users-selected-user'];
 
@@ -2488,7 +2602,7 @@
 
       function CriteriaUsers() {
           classCallCheck(this, CriteriaUsers);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaUsers).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaUsers.__proto__ || Object.getPrototypeOf(CriteriaUsers)).apply(this, arguments));
       }
 
       createClass(CriteriaUsers, [{
@@ -2527,7 +2641,7 @@
                   method: 'readjustSize'
               });
 
-              get(Object.getPrototypeOf(CriteriaUsers.prototype), 'init', this).call(this);
+              get(CriteriaUsers.prototype.__proto__ || Object.getPrototypeOf(CriteriaUsers.prototype), 'init', this).call(this);
           }
       }]);
       return CriteriaUsers;
@@ -2538,7 +2652,7 @@
 
       function MetaRoles() {
           classCallCheck(this, MetaRoles);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(MetaRoles).apply(this, arguments));
+          return possibleConstructorReturn(this, (MetaRoles.__proto__ || Object.getPrototypeOf(MetaRoles)).apply(this, arguments));
       }
 
       createClass(MetaRoles, [{
@@ -2567,7 +2681,7 @@
                   children: roleElements
               }];
 
-              get(Object.getPrototypeOf(MetaRoles.prototype), 'init', this).call(this);
+              get(MetaRoles.prototype.__proto__ || Object.getPrototypeOf(MetaRoles.prototype), 'init', this).call(this);
           }
       }, {
           key: 'roleElement',
@@ -2615,7 +2729,7 @@
 
       function CriteriaUserRoles() {
           classCallCheck(this, CriteriaUserRoles);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaUserRoles).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaUserRoles.__proto__ || Object.getPrototypeOf(CriteriaUserRoles)).apply(this, arguments));
       }
 
       createClass(CriteriaUserRoles, [{
@@ -2645,7 +2759,7 @@
 
               this._bindings = this._bindings.concat(this._roles.bindings());
 
-              get(Object.getPrototypeOf(CriteriaUserRoles.prototype), 'init', this).call(this);
+              get(CriteriaUserRoles.prototype.__proto__ || Object.getPrototypeOf(CriteriaUserRoles.prototype), 'init', this).call(this);
           }
       }]);
       return CriteriaUserRoles;
@@ -2656,7 +2770,7 @@
 
       function MetaTime() {
           classCallCheck(this, MetaTime);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(MetaTime).apply(this, arguments));
+          return possibleConstructorReturn(this, (MetaTime.__proto__ || Object.getPrototypeOf(MetaTime)).apply(this, arguments));
       }
 
       createClass(MetaTime, [{
@@ -2724,7 +2838,7 @@
                   }
               }];
 
-              get(Object.getPrototypeOf(MetaTime.prototype), 'init', this).call(this);
+              get(MetaTime.prototype.__proto__ || Object.getPrototypeOf(MetaTime.prototype), 'init', this).call(this);
           }
       }, {
           key: 'hookElements',
@@ -2763,7 +2877,7 @@
 
       function CriteriaPeriods() {
           classCallCheck(this, CriteriaPeriods);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(CriteriaPeriods).apply(this, arguments));
+          return possibleConstructorReturn(this, (CriteriaPeriods.__proto__ || Object.getPrototypeOf(CriteriaPeriods)).apply(this, arguments));
       }
 
       createClass(CriteriaPeriods, [{
@@ -2819,7 +2933,7 @@
                   method: 'updateEndTime'
               });
 
-              get(Object.getPrototypeOf(CriteriaPeriods.prototype), 'init', this).call(this);
+              get(CriteriaPeriods.prototype.__proto__ || Object.getPrototypeOf(CriteriaPeriods.prototype), 'init', this).call(this);
           }
       }, {
           key: 'updateStartDate',
@@ -2847,8 +2961,6 @@
 
   var _criteria = new Map([['amounts', CriteriaAmounts], ['items', CriteriaItems], ['periods', CriteriaPeriods], ['products', CriteriaProducts], ['product_categories', CriteriaProductCategories], ['users', CriteriaUsers], ['user_roles', CriteriaUserRoles], ['default', CriteriaAmounts]]);
 
-  // ['countries', CriteriaItems],
-
   var CriteriaFactory = function () {
       function CriteriaFactory() {
           classCallCheck(this, CriteriaFactory);
@@ -2857,7 +2969,7 @@
       createClass(CriteriaFactory, null, [{
           key: 'create',
           value: function create(id, criteria) {
-              var conditions = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+              var conditions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
               if (!_criteria.has(criteria)) {
                   criteria = 'default';
@@ -2867,7 +2979,7 @@
       }, {
           key: 'createAndScrollTo',
           value: function createAndScrollTo(id, criteria) {
-              var conditions = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+              var conditions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
               conditions.scrollTo = true;
               return this.create(id, criteria, conditions);
@@ -2886,7 +2998,7 @@
 
   var Category = function () {
       function Category(categoryData) {
-          var criteriaData = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+          var criteriaData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
           classCallCheck(this, Category);
 
 
@@ -2975,7 +3087,7 @@
 
       function ScreenEditCategory() {
           classCallCheck(this, ScreenEditCategory);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(ScreenEditCategory).apply(this, arguments));
+          return possibleConstructorReturn(this, (ScreenEditCategory.__proto__ || Object.getPrototypeOf(ScreenEditCategory)).apply(this, arguments));
       }
 
       createClass(ScreenEditCategory, [{
@@ -2990,7 +3102,7 @@
                   method: 'addCriteria'
               });
 
-              get(Object.getPrototypeOf(ScreenEditCategory.prototype), 'init', this).call(this);
+              get(ScreenEditCategory.prototype.__proto__ || Object.getPrototypeOf(ScreenEditCategory.prototype), 'init', this).call(this);
           }
       }, {
           key: 'addCriteria',
@@ -3006,7 +3118,7 @@
 
       function ScreenEditProduct() {
           classCallCheck(this, ScreenEditProduct);
-          return possibleConstructorReturn(this, Object.getPrototypeOf(ScreenEditProduct).apply(this, arguments));
+          return possibleConstructorReturn(this, (ScreenEditProduct.__proto__ || Object.getPrototypeOf(ScreenEditProduct)).apply(this, arguments));
       }
 
       createClass(ScreenEditProduct, [{
@@ -3047,7 +3159,7 @@
                   method: 'toggleGiftable'
               });
 
-              get(Object.getPrototypeOf(ScreenEditProduct.prototype), 'init', this).call(this);
+              get(ScreenEditProduct.prototype.__proto__ || Object.getPrototypeOf(ScreenEditProduct.prototype), 'init', this).call(this);
           }
       }, {
           key: 'toggleGiftable',
