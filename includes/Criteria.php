@@ -26,7 +26,7 @@ abstract class DGFW_Criteria {
     public function __construct($conditions)
     {
         $this->_id = $conditions['id'];
-        $this->_logic = $conditions['logic'];
+        $this->_logic = isset($conditions['logic']) ? $conditions['logic'] : false;
         $this->_type = $conditions['type'];
 
         $this->_subcriteria = array();
