@@ -223,10 +223,11 @@ abstract class DGFW {
 		$products = array();
 
 		foreach ($posts as $post) {
+			$product_img = get_the_post_thumbnail_url($post->ID, array(90, 90));
 			$products[] = array(
 				'id' => $post->ID,
 				'title' => $post->post_title,
-				'img' => get_the_post_thumbnail_url($post->ID, array(90, 90)),
+				'img' => $product_img ? $product_img : wc_placeholder_img_src(array(90, 90)),
 			);
 		}
 
