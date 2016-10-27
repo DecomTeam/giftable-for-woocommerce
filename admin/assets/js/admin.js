@@ -987,6 +987,11 @@
               this._subcriteria.delete(subcriteriaId);
               criteria.removeElement();
               this.unbindSelector(criteria.elementSelector());
+
+              if (this._$element.hasClass('first') && !this._subcriteria.size) {
+                  this._$element.removeClass('and or');
+                  this._$andOr.find('button').show();
+              }
           }
       }, {
           key: 'unbindSelector',
