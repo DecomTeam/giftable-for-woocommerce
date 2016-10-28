@@ -62,7 +62,7 @@ class DGFW_MetaTerms extends DGFW_Meta {
     private function check_for_any($products_terms)
     {
         foreach ($products_terms as $term_id => $term_data) {
-            if (in_array($term_id, $this->_value)) {
+            if (in_array($term_id, $this->_value) && $this->check_quantity($term_id, $term_data['quantity']) && $this->check_amount($term_id, $term_data['amount'])) {
                 return true;
             }
         }
@@ -73,7 +73,7 @@ class DGFW_MetaTerms extends DGFW_Meta {
     private function check_for_all($products_terms)
     {
         foreach ($products_terms as $term_id => $term_data) {
-            if (!(in_array($term, $this->_value) && $this->check_quantity($term_data['quantity']) && $this->check_amount($term_data['amount']))) {
+            if (!(in_array($term, $this->_value) && $this->check_quantity($term_id, $term_data['quantity']) && $this->check_amount($term_id, $term_data['amount']))) {
                 return false;
             }
         }
@@ -81,15 +81,23 @@ class DGFW_MetaTerms extends DGFW_Meta {
         return true;
     }
 
-    private function check_quantity($quantity)
+    private function check_quantity($term_id, $quantity)
     {
-        // TODO implement in future releases
+        if (isset($this->_min_items[$term_id])) {
+            return $this->_min_items[$term_id]->is_lte($quantity);
+        }
+
+        // backward compatibility, there was no quantity per category field...
         return true;
     }
 
-    private function check_amount($amount)
+    private function check_amount($term_id, $amount)
     {
-        // TODO implement in future releases
+        if (isset($this->_min_amounts[$term_id])) {
+            return $this->_min_amounts[$term_id]->is_lte($amount);
+        }
+
+        // backward compatibility, there was no amount per category field...
         return true;
     }
 
