@@ -76,6 +76,34 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 			),
 
 			array(
+				'title'         => __( 'Gift note in the cart', DGFW::TRANSLATION ),
+				'desc'          => __( 'Show note for gifts in the cart', DGFW::TRANSLATION ),
+				'id'            => 'woocommerce_dgfw_cart_show_gift_note',
+				'default'       => 'yes',
+				'type'          => 'checkbox',
+				'checkboxgroup' => 'start',
+				'autoload'      => false,
+			),
+
+			array(
+				'title'    => __( 'Cart gift note title', DGFW::TRANSLATION ),
+				'desc'     => __( 'Title of the gift note shown for each gift in the cart', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_cart_gift_note_title',
+				'default'  => __( 'Note', DGFW::TRANSLATION ),
+				'type'     => 'text',
+				'desc_tip' =>  true,
+			),
+
+			array(
+				'title'    => __( 'Cart gift note text', DGFW::TRANSLATION ),
+				'desc'     => __( 'Text of the gift note shown for each gift in the cart', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_cart_gift_note_text',
+				'default'  => __( 'This product is a free gift.', DGFW::TRANSLATION ),
+				'type'     => 'text',
+				'desc_tip' =>  true,
+			),
+
+			array(
 				'title'    => __( 'Number of gifts per page on large screens (desktop)', DGFW::TRANSLATION ),
 				'id'       => 'woocommerce_dgfw_carousel_gifts_large',
 				'default'  => 4,

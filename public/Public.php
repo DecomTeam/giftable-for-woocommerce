@@ -384,10 +384,12 @@ class DGFW_Public extends DGFW {
 	public function gift_cart_data($item_data, $cart_item)
 	{
 
-		if ($this->is_gift($cart_item['data'])) {
+		if ($this->is_gift($cart_item['data']) && (WC_Admin_Settings::get_option('woocommerce_dgfw_cart_show_gift_note', 'yes') === 'yes')) {
+			$key = WC_Admin_Settings::get_option('woocommerce_dgfw_cart_gift_note_title', __('Note', DGFW::TRANSLATION));
+			$value = WC_Admin_Settings::get_option('woocommerce_dgfw_cart_gift_note_text', __('This product is a free gift.', DGFW::TRANSLATION));
 			$item_data[] = array(
-				'key' => __('Note', DGFW::TRANSLATION),
-				'value' => __('This product is a free gift.', DGFW::TRANSLATION)
+				'key' => $key ? $key : __('Note', DGFW::TRANSLATION),
+				'value' => $value ? $value : __('This product is a free gift.', DGFW::TRANSLATION),
 			);
 		}
 

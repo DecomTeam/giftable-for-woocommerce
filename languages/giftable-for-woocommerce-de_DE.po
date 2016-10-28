@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Giftable for WooCommerce\n"
-"POT-Creation-Date: 2016-07-27 11:05+0200\n"
-"PO-Revision-Date: 2016-07-27 12:25+0200\n"
+"POT-Creation-Date: 2016-10-28 16:34+0200\n"
+"PO-Revision-Date: 2016-10-28 16:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: giftable-for-woocommerce.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -64,120 +64,187 @@ msgid "Amounts"
 msgstr "Betrag"
 
 #: admin/ScreenEditCategory.php:162
+msgid ""
+"This condition will be met if the <strong>total cart amount</strong> is "
+"within the defined min/max amounts range."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:163
 msgid "Items"
 msgstr "Anzahl"
 
-#: admin/ScreenEditCategory.php:163
+#: admin/ScreenEditCategory.php:164
+msgid ""
+"This condition will be met if the <strong>total number of items in the cart</"
+"strong> is within the defined min/max items range."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:165
 msgid "Products"
 msgstr "Produkte"
 
-#: admin/ScreenEditCategory.php:164
+#: admin/ScreenEditCategory.php:166
+msgid ""
+"This condition will be met if the customer has at least one item of any of "
+"the selected products in their cart. To specify a minimum quantity for each "
+"selected product, click the <strong>Product Quantities</strong> button below."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:167
 msgid "Product Categories"
 msgstr "Produktkategorien"
 
-#: admin/ScreenEditCategory.php:165
+#: admin/ScreenEditCategory.php:168
 msgid "Time Period"
 msgstr "Zeitraum"
 
-#: admin/ScreenEditCategory.php:166 admin/ScreenEditCategory.php:186
+#: admin/ScreenEditCategory.php:169
+msgid ""
+"This condition will be met if the time of customer checkout is within the "
+"defined start/end time interval."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:170 admin/ScreenEditCategory.php:197
 msgid "Users"
 msgstr "Benutzer"
 
-#: admin/ScreenEditCategory.php:167
+#: admin/ScreenEditCategory.php:171
+msgid ""
+"This condition will be met if the customer is logged in as any of the "
+"selected users below."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:172
 msgid "User Roles"
 msgstr "Benutzerrollen"
 
-#: admin/ScreenEditCategory.php:168
+#: admin/ScreenEditCategory.php:173
+msgid ""
+"This condition will be met if the customr is a logged in user and has one of "
+"the user roles selected below."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:174
 msgid "Min amount"
 msgstr "Min. Betrag"
 
-#: admin/ScreenEditCategory.php:169
+#: admin/ScreenEditCategory.php:175
 msgid "Max amount"
 msgstr "Max. Betrag"
 
-#: admin/ScreenEditCategory.php:170
+#: admin/ScreenEditCategory.php:176
 msgid "Set amount range. Leave empty for no limits."
 msgstr "Betrag eintragen oder frei lassen für uneingeschränkt"
 
-#: admin/ScreenEditCategory.php:171
+#: admin/ScreenEditCategory.php:177
 msgid "Min items"
 msgstr "Min. Anzahl"
 
-#: admin/ScreenEditCategory.php:172
+#: admin/ScreenEditCategory.php:178
 msgid "Max items"
 msgstr "Max. Anzahl"
 
-#: admin/ScreenEditCategory.php:173
+#: admin/ScreenEditCategory.php:179
 msgid "Set items range. Leave empty for no limits."
 msgstr "Anzahl eintragen oder frei lassen für uneingeschränkt"
 
-#: admin/ScreenEditCategory.php:174
+#: admin/ScreenEditCategory.php:180
 msgid "Start date"
 msgstr "Anfangsdatum"
 
-#: admin/ScreenEditCategory.php:175
+#: admin/ScreenEditCategory.php:181
 msgid "End date"
 msgstr "Enddatum"
 
-#: admin/ScreenEditCategory.php:176
+#: admin/ScreenEditCategory.php:182
 msgid "Set start and end of this period."
 msgstr "Legen Sie Anfang- und Enddatum dieses Zeitraums fest."
 
-#: admin/ScreenEditCategory.php:177
+#: admin/ScreenEditCategory.php:183
 msgid "Terms"
 msgstr "Bedingungen"
 
-#: admin/ScreenEditCategory.php:178
+#: admin/ScreenEditCategory.php:184
+msgid "Select Product Categories"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:185
 msgid "Select product categories this gift category applies for."
 msgstr ""
 "Wählen sie die Produkt-Kategorien auf welche sich diese Geschenk-Kategorie "
 "bezieht"
 
-#: admin/ScreenEditCategory.php:179
+#: admin/ScreenEditCategory.php:186
+msgid ""
+"This condition will be met then the customer has at least one product "
+"belonging to any of the selected product categories in their cart. To "
+"specify minimum amounts and/or items for each selected category, click the "
+"<strong>Amounts and Quantities</strong> button below."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:187
+msgid "Amounts and Quantities"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:188
+msgid ""
+"Set up the minimum amount and/or number of items for each selected category."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:189
+msgid ""
+"By default, this condition will be met if the customer has at least one "
+"product belonging to any of the selected product categories in their cart. "
+"You can change minimum amount and/or items for each selected category here. "
+"Leave the fields empty for default value (one item minimum, regardless of "
+"the amount)."
+msgstr ""
+
+#: admin/ScreenEditCategory.php:190
 msgid "Posts"
 msgstr "Beiträge"
 
-#: admin/ScreenEditCategory.php:180
+#: admin/ScreenEditCategory.php:191
 msgid "Select Products"
 msgstr "Produkte auswählen"
 
-#: admin/ScreenEditCategory.php:181
+#: admin/ScreenEditCategory.php:192
 msgid "Select products this gift category applies for."
 msgstr ""
 "Wählen sie die Produkte auf welche sich diese Geschenk-Kategorie bezieht"
 
-#: admin/ScreenEditCategory.php:182
+#: admin/ScreenEditCategory.php:193
 msgid "Product Quantities"
 msgstr "Produkt anzahl"
 
-#: admin/ScreenEditCategory.php:183
+#: admin/ScreenEditCategory.php:194
 msgid "Set minimum quantity for each selected product."
 msgstr "Mindestbestellmenge für jedes ausgewählte Produkt."
 
-#: admin/ScreenEditCategory.php:184
+#: admin/ScreenEditCategory.php:195
 msgid "Roles"
 msgstr "Rollen"
 
-#: admin/ScreenEditCategory.php:185
+#: admin/ScreenEditCategory.php:196
 msgid "Select user roles this gift category applies for."
 msgstr ""
 "Wählen sie die Benutzerrollen auf welche sich diese Geschenk-Kategorie "
 "bezieht"
 
-#: admin/ScreenEditCategory.php:187
+#: admin/ScreenEditCategory.php:198
 msgid "Select users this gift category applies for."
 msgstr ""
 "Wählen sie die Benutzer auf welche sich diese Geschenk-Kategorie bezieht"
 
-#: admin/ScreenEditCategory.php:188
+#: admin/ScreenEditCategory.php:199
 msgid "Page "
 msgstr "Seite"
 
-#: admin/ScreenEditCategory.php:189
+#: admin/ScreenEditCategory.php:200
 msgid " of "
 msgstr " von "
 
-#: admin/ScreenEditCategory.php:190
+#: admin/ScreenEditCategory.php:201
 msgid " at "
 msgstr " um "
 
@@ -275,14 +342,46 @@ msgid "Select options"
 msgstr "Produkt wählen"
 
 #: admin/Settings.php:79
+msgid "Gift note in the cart"
+msgstr ""
+
+#: admin/Settings.php:80
+msgid "Show note for gifts in the cart"
+msgstr ""
+
+#: admin/Settings.php:89
+msgid "Cart gift note title"
+msgstr ""
+
+#: admin/Settings.php:90
+msgid "Title of the gift note shown for each gift in the cart"
+msgstr ""
+
+#: admin/Settings.php:92 public/Public.php:388 public/Public.php:391
+msgid "Note"
+msgstr "Bemerkung"
+
+#: admin/Settings.php:98
+msgid "Cart gift note text"
+msgstr ""
+
+#: admin/Settings.php:99
+msgid "Text of the gift note shown for each gift in the cart"
+msgstr ""
+
+#: admin/Settings.php:101 public/Public.php:389 public/Public.php:392
+msgid "This product is a free gift."
+msgstr "Dieses Produkt ist ein Geschenk."
+
+#: admin/Settings.php:107
 msgid "Number of gifts per page on large screens (desktop)"
 msgstr "Anzahl der Geschenke pro Seite auf großen Bildschirmen (Desktop)"
 
-#: admin/Settings.php:86
+#: admin/Settings.php:114
 msgid "Number of gifts per page on medium screens (tablet)"
 msgstr "Anzahl der Geschenke pro Seite auf Medium-Bildschirme (Tablet)"
 
-#: admin/Settings.php:93
+#: admin/Settings.php:121
 msgid "Number of gifts per page on small screens (phone)"
 msgstr "Anzahl der Geschenke pro Seite auf kleinen Bildschirmen (Handy)"
 
@@ -421,21 +520,13 @@ msgstr "geschenke"
 msgid "Some gifts have been removed from your cart."
 msgstr "Einige Geschenke wurden aus Ihrem Warenkorb entfernt."
 
-#: public/Public.php:279 public/Public.php:475
+#: public/Public.php:279 public/Public.php:477
 msgid "Your free gift has been added."
 msgstr "Ihr Geschenk wurde hinzugefügt."
 
 #: public/Public.php:378
 msgid "FREE!"
 msgstr "KOSTENLOS!"
-
-#: public/Public.php:389
-msgid "Note"
-msgstr "Bemerkung"
-
-#: public/Public.php:390
-msgid "This product is a free gift."
-msgstr "Dieses Produkt ist ein Geschenk."
 
 #. Plugin Name of the plugin/theme
 msgid "Giftable for WooCommerce"
