@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Giftable for WooCommerce\n"
-"POT-Creation-Date: 2016-10-28 16:34+0200\n"
+"POT-Creation-Date: 2016-10-28 17:50+0200\n"
 "PO-Revision-Date: 2016-04-04 16:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -117,7 +117,7 @@ msgstr ""
 
 #: admin/ScreenEditCategory.php:173
 msgid ""
-"This condition will be met if the customr is a logged in user and has one of the "
+"This condition will be met if the customer is a logged in user and has one of the "
 "user roles selected below."
 msgstr ""
 
@@ -339,7 +339,7 @@ msgstr ""
 msgid "Title of the gift note shown for each gift in the cart"
 msgstr ""
 
-#: admin/Settings.php:92 public/Public.php:388 public/Public.php:391
+#: admin/Settings.php:92 public/Public.php:392 public/Public.php:395
 msgid "Note"
 msgstr ""
 
@@ -351,7 +351,7 @@ msgstr ""
 msgid "Text of the gift note shown for each gift in the cart"
 msgstr ""
 
-#: admin/Settings.php:101 public/Public.php:389 public/Public.php:392
+#: admin/Settings.php:101 public/Public.php:393 public/Public.php:396
 msgid "This product is a free gift."
 msgstr ""
 
@@ -489,11 +489,11 @@ msgstr ""
 msgid "Some gifts have been removed from your cart."
 msgstr ""
 
-#: public/Public.php:279 public/Public.php:477
+#: public/Public.php:283 public/Public.php:481
 msgid "Your free gift has been added."
 msgstr ""
 
-#: public/Public.php:378
+#: public/Public.php:382
 msgid "FREE!"
 msgstr ""
 
