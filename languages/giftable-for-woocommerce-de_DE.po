@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Giftable for WooCommerce\n"
-"POT-Creation-Date: 2016-10-28 16:34+0200\n"
-"PO-Revision-Date: 2016-10-28 16:35+0200\n"
+"POT-Creation-Date: 2016-10-28 17:46+0200\n"
+"PO-Revision-Date: 2016-10-28 17:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -68,6 +68,8 @@ msgid ""
 "This condition will be met if the <strong>total cart amount</strong> is "
 "within the defined min/max amounts range."
 msgstr ""
+"Diese Bedingung wird erfüllt werden, wenn der <strong>gesamte Warenkorb "
+"Betrag</strong> innerhalb des definierten min/Max Bereich liegt."
 
 #: admin/ScreenEditCategory.php:163
 msgid "Items"
@@ -78,6 +80,8 @@ msgid ""
 "This condition will be met if the <strong>total number of items in the cart</"
 "strong> is within the defined min/max items range."
 msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn die <strong>Gesamtanzahl der Artikel "
+"im Warenkorb</strong> innerhalb des min-/Max- Bereiches ist."
 
 #: admin/ScreenEditCategory.php:165
 msgid "Products"
@@ -89,6 +93,10 @@ msgid ""
 "the selected products in their cart. To specify a minimum quantity for each "
 "selected product, click the <strong>Product Quantities</strong> button below."
 msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn der Kunde mindestens ein Artikel von "
+"den ausgewählten Produkten im Warenkorb hat. Um eine Mindestmenge für jedes "
+"ausgewählte Produkt einzurichten, klicken Sie unten auf <strongProdukt "
+"Anzahl</strong."
 
 #: admin/ScreenEditCategory.php:167
 msgid "Product Categories"
@@ -103,6 +111,8 @@ msgid ""
 "This condition will be met if the time of customer checkout is within the "
 "defined start/end time interval."
 msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn die Bestellung innerhalb des "
+"definierten Zeitintervalls getätigt wurde."
 
 #: admin/ScreenEditCategory.php:170 admin/ScreenEditCategory.php:197
 msgid "Users"
@@ -113,6 +123,8 @@ msgid ""
 "This condition will be met if the customer is logged in as any of the "
 "selected users below."
 msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn der Kunde als einer der unten "
+"ausgewählten Benutzer angemeldet ist."
 
 #: admin/ScreenEditCategory.php:172
 msgid "User Roles"
@@ -120,9 +132,11 @@ msgstr "Benutzerrollen"
 
 #: admin/ScreenEditCategory.php:173
 msgid ""
-"This condition will be met if the customr is a logged in user and has one of "
-"the user roles selected below."
+"This condition will be met if the customer is a logged in user and has one "
+"of the user roles selected below."
 msgstr ""
+"Diese Bedingung erfüllt werden, wenn der Benutzer angemeldet ist und eine "
+"der unten ausgewählten Benutzerrollen hat."
 
 #: admin/ScreenEditCategory.php:174
 msgid "Min amount"
@@ -166,7 +180,7 @@ msgstr "Bedingungen"
 
 #: admin/ScreenEditCategory.php:184
 msgid "Select Product Categories"
-msgstr ""
+msgstr "Produktkategorien auswählen:"
 
 #: admin/ScreenEditCategory.php:185
 msgid "Select product categories this gift category applies for."
@@ -181,15 +195,21 @@ msgid ""
 "specify minimum amounts and/or items for each selected category, click the "
 "<strong>Amounts and Quantities</strong> button below."
 msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn der Kunde mindestens ein Produkt aus "
+"einer der ausgewählten Produktkategorien in ihren Warenkorb hat. Um den "
+"Mindestbetrag und/oder Anzahl für jede ausgewählte Kategorie festzulegen, "
+"klicken Sie untan auf <strong>Beträge und Mengen</strong>."
 
 #: admin/ScreenEditCategory.php:187
 msgid "Amounts and Quantities"
-msgstr ""
+msgstr "Beträge und Mengen"
 
 #: admin/ScreenEditCategory.php:188
 msgid ""
 "Set up the minimum amount and/or number of items for each selected category."
 msgstr ""
+" Mindestbetrag und/oder Anzahl der Produkte  für jede ausgewählte Kategorie "
+"einstellen."
 
 #: admin/ScreenEditCategory.php:189
 msgid ""
@@ -199,6 +219,11 @@ msgid ""
 "Leave the fields empty for default value (one item minimum, regardless of "
 "the amount)."
 msgstr ""
+"Standardmäßig wird diese Bedingung erfüllt sein, wenn der Kunde mindestens "
+"ein Produkt aus einer der ausgewählten Produktkategorien im Warenkorb hat. "
+"Sie können den Mindestbetrag und/oder Menge für jede ausgewählte Kategorie "
+"hier ändern. Für Standardwerte lassen Sie die Felder leer (ein Artikel "
+"mindestens, unabhängig vom betrag)."
 
 #: admin/ScreenEditCategory.php:190
 msgid "Posts"
@@ -343,33 +368,33 @@ msgstr "Produkt wählen"
 
 #: admin/Settings.php:79
 msgid "Gift note in the cart"
-msgstr ""
+msgstr "Geschenk-Hinweis im Warenkorb"
 
 #: admin/Settings.php:80
 msgid "Show note for gifts in the cart"
-msgstr ""
+msgstr "Geschenk-Hinweis im Warenkorb anzeigen"
 
 #: admin/Settings.php:89
 msgid "Cart gift note title"
-msgstr ""
+msgstr "Geschenk-Hinweistitel"
 
 #: admin/Settings.php:90
 msgid "Title of the gift note shown for each gift in the cart"
-msgstr ""
+msgstr "Titel vom Geschenk-Hinweis für jedes Geschenk im Warenkorb angezeigen"
 
-#: admin/Settings.php:92 public/Public.php:388 public/Public.php:391
+#: admin/Settings.php:92 public/Public.php:392 public/Public.php:395
 msgid "Note"
 msgstr "Bemerkung"
 
 #: admin/Settings.php:98
 msgid "Cart gift note text"
-msgstr ""
+msgstr "Warenkorb Geschenk Hinweistext"
 
 #: admin/Settings.php:99
 msgid "Text of the gift note shown for each gift in the cart"
-msgstr ""
+msgstr "Text der Geschenk-Notiz für jedes Geschenk im Warenkorb angezeigen"
 
-#: admin/Settings.php:101 public/Public.php:389 public/Public.php:392
+#: admin/Settings.php:101 public/Public.php:393 public/Public.php:396
 msgid "This product is a free gift."
 msgstr "Dieses Produkt ist ein Geschenk."
 
@@ -520,11 +545,11 @@ msgstr "geschenke"
 msgid "Some gifts have been removed from your cart."
 msgstr "Einige Geschenke wurden aus Ihrem Warenkorb entfernt."
 
-#: public/Public.php:279 public/Public.php:477
+#: public/Public.php:283 public/Public.php:481
 msgid "Your free gift has been added."
 msgstr "Ihr Geschenk wurde hinzugefügt."
 
-#: public/Public.php:378
+#: public/Public.php:382
 msgid "FREE!"
 msgstr "KOSTENLOS!"
 
@@ -552,6 +577,13 @@ msgstr "Decom"
 #. Author URI of the plugin/theme
 msgid "http://decom.ba"
 msgstr "http://decom.ba"
+
+#~ msgid ""
+#~ "This condition will be met if the customr is a logged in user and has one "
+#~ "of the user roles selected below."
+#~ msgstr ""
+#~ "Diese Bedingung erfüllt werden, wenn der Benutzer angemeldet ist und eine "
+#~ "der unten ausgewählten Benutzerrollen hat."
 
 #~ msgid ""
 #~ "Giftable products can be offered as free gifts for customers based on any "
