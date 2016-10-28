@@ -204,6 +204,10 @@ class DGFW_Public extends DGFW {
 	{
 		$gift_categories = get_the_terms($gift->id, DGFW::GIFTS_TAXONOMY);
 
+		if (!$gift_categories || is_wp_error($gift_categories)) {
+			return false;
+		}
+
 		// cart gift is valid if any of its gift categories' conditions are still met
 		foreach ($gift_categories as $gtc) {
 			$gift_category = new DGFW_CategoryPublic($gtc);
