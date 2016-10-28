@@ -18,6 +18,7 @@ export default class CriteriaUserRoles extends Criteria {
 
         this._steps[0] = {
             description: Translate.text('Select user roles this gift category applies for.'),
+            help: Translate.text('This condition will be met if the customr is a logged in ser and has one of the user roles selected below.'),
             elements: [
                 {
                     tag: 'div',

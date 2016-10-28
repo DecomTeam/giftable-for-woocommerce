@@ -20,6 +20,7 @@ export default class CriteriaPeriods extends Criteria {
 
         this._steps[0] = {
             description: Translate.text('Set start and end of this period.'),
+            help: Translate.text('This condition will be met if the time of customer checkout is within the defined start/end time interval.'),
             elements: [
                 {
                     tag: 'div',

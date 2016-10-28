@@ -517,6 +517,11 @@
               event: 'mouseout',
               object: this,
               method: 'removeHighlight'
+          }, {
+              selector: '.dgfw-step-description.has-help',
+              event: 'click',
+              object: this,
+              method: 'toggleStepHelp'
           }];
 
           this.init();
@@ -657,6 +662,9 @@
               }
               if (childData.text) {
                   $el.text(childData.text);
+              }
+              if (childData.html) {
+                  $el.html(childData.html);
               }
               $parentElement.append($el);
               if (childData.children) {
@@ -893,11 +901,20 @@
                       return;
                   }
 
+                  if (step.help) {
+                      step.elements.unshift({
+                          tag: 'div',
+                          id: 'dgfw_criteria_' + _this7._id + '_step' + index + '_help',
+                          classes: ['dgfw-step-help'],
+                          html: step.help
+                      });
+                  }
+
                   if (step.description) {
                       step.elements.unshift({
                           tag: 'h4',
                           id: 'dgfw_criteria_' + _this7._id + '_step_' + index + '_description',
-                          classes: ['dgfw-step-description'],
+                          classes: ['dgfw-step-description', step.help ? 'has-help' : ''],
                           text: step.description
                       });
                   }
@@ -1019,6 +1036,24 @@
               var nextStep;
               nextStep = this._currentStep < this._lastStep ? this._currentStep + 1 : this._currentStep;
               return this._steps[nextStep].stepName || Translate.text('Next');
+          }
+      }, {
+          key: 'toggleStepHelp',
+          value: function toggleStepHelp(event) {
+              var _this10 = this;
+
+              var $stepDescription = $(event.currentTarget);
+              var $stepHelp = $stepDescription.siblings('.dgfw-step-help');
+
+              if ($stepHelp.is(':visible')) {
+                  $stepHelp.slideUp(185);
+              } else {
+                  $stepHelp.slideDown(185);
+              }
+
+              setTimeout(function () {
+                  _this10.readjustSize();
+              }, 185);
           }
       }]);
       return Criteria;
@@ -1267,6 +1302,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Set amount range. Leave empty for no limits.'),
+                  help: Translate.text('This condition will be met if the <strong>total cart amount</strong> is within the defined min/max amounts range.'),
                   elements: [
                   // {
                   //     tag: 'div',
@@ -1487,6 +1523,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Set items range. Leave empty for no limits.'),
+                  help: Translate.text('This condition will be met if the <strong>total number of items in cart</strong> is within the defined min/max items range.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_items_min_container_' + this._id,
@@ -1577,7 +1614,7 @@
               this._currentPage = 0;
               this._totalProducts = 0;
               this._totalPages = 1;
-              this._productsPerPage = 5;
+              this._productsPerPage = $(window).width() > 1023 ? 5 : 3;
               var productElements = new Array();
 
               if (decomGiftable.screen.data.products) {
@@ -2047,6 +2084,7 @@
               this._steps[0] = {
                   stepName: Translate.text('Select Products'),
                   description: Translate.text('Select products this gift category applies for.'),
+                  help: Translate.text('This condition will be met if the customer has at least one item of any of the selected products in their cart. To specify minimum quantity for each selected product, click the <strong>Product Quantities</strong> button below.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_products_container_' + this._id,
@@ -2399,6 +2437,7 @@
               this._steps[0] = {
                   stepName: Translate.text('Select Product Categories'),
                   description: Translate.text('Select product categories this gift category applies for.'),
+                  help: Translate.text('This condition will be met if the customer has at least one product belonging to any of the selected product categories in their cart. To specify minimum amounts and/or items for each selected category, click the <strong>Amounts and Quantities</strong> button below.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_product_cats_container_' + this._id,
@@ -2410,6 +2449,7 @@
               this._steps[1] = {
                   stepName: Translate.text('Amounts and Quantities'),
                   description: Translate.text('Set up minimum amount and/or number of items for each selected category.'),
+                  help: Translate.text('By default, this condition will be met if the customer has at least one product belonging to any of the selected product categories in their cart. You can change minimum amount and/or items for each selected category here. Leave the fields empty for default (one item minimum, regardless of the amount) value.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_product_cats_advanced_' + this._id,
@@ -2854,6 +2894,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Select users this gift category applies for.'),
+                  help: Translate.text('This condition will be met if the customer is any of the selected users.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_users_container_' + this._id,
@@ -2979,6 +3020,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Select user roles this gift category applies for.'),
+                  help: Translate.text('This condition will be met if the customr is a logged in ser and has one of the user roles selected below.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_roles_container_' + this._id,
@@ -3128,6 +3170,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Set start and end of this period.'),
+                  help: Translate.text('This condition will be met if the time of customer checkout is within the defined start/end time interval.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_periods_start_container_' + this._id,

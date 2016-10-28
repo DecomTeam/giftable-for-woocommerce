@@ -41,6 +41,7 @@ export default class CriteriaAmounts extends Criteria {
 
         this._steps[0] = {
             description: Translate.text('Set amount range. Leave empty for no limits.'),
+            help: Translate.text('This condition will be met if the <strong>total cart amount</strong> is within the defined min/max amounts range.'),
             elements: [
                 // {
                 //     tag: 'div',

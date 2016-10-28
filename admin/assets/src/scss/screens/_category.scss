@@ -80,6 +80,33 @@
     transition: all 0.35s;
 }
 
+.dgfw-step-description {
+
+    &.has-help {
+        cursor: help;
+
+        &:after {
+            display: inline-block;
+            color: blue;
+            font-size: 1.4em;
+            font-family: dashicons;
+            content: "\f223";
+        }
+    }
+
+}
+
+.dgfw-step-help {
+    display: none;
+
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 2em auto;
+    padding: 1em;
+    line-height: 1.8;
+    text-align: left;
+}
+
 .dgfw-choose-type-container {
     text-align: center;
 }
@@ -169,6 +196,10 @@
     &.invisible {
         opacity: 0;
         height: 0;
+    }
+
+    @media screen and (max-width: 1023px) {
+        padding-bottom: 6em;
     }
 }
 
@@ -269,7 +300,7 @@
 .dgfw-users-select-user {
     display: inline-block;
     box-sizing: border-box;
-    width: 18%;
+    width: 31%;
     margin: 1%;
     max-width: 180px;
     background: #ffffff;
@@ -280,6 +311,12 @@
     cursor: pointer;
     vertical-align: top;
     transition: all 0.25s;
+
+    @media screen and (min-width: 1024px) {
+        width: 18%;
+        margin: 1%;
+        max-width: 180px;
+    }
 
     .dgfw-posts-select-post-img,
     .dgfw-users-select-user-img {

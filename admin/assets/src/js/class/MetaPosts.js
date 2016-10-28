@@ -29,7 +29,7 @@ export default class MetaPosts extends Meta {
         this._currentPage = 0;
         this._totalProducts = 0;
         this._totalPages = 1;
-        this._productsPerPage = 5;
+        this._productsPerPage = $(window).width() > 1023 ? 5 : 3;
         var productElements = new Array();
 
         if (decomGiftable.screen.data.products) {

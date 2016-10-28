@@ -22,6 +22,7 @@ export default class CriteriaProducts extends Criteria {
         this._steps[0] = {
             stepName: Translate.text('Select Products'),
             description: Translate.text('Select products this gift category applies for.'),
+            help: Translate.text('This condition will be met if the customer has at least one item of any of the selected products in their cart. To specify minimum quantity for each selected product, click the <strong>Product Quantities</strong> button below.'),
             elements: [
                 {
                     tag: 'div',

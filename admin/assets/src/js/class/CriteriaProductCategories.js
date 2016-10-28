@@ -23,6 +23,7 @@ export default class CriteriaProductCategories extends Criteria {
         this._steps[0] = {
             stepName: Translate.text('Select Product Categories'),
             description: Translate.text('Select product categories this gift category applies for.'),
+            help: Translate.text('This condition will be met if the customer has at least one product belonging to any of the selected product categories in their cart. To specify minimum amounts and/or items for each selected category, click the <strong>Amounts and Quantities</strong> button below.'),
             elements: [
                 {
                     tag: 'div',
@@ -36,6 +37,7 @@ export default class CriteriaProductCategories extends Criteria {
         this._steps[1] = {
             stepName: Translate.text('Amounts and Quantities'),
             description: Translate.text('Set up minimum amount and/or number of items for each selected category.'),
+            help: Translate.text('By default, this condition will be met if the customer has at least one product belonging to any of the selected product categories in their cart. You can change minimum amount and/or items for each selected category here. Leave the fields empty for default (one item minimum, regardless of the amount) value.'),
             elements: [
                 {
                     tag: 'div',

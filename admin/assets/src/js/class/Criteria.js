@@ -220,7 +220,12 @@ export default class Criteria {
                 object: this,
                 method: 'removeHighlight',
             },
-
+            {
+                selector: '.dgfw-step-description.has-help',
+                event: 'click',
+                object: this,
+                method: 'toggleStepHelp',
+            },
         ];
 
         this.init();
@@ -353,6 +358,9 @@ export default class Criteria {
         }
         if (childData.text) {
             $el.text(childData.text);
+        }
+        if (childData.html) {
+            $el.html(childData.html);
         }
         $parentElement.append($el);
         if (childData.children) {
@@ -554,11 +562,20 @@ export default class Criteria {
                 return;
             }
 
+            if (step.help) {
+                step.elements.unshift({
+                    tag: 'div',
+                    id: 'dgfw_criteria_' + this._id + '_step' + index + '_help',
+                    classes: ['dgfw-step-help'],
+                    html: step.help,
+                });
+            }
+
             if (step.description) {
                 step.elements.unshift({
                     tag: 'h4',
                     id: 'dgfw_criteria_' + this._id + '_step_' + index + '_description',
-                    classes: ['dgfw-step-description'],
+                    classes: ['dgfw-step-description', (step.help ? 'has-help' : '')],
                     text: step.description
                 });
             }
@@ -673,5 +690,20 @@ export default class Criteria {
         var nextStep;
         nextStep = this._currentStep < this._lastStep ? this._currentStep + 1 : this._currentStep;
         return this._steps[nextStep].stepName || Translate.text('Next');
+    }
+
+    toggleStepHelp(event) {
+        var $stepDescription = $(event.currentTarget);
+        var $stepHelp = $stepDescription.siblings('.dgfw-step-help');
+
+        if ($stepHelp.is(':visible')) {
+            $stepHelp.slideUp(185);
+        } else {
+            $stepHelp.slideDown(185);
+        }
+
+        setTimeout(() => {
+            this.readjustSize();
+        }, 185);
     }
 }

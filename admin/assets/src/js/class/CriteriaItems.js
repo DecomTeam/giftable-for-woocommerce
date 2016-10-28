@@ -20,6 +20,7 @@ export default class CriteriaItems extends Criteria {
 
         this._steps[0] = {
             description: Translate.text('Set items range. Leave empty for no limits.'),
+            help: Translate.text('This condition will be met if the <strong>total number of items in cart</strong> is within the defined min/max items range.'),
             elements: [
                 {
                     tag: 'div',
