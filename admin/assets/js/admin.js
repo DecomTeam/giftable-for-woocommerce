@@ -1523,7 +1523,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Set items range. Leave empty for no limits.'),
-                  help: Translate.text('This condition will be met if the <strong>total number of items in cart</strong> is within the defined min/max items range.'),
+                  help: Translate.text('This condition will be met if the <strong>total number of items in the cart</strong> is within the defined min/max items range.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_items_min_container_' + this._id,
@@ -2084,7 +2084,7 @@
               this._steps[0] = {
                   stepName: Translate.text('Select Products'),
                   description: Translate.text('Select products this gift category applies for.'),
-                  help: Translate.text('This condition will be met if the customer has at least one item of any of the selected products in their cart. To specify minimum quantity for each selected product, click the <strong>Product Quantities</strong> button below.'),
+                  help: Translate.text('This condition will be met if the customer has at least one item of any of the selected products in their cart. To specify a minimum quantity for each selected product, click the <strong>Product Quantities</strong> button below.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_products_container_' + this._id,
@@ -2448,8 +2448,8 @@
 
               this._steps[1] = {
                   stepName: Translate.text('Amounts and Quantities'),
-                  description: Translate.text('Set up minimum amount and/or number of items for each selected category.'),
-                  help: Translate.text('By default, this condition will be met if the customer has at least one product belonging to any of the selected product categories in their cart. You can change minimum amount and/or items for each selected category here. Leave the fields empty for default (one item minimum, regardless of the amount) value.'),
+                  description: Translate.text('Set up the minimum amount and/or number of items for each selected category.'),
+                  help: Translate.text('By default, this condition will be met if the customer has at least one product belonging to any of the selected product categories in their cart. You can change minimum amount and/or items for each selected category here. Leave the fields empty for default value (one item minimum, regardless of the amount).'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_product_cats_advanced_' + this._id,
@@ -2894,7 +2894,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Select users this gift category applies for.'),
-                  help: Translate.text('This condition will be met if the customer is any of the selected users.'),
+                  help: Translate.text('This condition will be met if the customer is logged in as any of the selected users below.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_users_container_' + this._id,
@@ -3020,7 +3020,7 @@
 
               this._steps[0] = {
                   description: Translate.text('Select user roles this gift category applies for.'),
-                  help: Translate.text('This condition will be met if the customr is a logged in ser and has one of the user roles selected below.'),
+                  help: Translate.text('This condition will be met if the customr is a logged in user and has one of the user roles selected below.'),
                   elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_roles_container_' + this._id,

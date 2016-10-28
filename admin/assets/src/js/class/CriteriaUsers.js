@@ -20,7 +20,7 @@ export default class CriteriaUsers extends Criteria {
 
         this._steps[0] = {
             description: Translate.text('Select users this gift category applies for.'),
-            help: Translate.text('This condition will be met if the customer is any of the selected users.'),
+            help: Translate.text('This condition will be met if the customer is logged in as any of the selected users below.'),
             elements: [
                 {
                     tag: 'div',
