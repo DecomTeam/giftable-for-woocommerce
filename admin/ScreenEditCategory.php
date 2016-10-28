@@ -170,7 +170,7 @@ class DGFW_ScreenEditCategory extends DGFW_Screen {
             'Users' => __('Users', DGFW::TRANSLATION),
             'This condition will be met if the customer is logged in as any of the selected users below.' => __('This condition will be met if the customer is logged in as any of the selected users below.', DGFW::TRANSLATION),
             'User Roles' => __('User Roles', DGFW::TRANSLATION),
-            'This condition will be met if the customr is a logged in user and has one of the user roles selected below.' => __('This condition will be met if the customr is a logged in user and has one of the user roles selected below.', DGFW::TRANSLATION),
+            'This condition will be met if the customer is a logged in user and has one of the user roles selected below.' => __('This condition will be met if the customer is a logged in user and has one of the user roles selected below.', DGFW::TRANSLATION),
             'Min amount' => __('Min amount', DGFW::TRANSLATION),
             'Max amount' => __('Max amount', DGFW::TRANSLATION),
             'Set amount range. Leave empty for no limits.' => __('Set amount range. Leave empty for no limits.', DGFW::TRANSLATION),
