@@ -18,6 +18,8 @@ require_once 'MetaCurrency.php';
 class DGFW_MetaTerms extends DGFW_Meta {
 
     private $_taxonomy;
+    private $_min_amounts;
+    private $_min_items;
     private $_include;
     private $_any;
 
@@ -31,6 +33,20 @@ class DGFW_MetaTerms extends DGFW_Meta {
         parent::__construct($raw_meta, 'array');
 
         $this->_taxonomy = $this->check_string($raw_meta['taxonomy']);
+
+        // parse min amounts and min items
+        $this->_min_amounts = array();
+        $this->_min_items = array();
+
+        foreach ($this->_value as $term_id) {
+            if (isset($raw_meta['min_amounts'][$term_id])) {
+                $this->_min_amounts[$term_id] = new DGFW_MetaCurrency($raw_meta['min_amounts'][$term_id]);
+            }
+            if (isset($raw_meta['min_items'][$term_id])) {
+                $this->_min_items[$term_id] = new DGFW_MetaQuantity($raw_meta['min_items'][$term_id]);
+            }
+        }
+
         // TODO add include/exclude and any/all options
         $this->_include = true;
         $this->_any = true;
@@ -87,6 +103,18 @@ class DGFW_MetaTerms extends DGFW_Meta {
         $meta = parent::meta();
 
         $meta['taxonomy'] = $this->_taxonomy;
+
+        $meta['min_amounts'] = array();
+        $meta['min_items'] = array();
+
+        foreach ($this->_value as $term_id) {
+            if (isset($this->_min_amounts[$term_id])) {
+                $meta['min_amounts'][$term_id] = $this->_min_amounts[$term_id]->meta();
+            }
+            if (isset($this->_min_items[$term_id])) {
+                $meta['min_items'][$term_id] = $this->_min_items[$term_id]->meta();
+            }
+        }
 
         return $meta;
     }

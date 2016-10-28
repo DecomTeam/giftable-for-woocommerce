@@ -521,6 +521,36 @@
     }
 }
 
+.dgfw-terms-advanced-term {
+    width: 90%;
+    padding-left: 10px;
+    height: auto;
+
+    .dgfw-posts-select-post-title {
+        width: 40%;
+        margin-right: 0;
+        vertical-align: top;
+        font-weight: bold;
+    }
+
+    .dgfw-terms-advanced-options {
+        display: inline-block;
+        width: 60%;
+        text-align: right;
+    }
+
+    .dgfw-terms-advanced-min-amount,
+    .dgfw-terms-advanced-min-items {
+        display: inline-block;
+        width: auto;
+        min-width: 220px;
+
+        .dgfw-label {
+            padding-right: 0;
+        }
+    }
+}
+
 
 .dgfw-checkbox-group-wrapper {
     width: 100%;
