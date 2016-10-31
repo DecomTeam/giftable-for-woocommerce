@@ -4,7 +4,7 @@ Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
 Tested up to: 4.6.1
-Stable tag: 0.9.9
+Stable tag: 0.9.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ This plugin is completely free, and will remain so. We make enough money develop
 
 == Changelog ==
 
+= 0.9.10 =
+* Improved WPML support
+* LTR languages gift carousel css/js bug fixes
 = 0.9.9 =
 * Product categories condition min amounts and items
 * Condition help texts
