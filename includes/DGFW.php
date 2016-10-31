@@ -208,6 +208,7 @@ abstract class DGFW {
 			),
 			'orderby' => 'title',
 			'order' => 'ASC',
+			'suppress_filters' => false,
 		);
 
 		if (!empty($product_cat)) {
