@@ -164,6 +164,20 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
+[dir="rtl"] .dgfw-available-gifts button.slick-arrow {
+  right: 0;
+}
+
+[dir="rtl"] .dgfw-available-gifts button.slick-next {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] .dgfw-available-gifts .slick-dots > li > button {
+  padding: 0 10px 0 0;
+  margin: 0 3px;
+}
+
 .dgfw-gift {
   display: inline-block;
   width: 75%;

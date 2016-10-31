@@ -57,6 +57,7 @@
                     if ($gifts.length > slidesToShowForCurrentWidth()) {
                         $dgfwCarousel.slick({
                             dots: true,
+                            rtl: $('html').attr('dir') === 'rtl',
                             infinite: false,
                             speed: 300,
                             slidesToShow: parseInt(decomGiftable.carouselSlides.large),
