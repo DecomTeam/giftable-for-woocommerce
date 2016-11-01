@@ -59,6 +59,9 @@ abstract class DGFW {
       	// used both on admin and public side, so we put it here
       	add_filter( 'woocommerce_order_get_items', array($this, 'order_get_items'), 0, 2 );
 
+      	// aelia currency switcher support
+      	add_filter( 'wc_aelia_currencyswitcher_product_convert_callback', array($this, 'aelia_product_convert'), 10, 2 );
+
 
 	}
 
@@ -296,6 +299,32 @@ abstract class DGFW {
 			'symbol' => html_entity_decode(get_woocommerce_currency_symbol()),
 			'position' => get_option('woocommerce_currency_pos'),
 		);
+	}
+
+	public static function get_currencies()
+	{
+		if (!class_exists('\Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher')) {
+			return false;
+		}
+
+		$enabled_currencies = apply_filters('wc_aelia_cs_enabled_currencies', array());
+
+		if (empty($enabled_currencies)) {
+			return false;
+		}
+
+		$currencies = array();
+		$aelia = \Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher::factory();
+
+		foreach ($enabled_currencies as $currency) {
+			$currencies[] = array(
+				'text' => $currency,
+				'symbol' => $aelia::settings()->get_currency_symbol($currency, $currency),
+				'position' => $aelia::settings()->get_currency_symbol_position($currency),
+			);
+		}
+
+		return $currencies;
 	}
 
 	public static function gift_categories($hide_empty = false)
@@ -544,6 +573,20 @@ abstract class DGFW {
 	public static function giftable_variations_default_template($template, $slug, $name) {
 		$template_name = $slug . '-' . $name . '.php';
 		return WC()->plugin_path() . '/templates/' . $template_name;
+	}
+
+	public function aelia_product_convert($callback, $product)
+	{
+		if ($product && $product->get_type() === DGFW::GIFT_PRODUCT_TYPE) {
+			$callback = array($this, 'aelia_gift_type_convert');
+		}
+
+		return $callback;
+	}
+
+	public function aelia_gift_type_convert($product, $currency)
+	{
+		return $product;
 	}
 
 }

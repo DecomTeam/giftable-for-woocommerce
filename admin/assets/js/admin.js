@@ -1144,7 +1144,7 @@
                   }
               }];
 
-              if (this._currency.position === 'left' || this._currency_position === 'left_space') {
+              if (this._currency.position === 'left' || this._currency.position === 'left_space') {
                   currencySpan.classes.push('left');
                   this._elements.push(currencySpan);
               }
@@ -1163,7 +1163,7 @@
                   }
               });
 
-              if (this._currency.position === 'right' || this._currency_position === 'right_space') {
+              if (this._currency.position === 'right' || this._currency.position === 'right_space') {
                   currencySpan.classes.push('right');
                   this._elements.push(currencySpan);
               }
@@ -1192,9 +1192,19 @@
           key: 'changeCurrencyTo',
           value: function changeCurrencyTo(currency) {
               this.hookElements();
+
+              // switch places if different
+              if (this._currency.position !== currency.position) {
+                  if (currency.position === 'left' || currency.position === 'left_space') {
+                      this._$prefixElement.removeClass('right').addClass('left').insertBefore(this._$inputElement);
+                  } else {
+                      this._$prefixElement.removeClass('left').addClass('right').insertAfter(this._$inputElement);
+                  }
+              }
+
               this._currency = currency;
               this._$prefixElement.text(this._currency.symbol);
-              this._$currencyElement.val(currency.text);
+              this._$currencyElement.val(this._currency.text);
           }
       }, {
           key: 'validate',
@@ -1267,33 +1277,39 @@
       createClass(CriteriaAmounts, [{
           key: 'init',
           value: function init() {
+              var _this2 = this;
+
               this._type = 'amounts';
               if (this._sourceCriteria) {
                   this.takeOverFromSource();
               }
 
-              // stick to default currency only for now
-              //
-              // this._currencies = new Map([
-              //     ['usd', { text: 'USD', symbol: '$'}],
-              //     ['eur', { text: 'EUR', symbol: '€'}]
-              // ]);
+              this._currencies = decomGiftable.screen.data.currencies;
 
-              this._currency = decomGiftable.screen.data.currency;
-              // this._currencySelectId = 'dgfw_criteria_currency_' + this._id;
-              // this._$currencySelect = null;
+              // saved currency if enabled, first of enabled currencies, or default currency
+              if (this._conditions.min_amount && this._conditions.min_amount.currency) {
+                  this._currency = this.getCurrency(this._conditions.min_amount.currency);
+              } else {
+                  this._currency = this.getDefaultCurrency();
+              }
 
-              // var currencyElements = [];
-              // this._currencies.forEach((currency, key, collection) => {
-              //     currencyElements.push({
-              //         tag: 'option',
-              //         attributes: {
-              //             value: key
-              //         },
-              //         text: currency.text
-              //     });
-              // });
+              this._currencySelectId = 'dgfw_criteria_currency_' + this._id;
+              this._$currencySelect = null;
 
+              var currencyElements = [];
+
+              if (this._currencies.length) {
+                  this._currencies.forEach(function (currency, key, collection) {
+                      currencyElements.push({
+                          tag: 'option',
+                          attributes: {
+                              value: currency.text,
+                              selected: currency.text === _this2._currency.text ? 'selected' : false
+                          },
+                          text: currency.text
+                      });
+                  });
+              }
 
               this._minAmount = new MetaCurrency(this._id + '-min_amount', { currency: this._currency, label: Translate.text('Min amount'), value: this._conditions.min_amount ? this._conditions.min_amount.value : 0 });
               this._maxAmount = new MetaCurrency(this._id + '-max_amount', { currency: this._currency, label: Translate.text('Max amount'), value: this._conditions.max_amount ? this._conditions.max_amount.value : 0 });
@@ -1303,33 +1319,7 @@
               this._steps[0] = {
                   description: Translate.text('Set amount range. Leave empty for no limits.'),
                   help: Translate.text('This condition will be met if the <strong>total cart amount</strong> is within the defined min/max amounts range.'),
-                  elements: [
-                  // {
-                  //     tag: 'div',
-                  //     id: 'dgfw_criteria_amounts_currency_container_' + this._id,
-                  //     classes: ['dgfw-criteria-input-container'],
-                  //     children: [
-                  //         {
-                  //             tag: 'label',
-                  //             id: 'dgfw_criteria_currency_label_' + this._id,
-                  //             classes: ['dgfw-label', 'dgfw-label-amount'],
-                  //             text: 'Currency',
-                  //             attributes: {
-                  //                 'for': 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]',
-                  //             },
-                  //         },
-                  //         {
-                  //             tag: 'select',
-                  //             id: this._currencySelectId,
-                  //             classes: ['dgfw-currency', 'dgfw-select'],
-                  //             attributes: {
-                  //                 name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]'
-                  //             },
-                  //             children: currencyElements,
-                  //         },
-                  //     ],
-                  // },
-                  {
+                  elements: [{
                       tag: 'div',
                       id: 'dgfw_criteria_amounts_min_container_' + this._id,
                       classes: ['dgfw-criteria-input-container'],
@@ -1342,16 +1332,39 @@
                   }]
               };
 
+              if (currencyElements.length) {
+                  this._steps[0].elements.unshift({
+                      tag: 'div',
+                      id: 'dgfw_criteria_amounts_currency_container_' + this._id,
+                      classes: ['dgfw-criteria-input-container'],
+                      children: [{
+                          tag: 'label',
+                          id: 'dgfw_criteria_currency_label_' + this._id,
+                          classes: ['dgfw-label', 'dgfw-label-amount'],
+                          text: Translate.text('Currency'),
+                          attributes: {
+                              'for': 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]'
+                          }
+                      }, {
+                          tag: 'select',
+                          id: this._currencySelectId,
+                          classes: ['dgfw-currency', 'dgfw-select'],
+                          attributes: {
+                              name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]'
+                          },
+                          children: currencyElements
+                      }]
+                  });
+              }
+
               this.showCriteria();
 
-              this._bindings.push(
-              // {
-              //     selector: '#' + this._currencySelectId,
-              //     event: 'change',
-              //     object: this,
-              //     method: 'changeCurrency'
-              // },
-              {
+              this._bindings.push({
+                  selector: '#' + this._currencySelectId,
+                  event: 'change',
+                  object: this,
+                  method: 'changeCurrency'
+              }, {
                   selector: '#' + this._minAmount.elementId(),
                   event: 'focusout',
                   object: this,
@@ -1366,15 +1379,44 @@
               get(CriteriaAmounts.prototype.__proto__ || Object.getPrototypeOf(CriteriaAmounts.prototype), 'init', this).call(this);
           }
       }, {
+          key: 'getCurrency',
+          value: function getCurrency(currencyText) {
+              if (!this._currencies) {
+                  return decomGiftable.screen.data.currency || false;
+              }
+
+              var currenciesLength = this._currencies.length;
+              var newCurrency = false;
+
+              for (var i = 0; i < currenciesLength; i++) {
+                  if (this._currencies[i].text === currencyText) {
+                      newCurrency = this._currencies[i];
+                      break;
+                  }
+              }
+
+              return newCurrency;
+          }
+      }, {
+          key: 'getDefaultCurrency',
+          value: function getDefaultCurrency() {
+              return this._currencies && this._currencies.length ? this._currencies[0] : decomGiftable.screen.data.currency;
+          }
+      }, {
           key: 'changeCurrency',
           value: function changeCurrency() {
               if (!this._$currencySelect) {
                   this._$currencySelect = $(document.getElementById(this._currencySelectId));
               }
 
-              this._currency = this._currencies.get(this._$currencySelect.val());
-              this._minAmount.changeCurrencyTo(this._currency);
-              this._maxAmount.changeCurrencyTo(this._currency);
+              var newCurrency = this.getCurrency(this._$currencySelect.val());
+
+              // change currency only if different
+              if (newCurrency && newCurrency.text !== this._currency.text) {
+                  this._currency = newCurrency;
+                  this._minAmount.changeCurrencyTo(this._currency);
+                  this._maxAmount.changeCurrencyTo(this._currency);
+              }
           }
       }, {
           key: 'updateMinAmount',

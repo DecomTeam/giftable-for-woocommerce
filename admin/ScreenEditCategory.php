@@ -90,6 +90,7 @@ class DGFW_ScreenEditCategory extends DGFW_Screen {
                     'users' => DGFW::get_users(false, -1),
                     'criteria' => $this->_category->criteria()->meta(),
                     'currency' => DGFW::get_currency(),
+                    'currencies' => DGFW::get_currencies(),
                 ),
                 'translations' => $this->translations(),
             );

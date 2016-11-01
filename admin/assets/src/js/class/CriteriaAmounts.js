@@ -11,27 +11,32 @@ export default class CriteriaAmounts extends Criteria {
             this.takeOverFromSource();
         }
 
-        // stick to default currency only for now
-        //
-        // this._currencies = new Map([
-        //     ['usd', { text: 'USD', symbol: '$'}],
-        //     ['eur', { text: 'EUR', symbol: '€'}]
-        // ]);
+        this._currencies = decomGiftable.screen.data.currencies;
 
-        this._currency = decomGiftable.screen.data.currency;
-        // this._currencySelectId = 'dgfw_criteria_currency_' + this._id;
-        // this._$currencySelect = null;
+        // saved currency if enabled, first of enabled currencies, or default currency
+        if (this._conditions.min_amount && this._conditions.min_amount.currency) {
+            this._currency = this.getCurrency(this._conditions.min_amount.currency);
+        } else {
+            this._currency = this.getDefaultCurrency();
+        }
 
-        // var currencyElements = [];
-        // this._currencies.forEach((currency, key, collection) => {
-        //     currencyElements.push({
-        //         tag: 'option',
-        //         attributes: {
-        //             value: key
-        //         },
-        //         text: currency.text
-        //     });
-        // });
+        this._currencySelectId = 'dgfw_criteria_currency_' + this._id;
+        this._$currencySelect = null;
+
+        var currencyElements = [];
+
+        if (this._currencies.length) {
+            this._currencies.forEach((currency, key, collection) => {
+                currencyElements.push({
+                    tag: 'option',
+                    attributes: {
+                        value: currency.text,
+                        selected: (currency.text === this._currency.text ? 'selected' : false),
+                    },
+                    text: currency.text
+                });
+            });
+        }
 
 
         this._minAmount = new MetaCurrency(this._id + '-min_amount', { currency: this._currency, label: Translate.text('Min amount'), value: this._conditions.min_amount ? this._conditions.min_amount.value : 0 });
@@ -43,31 +48,6 @@ export default class CriteriaAmounts extends Criteria {
             description: Translate.text('Set amount range. Leave empty for no limits.'),
             help: Translate.text('This condition will be met if the <strong>total cart amount</strong> is within the defined min/max amounts range.'),
             elements: [
-                // {
-                //     tag: 'div',
-                //     id: 'dgfw_criteria_amounts_currency_container_' + this._id,
-                //     classes: ['dgfw-criteria-input-container'],
-                //     children: [
-                //         {
-                //             tag: 'label',
-                //             id: 'dgfw_criteria_currency_label_' + this._id,
-                //             classes: ['dgfw-label', 'dgfw-label-amount'],
-                //             text: 'Currency',
-                //             attributes: {
-                //                 'for': 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]',
-                //             },
-                //         },
-                //         {
-                //             tag: 'select',
-                //             id: this._currencySelectId,
-                //             classes: ['dgfw-currency', 'dgfw-select'],
-                //             attributes: {
-                //                 name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]'
-                //             },
-                //             children: currencyElements,
-                //         },
-                //     ],
-                // },
                 {
                     tag: 'div',
                     id: 'dgfw_criteria_amounts_min_container_' + this._id,
@@ -83,15 +63,43 @@ export default class CriteriaAmounts extends Criteria {
             ],
         };
 
+        if (currencyElements.length) {
+            this._steps[0].elements.unshift({
+                tag: 'div',
+                id: 'dgfw_criteria_amounts_currency_container_' + this._id,
+                classes: ['dgfw-criteria-input-container'],
+                children: [
+                    {
+                        tag: 'label',
+                        id: 'dgfw_criteria_currency_label_' + this._id,
+                        classes: ['dgfw-label', 'dgfw-label-amount'],
+                        text: Translate.text('Currency'),
+                        attributes: {
+                            'for': 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]',
+                        },
+                    },
+                    {
+                        tag: 'select',
+                        id: this._currencySelectId,
+                        classes: ['dgfw-currency', 'dgfw-select'],
+                        attributes: {
+                            name: 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][currency]'
+                        },
+                        children: currencyElements,
+                    },
+                ],
+            })
+        }
+
         this.showCriteria();
 
         this._bindings.push(
-            // {
-            //     selector: '#' + this._currencySelectId,
-            //     event: 'change',
-            //     object: this,
-            //     method: 'changeCurrency'
-            // },
+            {
+                selector: '#' + this._currencySelectId,
+                event: 'change',
+                object: this,
+                method: 'changeCurrency'
+            },
             {
                 selector: '#' + this._minAmount.elementId(),
                 event: 'focusout',
@@ -110,14 +118,41 @@ export default class CriteriaAmounts extends Criteria {
         super.init();
     }
 
+    getCurrency(currencyText) {
+        if (!this._currencies) {
+            return decomGiftable.screen.data.currency || false;
+        }
+
+        var currenciesLength = this._currencies.length;
+        var newCurrency = false;
+
+        for (let i = 0; i < currenciesLength; i++) {
+            if (this._currencies[i].text === currencyText) {
+                newCurrency = this._currencies[i];
+                break;
+            }
+        }
+
+        return newCurrency;
+    }
+
+    getDefaultCurrency() {
+        return (this._currencies && this._currencies.length) ? this._currencies[0] : decomGiftable.screen.data.currency;
+    }
+
     changeCurrency() {
         if (!this._$currencySelect) {
             this._$currencySelect = $(document.getElementById(this._currencySelectId));
         }
 
-        this._currency = this._currencies.get(this._$currencySelect.val());
-        this._minAmount.changeCurrencyTo(this._currency);
-        this._maxAmount.changeCurrencyTo(this._currency);
+        var newCurrency = this.getCurrency(this._$currencySelect.val());
+
+        // change currency only if different
+        if (newCurrency && newCurrency.text !== this._currency.text) {
+            this._currency = newCurrency;
+            this._minAmount.changeCurrencyTo(this._currency);
+            this._maxAmount.changeCurrencyTo(this._currency);
+        }
     }
 
     updateMinAmount() {

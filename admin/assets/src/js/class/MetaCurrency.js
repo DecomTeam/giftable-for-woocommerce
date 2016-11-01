@@ -34,7 +34,7 @@ export default class MetaCurrency extends Meta {
             },
         ];
 
-        if (this._currency.position === 'left' || this._currency_position === 'left_space') {
+        if (this._currency.position === 'left' || this._currency.position === 'left_space') {
             currencySpan.classes.push('left');
             this._elements.push(currencySpan);
         }
@@ -55,7 +55,7 @@ export default class MetaCurrency extends Meta {
             }
         );
 
-        if (this._currency.position === 'right' || this._currency_position === 'right_space') {
+        if (this._currency.position === 'right' || this._currency.position === 'right_space') {
             currencySpan.classes.push('right');
             this._elements.push(currencySpan);
         }
@@ -85,9 +85,19 @@ export default class MetaCurrency extends Meta {
 
     changeCurrencyTo(currency) {
         this.hookElements();
+
+        // switch places if different
+        if (this._currency.position !== currency.position) {
+            if (currency.position === 'left' || currency.position === 'left_space') {
+                this._$prefixElement.removeClass('right').addClass('left').insertBefore(this._$inputElement);
+            } else {
+                this._$prefixElement.removeClass('left').addClass('right').insertAfter(this._$inputElement);
+            }
+        }
+
         this._currency = currency;
         this._$prefixElement.text(this._currency.symbol);
-        this._$currencyElement.val(currency.text);
+        this._$currencyElement.val(this._currency.text);
     }
 
     validate() {

@@ -37,18 +37,18 @@ class DGFW_MetaCurrency extends DGFW_Meta {
     public function is_lt($amount)
     {
         // empty value means no limits, return true
-        return !$this->_value ? true : $this->_value < $amount;
+        return !$this->_value ? true : ($this->_currency == get_woocommerce_currency() && $this->_value < $amount);
     }
 
     public function is_gt($amount)
     {
         // empty value means no limits, return true
-        return !$this->_value ? true : $this->_value > $amount;
+        return !$this->_value ? true : ($this->_currency == get_woocommerce_currency() && $this->_value > $amount);
     }
 
     public function is_equal($amount)
     {
-        return $this->_value == $amount;
+        return ($this->_currency == get_woocommerce_currency() && $this->_value == $amount);
     }
 
     public function meta()
