@@ -151,7 +151,8 @@
   content: "\f223";
 }
 
-.dgfw-step-help {
+.dgfw-step-help,
+.dgfw-step-note {
   display: none;
   width: 100%;
   max-width: 500px;
@@ -159,6 +160,10 @@
   padding: 1em;
   line-height: 1.8;
   text-align: left;
+}
+
+.dgfw-step-note {
+  display: block;
 }
 
 .dgfw-choose-type-container {

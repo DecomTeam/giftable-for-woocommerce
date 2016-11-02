@@ -18,7 +18,7 @@ abstract class DGFW {
 	const NAME_VARS = 'giftable_for_woocommerce';
 	const TRANSLATION = 'giftable-for-woocommerce';
 
-	const VERSION = '0.9.10';
+	const VERSION = '0.9.11';
 
 	const GIFTS_POST_TYPE = 'dgfw_gifts';
 	const GIFTS_TAXONOMY = 'dgfw_gift_categories';
@@ -303,28 +303,61 @@ abstract class DGFW {
 
 	public static function get_currencies()
 	{
-		if (!class_exists('\Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher')) {
-			return false;
-		}
-
-		$enabled_currencies = apply_filters('wc_aelia_cs_enabled_currencies', array());
-
-		if (empty($enabled_currencies)) {
-			return false;
-		}
-
 		$currencies = array();
-		$aelia = \Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher::factory();
+		// first check for WooCommerce Multilingual currencies
+		if (class_exists('woocommerce_wpml') && defined('WCML_MULTI_CURRENCIES_INDEPENDENT')) {
 
-		foreach ($enabled_currencies as $currency) {
-			$currencies[] = array(
-				'text' => $currency,
-				'symbol' => $aelia::settings()->get_currency_symbol($currency, $currency),
-				'position' => $aelia::settings()->get_currency_symbol_position($currency),
-			);
+			$woocommerce_wpml = woocommerce_wpml::instance();
+			$woocommerce_wpml_settings = woocommerce_wpml::instance()->get_settings();
+
+			if ($woocommerce_wpml_settings['enable_multi_currency'] === WCML_MULTI_CURRENCIES_INDEPENDENT) {
+				$enabled_currencies = $woocommerce_wpml->multi_currency->get_currencies();
+				if ($enabled_currencies) {
+					$currencies[] = self::get_currency();
+
+					foreach ($enabled_currencies as $currency => $currency_details) {
+						$currencies[] = array(
+							'text' => $currency,
+							'symbol' => html_entity_decode(get_woocommerce_currency_symbol($currency)),
+							'position' => $currency_details['position'],
+						);
+					}
+				}
+			}
+
+			if (!empty($currencies)) {
+				return $currencies;
+			}
 		}
 
-		return $currencies;
+		// check for Aelia Currency Switcher
+		if (class_exists('\Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher')) {
+
+			$enabled_currencies = apply_filters('wc_aelia_cs_enabled_currencies', array());
+
+			if (empty($enabled_currencies)) {
+				return false;
+			}
+
+			$currencies = array();
+			$aelia = \Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher::factory();
+
+			foreach ($enabled_currencies as $currency) {
+				$currencies[] = array(
+					'text' => $currency,
+					'symbol' => html_entity_decode($aelia::settings()->get_currency_symbol($currency, $currency)),
+					'position' => $aelia::settings()->get_currency_symbol_position($currency),
+				);
+			}
+
+			if (!empty($currencies)) {
+				return $currencies;
+			}
+		}
+
+		// no WooCommerce Multilingual or Aurelia
+		return false;
+
 	}
 
 	public static function gift_categories($hide_empty = false)

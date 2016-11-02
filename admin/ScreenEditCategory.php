@@ -200,6 +200,8 @@ class DGFW_ScreenEditCategory extends DGFW_Screen {
             'Page ' => __('Page ', DGFW::TRANSLATION),
             ' of ' => __(' of ', DGFW::TRANSLATION),
             ' at ' => __(' at ', DGFW::TRANSLATION),
+            'Currency' => __('Currency', DGFW::TRANSLATION),
+            '<strong>Multi-currency Note</strong>: This condition can be met only by customers shopping in the selected currency. You can cover other currencies by adding another "OR" Amount condition with appropriate min/max amounts for each enabled currency.' => __('<strong>Multi-currency Note</strong>: This condition can be met only by customers shopping in the selected currency. You can cover other currencies by adding another "OR" Amount condition with appropriate min/max amounts for each enabled currency.', DGFW::TRANSLATION),
 
         );
     }

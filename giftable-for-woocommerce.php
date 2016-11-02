@@ -5,7 +5,7 @@
  * Plugin Name: Giftable for WooCommerce
  * Plugin URI:  http://decom.ba/wordpress-plugins/giftable-for-woocommerce
  * Description: Offer free gifts to your customers based on any number of easy to set up conditions (e.g. total amount and/or number of cart items on checkout).
- * Version:     0.9.10
+ * Version:     0.9.11
  * Author:      Decom
  * Author URI:  http://decom.ba
  * License:     GPL2

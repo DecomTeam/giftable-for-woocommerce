@@ -88,7 +88,14 @@ export default class CriteriaAmounts extends Criteria {
                         children: currencyElements,
                     },
                 ],
-            })
+            });
+
+            this._steps[0].elements.push({
+                tag: 'div',
+                id: 'dgfw_criteria_amounts_currency_note_' + this._id,
+                classes: ['dgfw-step-description', 'dgfw-step-note'],
+                html: Translate.text('<strong>Multi-currency Note</strong>: This condition can be met only by customers shopping in the selected currency. You can cover other currencies by adding another "OR" Amount condition with appropriate min/max amounts for each enabled currency.'),
+            });
         }
 
         this.showCriteria();
@@ -131,6 +138,11 @@ export default class CriteriaAmounts extends Criteria {
                 newCurrency = this._currencies[i];
                 break;
             }
+        }
+
+        // set default currency if not within the currently enabled currencies
+        if (!newCurrency) {
+            newCurrency = decomGiftable.screen.data.currency;
         }
 
         return newCurrency;

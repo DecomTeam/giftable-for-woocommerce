@@ -96,7 +96,8 @@
 
 }
 
-.dgfw-step-help {
+.dgfw-step-help,
+.dgfw-step-note {
     display: none;
 
     width: 100%;
@@ -105,6 +106,10 @@
     padding: 1em;
     line-height: 1.8;
     text-align: left;
+}
+
+.dgfw-step-note {
+    display: block;
 }
 
 .dgfw-choose-type-container {
