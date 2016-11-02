@@ -127,4 +127,16 @@ class DGFW_MetaTerms extends DGFW_Meta {
         return $meta;
     }
 
+    public function currency()
+    {
+        $currency = false;
+
+        if (count($this->_min_amounts)) {
+            // get first term currency, since all are same
+            $currency = reset($this->_min_amounts)->currency();
+        }
+
+        return $currency;
+    }
+
 }

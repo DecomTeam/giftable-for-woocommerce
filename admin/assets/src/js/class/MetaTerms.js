@@ -16,7 +16,9 @@ export default class MetaTerms extends Meta {
         this._inputElementId = 'dgfw_criteria_terms_' + this._id;
         this._inputElementName = 'dgfw_criteria[' + this._id.toString().split('-').join('][') + '][value]';
 
-        this._currency = decomGiftable.screen.data.currency;
+        this._termsMeta = new Object();
+
+        this._currency = this._options.currency;
 
         this._advancedContainerId = 'dgfw_criteria_terms_advanced_settings_' + this._id;
         this._advancedListId = 'dgfw_criteria_terms_' + this._id + '_advanced_list';
@@ -164,8 +166,10 @@ export default class MetaTerms extends Meta {
         var minItemsInputId = this._id + '-min_items-' + term.id;
         var minItemsValue = this._minItems[term.id] ? this._minItems[term.id].value : 1;
 
-        var termMinAmount = new MetaCurrency(minAmountInputId, { currency: this._currency, label: Translate.text('Min amount'), value: minAmountValue });
-        var termMinItems = new MetaQuantity(minItemsInputId, {label: Translate.text('Min items'), value: minItemsValue });
+        this._termsMeta[term.id] = {
+            minAmount: new MetaCurrency(minAmountInputId, { currency: this._currency, label: Translate.text('Min amount'), value: minAmountValue }),
+            minItems: new MetaQuantity(minItemsInputId, {label: Translate.text('Min items'), value: minItemsValue })
+        };
 
 
         return {
@@ -198,13 +202,13 @@ export default class MetaTerms extends Meta {
                             tag: 'div',
                             id: minAmountInputId + '_container',
                             classes: ['dgfw-terms-advanced-min-amount'],
-                            children: termMinAmount.elements(),
+                            children: this._termsMeta[term.id].minAmount.elements(),
                         },
                         {
                             tag: 'div',
                             id: minItemsInputId + '_container',
                             classes: ['dgfw-terms-advanced-min-items'],
-                            children: termMinItems.elements(),
+                            children: this._termsMeta[term.id].minItems.elements(),
                         },
                     ]
                 }
@@ -251,6 +255,7 @@ export default class MetaTerms extends Meta {
     removeFromList(termId) {
         var $advancedTermElement = this.$advancedTermElement(termId);
         $advancedTermElement.remove();
+        delete this._termsMeta[termId];
         this.selectionChanged();
     }
 
@@ -287,6 +292,14 @@ export default class MetaTerms extends Meta {
 
     selectionChanged() {
         this._$advancedListElement.trigger(this.selectionChangedEvent());
+    }
+
+    changeCurrencyTo(newCurrency) {
+        this._currency = newCurrency;
+
+        for (let termId in this._termsMeta) {
+            this._termsMeta[termId].minAmount.changeCurrencyTo(this._currency);
+        }
     }
 
 }

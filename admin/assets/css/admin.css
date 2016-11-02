@@ -305,6 +305,10 @@
   box-sizing: border-box;
 }
 
+.dgfw-criteria-input-container.dgfw-criteria-terms-currency-select-container {
+  margin-bottom: 1em;
+}
+
 .dgfw-amount,
 .dgfw-items {
   display: inline-block;

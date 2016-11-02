@@ -39,6 +39,7 @@ class DGFW_CriteriaProductCategories extends DGFW_Criteria {
         $meta = parent::meta();
 
         $meta['terms'] = $this->_product_categories->meta();
+        $meta['currency'] = $this->_product_categories->currency();
 
         return $meta;
     }
