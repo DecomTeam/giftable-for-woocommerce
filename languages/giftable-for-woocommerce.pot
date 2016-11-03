@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Giftable for WooCommerce\n"
-"POT-Creation-Date: 2016-10-28 17:50+0200\n"
+"POT-Creation-Date: 2016-11-03 12:12+0100\n"
 "PO-Revision-Date: 2016-04-04 16:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,152 +24,152 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:153
+#: admin/ScreenEditCategory.php:154
 msgid "Next"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:154
+#: admin/ScreenEditCategory.php:155
 msgid "Back"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:155
+#: admin/ScreenEditCategory.php:156
 msgid "Remove"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:156
+#: admin/ScreenEditCategory.php:157
 msgid "AND"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:157
+#: admin/ScreenEditCategory.php:158
 msgid "OR"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:158
+#: admin/ScreenEditCategory.php:159
 msgid "Choose condition type:"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:159
+#: admin/ScreenEditCategory.php:160
 msgid "First condition"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:160
+#: admin/ScreenEditCategory.php:161
 msgid "Are you sure you want do remove this condition and all its child conditions?"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:161
+#: admin/ScreenEditCategory.php:162
 msgid "Amounts"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:162
+#: admin/ScreenEditCategory.php:163
 msgid ""
 "This condition will be met if the <strong>total cart amount</strong> is within "
 "the defined min/max amounts range."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:163
+#: admin/ScreenEditCategory.php:164
 msgid "Items"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:164
+#: admin/ScreenEditCategory.php:165
 msgid ""
 "This condition will be met if the <strong>total number of items in the cart</"
 "strong> is within the defined min/max items range."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:165
+#: admin/ScreenEditCategory.php:166
 msgid "Products"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:166
+#: admin/ScreenEditCategory.php:167
 msgid ""
 "This condition will be met if the customer has at least one item of any of the "
 "selected products in their cart. To specify a minimum quantity for each selected "
 "product, click the <strong>Product Quantities</strong> button below."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:167
+#: admin/ScreenEditCategory.php:168
 msgid "Product Categories"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:168
+#: admin/ScreenEditCategory.php:169
 msgid "Time Period"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:169
+#: admin/ScreenEditCategory.php:170
 msgid ""
 "This condition will be met if the time of customer checkout is within the defined "
 "start/end time interval."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:170 admin/ScreenEditCategory.php:197
+#: admin/ScreenEditCategory.php:171 admin/ScreenEditCategory.php:198
 msgid "Users"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:171
+#: admin/ScreenEditCategory.php:172
 msgid ""
 "This condition will be met if the customer is logged in as any of the selected "
 "users below."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:172
+#: admin/ScreenEditCategory.php:173
 msgid "User Roles"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:173
+#: admin/ScreenEditCategory.php:174
 msgid ""
 "This condition will be met if the customer is a logged in user and has one of the "
 "user roles selected below."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:174
+#: admin/ScreenEditCategory.php:175
 msgid "Min amount"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:175
+#: admin/ScreenEditCategory.php:176
 msgid "Max amount"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:176
+#: admin/ScreenEditCategory.php:177
 msgid "Set amount range. Leave empty for no limits."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:177
+#: admin/ScreenEditCategory.php:178
 msgid "Min items"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:178
+#: admin/ScreenEditCategory.php:179
 msgid "Max items"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:179
+#: admin/ScreenEditCategory.php:180
 msgid "Set items range. Leave empty for no limits."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:180
+#: admin/ScreenEditCategory.php:181
 msgid "Start date"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:181
+#: admin/ScreenEditCategory.php:182
 msgid "End date"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:182
+#: admin/ScreenEditCategory.php:183
 msgid "Set start and end of this period."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:183
+#: admin/ScreenEditCategory.php:184
 msgid "Terms"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:184
+#: admin/ScreenEditCategory.php:185
 msgid "Select Product Categories"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:185
+#: admin/ScreenEditCategory.php:186
 msgid "Select product categories this gift category applies for."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:186
+#: admin/ScreenEditCategory.php:187
 msgid ""
 "This condition will be met then the customer has at least one product belonging "
 "to any of the selected product categories in their cart. To specify minimum "
@@ -177,15 +177,15 @@ msgid ""
 "Quantities</strong> button below."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:187
+#: admin/ScreenEditCategory.php:188
 msgid "Amounts and Quantities"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:188
+#: admin/ScreenEditCategory.php:189
 msgid "Set up the minimum amount and/or number of items for each selected category."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:189
+#: admin/ScreenEditCategory.php:190
 msgid ""
 "By default, this condition will be met if the customer has at least one product "
 "belonging to any of the selected product categories in their cart. You can change "
@@ -193,48 +193,60 @@ msgid ""
 "empty for default value (one item minimum, regardless of the amount)."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:190
+#: admin/ScreenEditCategory.php:191
 msgid "Posts"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:191
+#: admin/ScreenEditCategory.php:192
 msgid "Select Products"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:192
+#: admin/ScreenEditCategory.php:193
 msgid "Select products this gift category applies for."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:193
+#: admin/ScreenEditCategory.php:194
 msgid "Product Quantities"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:194
+#: admin/ScreenEditCategory.php:195
 msgid "Set minimum quantity for each selected product."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:195
+#: admin/ScreenEditCategory.php:196
 msgid "Roles"
 msgstr ""
 
-#: admin/ScreenEditCategory.php:196
+#: admin/ScreenEditCategory.php:197
 msgid "Select user roles this gift category applies for."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:198
+#: admin/ScreenEditCategory.php:199
 msgid "Select users this gift category applies for."
 msgstr ""
 
-#: admin/ScreenEditCategory.php:199
+#: admin/ScreenEditCategory.php:200
 msgid "Page "
 msgstr ""
 
-#: admin/ScreenEditCategory.php:200
+#: admin/ScreenEditCategory.php:201
 msgid " of "
 msgstr ""
 
-#: admin/ScreenEditCategory.php:201
+#: admin/ScreenEditCategory.php:202
 msgid " at "
+msgstr ""
+
+#: admin/ScreenEditCategory.php:203
+msgid "Currency"
+msgstr ""
+
+#: admin/ScreenEditCategory.php:204
+msgid ""
+"<strong>Multi-currency Note</strong>: This condition can be met only by customers "
+"shopping in the selected currency. You can cover other currencies by adding "
+"another \"OR\" Amount condition with appropriate min/max amounts for each enabled "
+"currency."
 msgstr ""
 
 #: admin/ScreenEditProduct.php:68 admin/ScreenEditProduct.php:97
@@ -339,7 +351,7 @@ msgstr ""
 msgid "Title of the gift note shown for each gift in the cart"
 msgstr ""
 
-#: admin/Settings.php:92 public/Public.php:392 public/Public.php:395
+#: admin/Settings.php:92 public/Public.php:415 public/Public.php:418
 msgid "Note"
 msgstr ""
 
@@ -351,7 +363,7 @@ msgstr ""
 msgid "Text of the gift note shown for each gift in the cart"
 msgstr ""
 
-#: admin/Settings.php:101 public/Public.php:393 public/Public.php:396
+#: admin/Settings.php:101 public/Public.php:416 public/Public.php:419
 msgid "This product is a free gift."
 msgstr ""
 
@@ -407,7 +419,7 @@ msgid ""
 "gift categories’ conditions are met."
 msgstr ""
 
-#: admin/templates/product-gift-options.php:23 includes/DGFW.php:114
+#: admin/templates/product-gift-options.php:23 includes/DGFW.php:117
 msgid "Gift categories"
 msgstr ""
 
@@ -433,67 +445,67 @@ msgstr ""
 msgid "No conditions added for this gift category yet."
 msgstr ""
 
-#: includes/DGFW.php:82
+#: includes/DGFW.php:85
 msgid ""
 "<strong>Giftable for WooCommerce</strong> can‘t work without WooCommerce; the "
 "plug-in has been <strong>deactivated</strong>"
 msgstr ""
 
-#: includes/DGFW.php:104
+#: includes/DGFW.php:107
 msgctxt "taxonomy general name"
 msgid "Gift categories"
 msgstr ""
 
-#: includes/DGFW.php:105
+#: includes/DGFW.php:108
 msgctxt "taxonomy singular name"
 msgid "Gift category"
 msgstr ""
 
-#: includes/DGFW.php:106
+#: includes/DGFW.php:109
 msgid "Search Gift categories"
 msgstr ""
 
-#: includes/DGFW.php:107
+#: includes/DGFW.php:110
 msgid "All Gift categories"
 msgstr ""
 
-#: includes/DGFW.php:108
+#: includes/DGFW.php:111
 msgid "Parent Gift category"
 msgstr ""
 
-#: includes/DGFW.php:109
+#: includes/DGFW.php:112
 msgid "Parent Gift category:"
 msgstr ""
 
-#: includes/DGFW.php:110
+#: includes/DGFW.php:113
 msgid "Edit Gift category"
 msgstr ""
 
-#: includes/DGFW.php:111
+#: includes/DGFW.php:114
 msgid "Update Gift category"
 msgstr ""
 
-#: includes/DGFW.php:112
+#: includes/DGFW.php:115
 msgid "Add New Gift category"
 msgstr ""
 
-#: includes/DGFW.php:113
+#: includes/DGFW.php:116
 msgid "New Gift category Name"
 msgstr ""
 
-#: includes/DGFW.php:121
+#: includes/DGFW.php:124
 msgid "gifts"
 msgstr ""
 
-#: public/Public.php:186
+#: public/Public.php:209
 msgid "Some gifts have been removed from your cart."
 msgstr ""
 
-#: public/Public.php:283 public/Public.php:481
+#: public/Public.php:306 public/Public.php:504
 msgid "Your free gift has been added."
 msgstr ""
 
-#: public/Public.php:382
+#: public/Public.php:405
 msgid "FREE!"
 msgstr ""
 
