@@ -145,19 +145,27 @@ export default class Criteria {
         };
         if (this._logic) {
             if (this._logic === 'OR') {
-                this._andOrData.children.push(andButtonData);
+                orButtonData.attributes = {
+                    style: 'display: none;',
+                };
             } else {
-                this._andOrData.children.push(orButtonData);
+                andButtonData.attributes = {
+                    style: 'display: none;',
+                };
             }
         } else if (this._conditions.subcriteria && this._conditions.subcriteria.length) {
             if (this._conditions.subcriteria[0].logic === 'OR') {
-                this._andOrData.children.push(orButtonData);
+                andButtonData.attributes = {
+                    style: 'display: none;',
+                };
             } else {
-                this._andOrData.children.push(andButtonData);
+                orButtonData.attributes = {
+                    style: 'display: none;',
+                };
             }
-        } else {
-            this._andOrData.children = [andButtonData, orButtonData];
         }
+
+        this._andOrData.children = [andButtonData, orButtonData];
 
         this._chooseTypeData.children.push(
             {
