@@ -49,12 +49,6 @@ class DGFW_Public extends DGFW {
 		// product hooks
 		add_filter( 'woocommerce_product_tabs', array($this, 'check_gift_tabs'), 9999, 1 );
 
-		// for orders, switch giftable variations with real products
-		// add_action( 'woocommerce_order_add_product', array($this, 'order_add_product'), 99, 5 );
-
-		// get original files for downloadable variations
-		// add_filter( 'woocommerce_product_files', array($this, 'product_files'), 20, 2 );
-
 		// modify add to cart message for variations added on the cart page
 		add_filter( 'wc_add_to_cart_message', array($this, 'add_to_cart_message'), 99, 2 );
 	}
@@ -76,8 +70,25 @@ class DGFW_Public extends DGFW {
 
 	}
 
+	/**
+	 *
+	 * Widget cart filters, on pages other than the cart page
+	 *
+	 */
+	public function add_widget_cart_filters()
+	{
+		// Cart item filters for gifts
+		add_filter( 'woocommerce_cart_product_price', array($this, 'gift_cart_price'), 9999, 2 );
+		add_filter( 'woocommerce_cart_product_subtotal', array($this, 'gift_cart_price'), 9999, 2 );
+		add_filter( 'woocommerce_get_item_data', array($this, 'gift_cart_data'), 9999, 2 );
+		add_filter( 'woocommerce_cart_item_name', array($this, 'gift_cart_title'), 9999, 3 );
+		// modify giftable variations cart data (use original variation images, etc)
+		add_filter( 'woocommerce_cart_item_thumbnail', array($this, 'gift_cart_thumbnail'), 10, 3);
+	}
+
+
 	public function enqueue_scripts() {
-		if (is_cart()) {
+		if (is_cart() && (WC_Admin_Settings::get_option('woocommerce_dgfw_enable_gifts', 'yes') === 'yes')) {
 			wp_enqueue_style( DGFW::NAME_VARS, DGFW_Public::style_src('public'), array(), DGFW::VERSION );
 
 
@@ -99,13 +110,25 @@ class DGFW_Public extends DGFW {
 
 	public function process_cart()
 	{
-		if (!is_cart() || (WC_Admin_Settings::get_option('woocommerce_dgfw_enable_gifts', 'yes') !== 'yes')) {
+		if (WC_Admin_Settings::get_option('woocommerce_dgfw_enable_gifts', 'yes') !== 'yes') {
+			// plugin functionality disabled, do nothing
+			return;
+		}
+
+		// gift display filters, added to all pages to make sure gifts in the
+		// mini-cart and the cart page always display properly
+		$this->add_cart_filters();
+
+		if (!is_cart()) {
+			// not the cart page, so add only minimum functionality/processing
+			// to ensure gifts are re-validated if products are added/removed
+			// from the cart
+			$this->analyze_cart_contents();
 			return;
 		}
 
 		$this->_load = true;
 
-		$this->add_cart_filters();
 		$this->process_request();
 		$this->analyze_cart_contents();
 		$this->load_available_gifts();

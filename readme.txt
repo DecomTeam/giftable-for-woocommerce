@@ -64,7 +64,8 @@ This plugin is completely free, and will remain so. We make enough money develop
 == Changelog ==
 
 = 0.9.11 =
-* Aelia currency switcher cupport
+* Multi-currency support (WooCommerce Multilingual and Aelia Currency Switcher)
+* Mini-cart widget bug fixes & improvements
 = 0.9.10 =
 * Improved WPML support
 * LTR languages gift carousel css/js bug fixes
