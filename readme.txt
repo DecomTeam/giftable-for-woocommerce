@@ -51,6 +51,14 @@ Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts
 
 Yes. (Since version 0.9.4). You can mark any variable products as giftable, or only a number of its specific variations. If a variable product is marked as giftable, all of its variations will be available as gifts (within the Gift categories assigned). If the product is not marked as giftable, but some of its variations are, only those variations will be offered.
 
+= Does it work with WPML? =
+
+Yes. You will need to translate all gift categories, gifts and giftable products and set them up in each language sepparately though.
+
+= Does it work in a multi-currency setup? =
+
+Yes. For now the plugin integrates well with WooCommerce Multilingual multi-currency feature, and the Aelia Currency Switcher plugin.
+
 = Why is this plugin free? =
 
 This plugin is completely free, and will remain so. We make enough money developing custom solutions for WordPress and WooCommerce, and this is our way to give back to the community.
