@@ -90,6 +90,8 @@
         $('body').on('click', '.dgfw-select-gift-button', function(event) {
             event.preventDefault();
 
+            $cartForm = $(this).closest('form');
+
             // make sure we're working with the latest reference to the element
             $dgfwVariations = $('#dgfw-gift-variations');
 
@@ -99,8 +101,41 @@
 
         });
 
+        // copied from woocommerce/assets/js/frontend/cart.js
+        var is_blocked = function( $node ) {
+            return $node.is( '.processing' ) || $node.parents( '.processing' ).length;
+        };
+
+        /**
+         * Block a node visually for processing.
+         *
+         * @param {JQuery Object} $node
+         */
+        var block = function( $node ) {
+            if ( ! is_blocked( $node ) ) {
+                $node.addClass( 'processing' ).block( {
+                    message: null,
+                    overlayCSS: {
+                        background: '#fff',
+                        opacity: 0.6
+                    }
+                } );
+            }
+        };
+
+        /**
+         * Unblock a node after processing is complete.
+         *
+         * @param {JQuery Object} $node
+         */
+        var unblock = function( $node ) {
+            $node.removeClass( 'processing' ).unblock();
+        };
+
         function loadAndDisplayGiftableVariations(productId) {
             $dgfwVariations.addClass('loading');
+
+            block($cartForm);
 
             $.ajax(decomGiftable.ajaxUrl, {
                 type: 'POST',
@@ -116,7 +151,7 @@
                             $( this ).wc_variation_form().find('.variations select:eq(0)').change();
                         });
                     }
-                    $dgfwVariations.removeClass('loading');
+                    unblock($cartForm);
                 }
             });
         }
