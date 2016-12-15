@@ -536,11 +536,12 @@ abstract class DGFW {
 				$is_giftable_product_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
 				$is_giftable_variation_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
 
-				return $is_giftable_product_variation === 'yes' || $is_giftable_variation_variation;
+				return ($is_giftable_product_variation === 'yes') || $is_giftable_variation_variation;
 			} else {
 				$giftable = get_post_meta($product->id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
 			}
 		}
+
 
 		return $giftable === 'yes';
 	}

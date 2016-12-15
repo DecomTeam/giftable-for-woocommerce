@@ -426,7 +426,7 @@ class DGFW_Public extends DGFW {
 	public function gift_cart_title($title, $cart_item, $cart_item_key)
 	{
 		if ($this->is_gift($cart_item['data'])) {
-			$title = sprintf( '<a href="%s">%s</a>', esc_url( $cart_item['data']->get_permalink( $cart_item ) ), $cart_item['data']->get_title() );
+			$title = sprintf( '<a href="%s">%s</a>', esc_url( $cart_item['data']->get_permalink( $cart_item ) ), $title /*$cart_item['data']->get_title()*/ );
 		}
 
 		return $title;
