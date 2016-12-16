@@ -3,8 +3,8 @@
 Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
-Tested up to: 4.6.1
-Stable tag: 0.9.11
+Tested up to: 4.7
+Stable tag: 0.9.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,8 @@ This plugin is completely free, and will remain so. We make enough money develop
 
 == Changelog ==
 
+= 0.9.12 =
+* Minor bug fixes and improvements
 = 0.9.11 =
 * Multi-currency support (WooCommerce Multilingual and Aelia Currency Switcher)
 * Mini-cart widget bug fixes & improvements
