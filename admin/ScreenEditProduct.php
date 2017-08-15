@@ -35,7 +35,7 @@ class DGFW_ScreenEditProduct extends DGFW_Screen {
         // save gift product type gift options
         add_action( 'save_post_product', array($this, 'save_gift_options'), 10, 2);
         // save variable product variations
-        add_action( 'woocommerce_variable_product_sync', array('DGFW_ScreenEditProduct', 'save_giftable_variations'), 99, 2 );
+        add_action( 'woocommerce_variable_product_sync_data', array('DGFW_ScreenEditProduct', 'save_giftable_variations'), 99, 2 );
         // add variable bulk edit actions
 
         // Maybe add in next versions...
@@ -142,7 +142,6 @@ class DGFW_ScreenEditProduct extends DGFW_Screen {
             update_post_meta($post_id, '_visibility', 'hidden');
         }
 
-
         update_post_meta($post_id, '_' . DGFW::GIFT_PRODUCT_OPTION, $is_giftable);
         wp_set_post_terms($post_id, $gift_categories, DGFW::GIFTS_TAXONOMY);
 
@@ -155,6 +154,10 @@ class DGFW_ScreenEditProduct extends DGFW_Screen {
 
             self::update_product_giftable_variation($post_id, $is_giftable);
 
+        }
+
+        if ($product_type === 'variable') {
+            self::save_giftable_variations($post_id);
         }
 
     }
@@ -187,8 +190,11 @@ class DGFW_ScreenEditProduct extends DGFW_Screen {
      * Save/update/delete giftable variations for variable products
      *
      */
-    public static function save_giftable_variations($product_id, $children = false)
+    public static function save_giftable_variations($product_id)
     {
+        $product = wc_get_product( $product_id );
+        $children = $product->get_visible_children();
+
         $post = get_post($product_id);
 
         // we'll make all variations giftable or not for a certain combination of these two

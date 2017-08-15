@@ -29,6 +29,6 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 remove_all_actions('woocommerce_after_single_product_summary');
 ?>
-<div class="dgfw-product-giftable-variations product" id="dgfw-product-<?php echo $product->id; ?>-variations">
+<div class="dgfw-product-giftable-variations product" id="dgfw-product-<?php echo $product->get_id(); ?>-variations">
     <?php wc_get_template_part( 'content', 'single-product' ); ?>
 </div>

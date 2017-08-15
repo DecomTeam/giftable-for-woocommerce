@@ -436,11 +436,11 @@ abstract class DGFW {
 	public static function get_product_giftable_variations($children, $product = false, $visible_only = false)
 	{
 		if ($product) {
-			$product_is_giftable = get_post_meta($product->id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
+			$product_is_giftable = get_post_meta($product->get_id(), '_' . DGFW::GIFT_PRODUCT_OPTION, true);
 			if ($product_is_giftable !== 'yes') {
 				// not all variations are giftable, get only giftable variations
 				$variation_args = array(
-					'post_parent' => $product->id,
+					'post_parent' => $product->get_id(),
 					'post_type' => 'product_variation',
 					'meta_query' => array(
 						array(
@@ -514,7 +514,7 @@ abstract class DGFW {
 	 */
 	public function variation_is_purchasable($purchasable, $variation)
 	{
-		if (get_post_status($variation->variation_id) === DGFW::GIFT_POST_STATUS) {
+		if (get_post_status($variation->get_id()) === DGFW::GIFT_POST_STATUS) {
 			$purchasable = true;
 		}
 
@@ -532,13 +532,13 @@ abstract class DGFW {
 
 		if ($product->get_type() === 'variation') {
 
-			if ($product->parent->get_type() === 'variable') {
-				$is_giftable_product_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
-				$is_giftable_variation_variation = get_post_meta($product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
+			if (WC()->product_factory->get_product($product->get_parent_id())->get_type() === 'variable') {
+				$is_giftable_product_variation = get_post_meta($product->get_id(), '_' . DGFW::GIFT_PRODUCT_OPTION, true);
+				$is_giftable_variation_variation = get_post_meta($product->get_id(), '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
 
 				return ($is_giftable_product_variation === 'yes') || $is_giftable_variation_variation;
 			} else {
-				$giftable = get_post_meta($product->id, '_' . DGFW::GIFT_PRODUCT_OPTION, true);
+				$giftable = get_post_meta($product->get_parent_id(), '_' . DGFW::GIFT_PRODUCT_OPTION, true);
 			}
 		}
 
@@ -556,15 +556,15 @@ abstract class DGFW {
 				continue;
 			}
 
-			$product_variation_id = empty($item['variation_id']) ? $item['product_id'] : $item['variation_id'];
+			$product_variation_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
 
-			$item_product = WC()->product_factory->get_product($product_variation_id);
+			$item_product = $item->get_product();
 
 			if ($item_product && $this->is_gift($item_product)) {
 
 				// since we're switching giftable variations to original variations/products
 				// we'll need a flag for giftable items in some filters/actions later on
-				$items[$key]['item_meta']['_is_giftable'] = 'yes';
+				$items[$key]->update_meta_data('_is_giftable', 'yes');
 
 				// for gift type products, no need to modify item
 				if ($item_product->get_type() === DGFW::GIFTS_POST_TYPE) {
@@ -577,23 +577,17 @@ abstract class DGFW {
 				// 2. variation of a giftable product
 				// so check which one it is and do the appropriate replacement
 				if ($item_product->get_type() === 'variation') {
-					$original_variation_id = get_post_meta($item_product->variation_id, '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
+					$original_variation_id = get_post_meta($item_product->get_id(), '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
 
 					if (!$original_variation_id) {
 						$original_variation_id = '0';
 					}
 
-					$items[$key]['variation_id'] = $original_variation_id;
-					$items[$key]['item_meta']['_variation_id'][0] = $original_variation_id;
-					foreach ($items[$key]['item_meta_array'] as $meta_key => $meta) { // loop 2
-						if ($meta->key === '_variation_id') {
-							$items[$key]['item_meta_array'][$meta_key]->value = $original_variation_id;
-							break; // loop 2
-						}
-					}
+					$items[$key]->set_variation_id($original_variation_id);
 				}
 			}
 		}
+
 
 		return $items;
 	}

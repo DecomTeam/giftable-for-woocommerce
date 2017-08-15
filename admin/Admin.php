@@ -88,7 +88,7 @@ class DGFW_Admin extends DGFW {
 
 			$variation_args = array(
 				'post_type' => 'product_variation',
-				'post_parent' => $product->id,
+				'post_parent' => $product->get_parent_id(),
 				'post_status' => DGFW::GIFT_POST_STATUS,
 				'posts_per_page' => -1,
 				'fields' => 'ids',
@@ -100,7 +100,7 @@ class DGFW_Admin extends DGFW {
 
 				$variation_args['meta_query'][] = array(
 					'key' => '_' . DGFW::GIFT_VARIATION_OPTION . '_original',
-					'value' => $product->variation_id,
+					'value' => $product->get_id(),
 				);
 
 			}

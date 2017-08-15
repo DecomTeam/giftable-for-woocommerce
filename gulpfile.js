@@ -34,13 +34,12 @@ function scripts(src, dest) {
       entry: src + "/main.js",
       plugins: rollupPlugins,
     }).then(bundle => {
-      var result = bundle.generate({
+      return bundle.generate({
         // output format - 'amd', 'cjs', 'es6', 'iife', 'umd'
         format: 'iife'
       });
-
-      require("fs").writeFileSync(dest, result.code);
-      // sourceMaps are supported too!
+    }).then(result => {
+        require("fs").writeFileSync(dest, result.code);
     }).then(null, err => console.error(err));
 }
 

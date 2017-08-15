@@ -12,15 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 // make sure we have a class to extend
-if (class_exists('WC_Product_Simple')) :
+if (class_exists('WC_Product')) :
 
-    class WC_Product_Dgfw_Gift extends WC_Product_Simple {
+    class WC_Product_Dgfw_Gift extends WC_Product {
 
         public function __construct( $product ) {
 
-            parent::__construct( $product );
-
             $this->product_type = DGFW::GIFT_PRODUCT_TYPE;
+
+            parent::__construct( $product );
         }
 
     }

@@ -3,7 +3,8 @@
 .slick-slider {
   position: relative;
   display: block;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -33,6 +34,7 @@
 
 .slick-slider .slick-track,
 .slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -183,6 +185,7 @@
   width: 75%;
   padding: 10px;
   opacity: 0;
+  -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -257,6 +260,7 @@
   width: 41.1764705882%;
   float: left;
   margin-bottom: 3.631em;
+  opacity: 1 !important;
 }
 
 .dgfw-product-giftable-variations .summary {

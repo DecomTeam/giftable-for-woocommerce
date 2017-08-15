@@ -58,7 +58,7 @@ class DGFW_CategoryPublic extends DGFW_Category {
 
     		// Gift vs variable gift vs giftable-variable vs giftable variations... :S
 	    	if (in_array($product->get_type(), array(DGFW::GIFT_PRODUCT_TYPE, 'variable'))) {
-	    		$gifts['gift_' . $product->id] = $product;
+	    		$gifts['gift_' . $product->get_id()] = $product;
 	    	} else {
 	    		// the product is of another type
 	    		$product_gift_variation = get_posts(
@@ -74,12 +74,12 @@ class DGFW_CategoryPublic extends DGFW_Category {
 
 	    		if( !empty($product_gift_variation) ) {
 	    			$gift_variation = new WC_Product_Variation($product_gift_variation[0]);
-	    		    $gifts['gift_' . $gift_variation->id] = $gift_variation;
+	    		    $gifts['gift_' . $gift_variation->get_id()] = $gift_variation;
 	    		} else if ($product->get_type() === 'variable') {
 	    			// this means the product is not marked as giftable, but some
 	    			// of its variations are, make it available as gift and
 	    			// users will be able to choose between giftable variations
-	    			$gifts['gift_' . $product->id] = $product;
+	    			$gifts['gift_' . $product->get_id()] = $product;
 	    		}
 	    	}
 	    }

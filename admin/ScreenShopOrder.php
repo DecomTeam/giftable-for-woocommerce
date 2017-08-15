@@ -48,7 +48,10 @@ class DGFW_ScreenShopOrder extends DGFW_Screen {
      */
     public function before_order_itemmeta($item_id, $item, $_product)
     {
-        if (isset($item['item_meta']['_is_giftable'])) {
+        // die(var_dump($item->get_meta_data()));
+        if ($item->get_meta('_is_giftable')) {
+            $item->delete_meta_data('_is_giftable');
+            
             $this->print_template();
         }
     }
