@@ -739,6 +739,10 @@
   color: red;
 }
 
+#edittag {
+  max-width: none !important;
+}
+
 /*----------  Criteria  ----------*/
 #woocommerce-coupon-data ul.wc-tabs li.dgfw-gift-tab_options a:before, #woocommerce-product-data ul.wc-tabs li.dgfw-gift-tab_options a:before, .woocommerce ul.wc-tabs li a:before {
   font-family: dashicons;
