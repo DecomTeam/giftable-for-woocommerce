@@ -18,7 +18,7 @@ abstract class DGFW {
 	const NAME_VARS = 'giftable_for_woocommerce';
 	const TRANSLATION = 'giftable-for-woocommerce';
 
-	const VERSION = '0.9.13';
+	const VERSION = '1.0';
 
 	const GIFTS_POST_TYPE = 'dgfw_gifts';
 	const GIFTS_TAXONOMY = 'dgfw_gift_categories';
