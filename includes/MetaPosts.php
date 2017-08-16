@@ -39,6 +39,15 @@ class DGFW_MetaPosts extends DGFW_Meta {
 
     private function check_for_any($products_ids)
     {
+        // replace variation ids with parent product ids
+        foreach($products_ids as $id => $quantity) {
+            $product = WC()->product_factory->get_product($id);
+            if ($product && ($product->get_type() === 'variation')) {
+                unset($products_ids[$id]);
+                $products_ids[$product->get_parent_id()] = $quantity;
+            }
+        }
+        
         foreach ($this->_value as $product_id => $product_data) {
             if (array_key_exists($product_id, $products_ids) && ($products_ids[$product_id] >= $this->_value[$product_id]['min_items'])) {
                 return true;
