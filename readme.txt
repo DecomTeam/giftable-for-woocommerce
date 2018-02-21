@@ -4,7 +4,7 @@ Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
 Tested up to: 4.8.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,8 @@ This plugin is completely free, and will remain so. We make enough money develop
 
 == Changelog ==
 
+= 1.0.1 =
+* WooCommerce 3.3.1+ fix buttons (enable button: add to cart)
 = 1.0 =
 * WooCommerce 3.* compatibility updates
 = 0.9.12 =

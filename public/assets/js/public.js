@@ -179,6 +179,26 @@
         $(document).on('updated_wc_div', initNewCarousel);
         // maybe reinitialize new carousel on window resize
         $(window).on('resize', initNewCarousel);
+
+        /**
+         * Re-Enable Giftable buttons (WooCommerce 3.3.x version issue) Buttons FIX
+         *
+         */
+        $(document.body).on('updated_cart_totals', function () {
+            if ($('#dgfw-gifts-carousel').length) {
+                $('.dgfw-gift').each(function () {
+                    $('.dgfw-add-gift-button, .dgfw-select-gift-button').prop('disabled', false);
+                });
+            }
+        });
+
+        $(window).on("load", function () {
+            if ($('#dgfw-gifts-carousel').length) {
+                $('.dgfw-gift').each(function () {
+                    $('.dgfw-add-gift-button, .dgfw-select-gift-button').prop('disabled', false);
+                });
+            }
+        });
     });
 })(jQuery);
 

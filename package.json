@@ -1,6 +1,6 @@
 {
   "name": "giftable-for-woocommerce",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Giftable for WooCommerce",
   "main": "",
   "scripts": {
@@ -26,7 +26,7 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "caniuse-db": "^1.0.30000710",
     "del": "^3.0.0",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^6.1.1",
     "gulp-cache": "^0.4.1",

@@ -3,3 +3,7 @@ node_modules
 desktop.ini
 etc
 babel
+.idea/
+idea/
+package-lock.json
+bower.json
