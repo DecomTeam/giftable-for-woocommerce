@@ -40,4 +40,3 @@ There is a 'Show tabs' options for each gift on the Edit product screen 'Gift op
 ### Can I change the gift box and buttons titles? 
 
 Yes. You can do that on the Gifts settings tab (WooCommerce -> Settings -> Gifts).
-
