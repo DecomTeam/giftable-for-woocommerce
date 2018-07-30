@@ -14,6 +14,7 @@ This WooCommerce plugin enables you to offer free gifts to your customers on che
 * Unlimited numbers and combinations of gift categories, conditions, and gifts. 
 
 
+
 ## Installation
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
