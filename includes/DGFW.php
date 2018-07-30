@@ -18,7 +18,7 @@ abstract class DGFW {
 	const NAME_VARS = 'giftable_for_woocommerce';
 	const TRANSLATION = 'giftable-for-woocommerce';
 
-	const VERSION = '1.0.1';
+	const VERSION = '1.0.2';
 
 	const GIFTS_POST_TYPE = 'dgfw_gifts';
 	const GIFTS_TAXONOMY = 'dgfw_gift_categories';
@@ -304,8 +304,9 @@ abstract class DGFW {
 	public static function get_currencies()
 	{
 		$currencies = array();
+		
 		// first check for WooCommerce Multilingual currencies
-		if (class_exists('woocommerce_wpml') && defined('WCML_MULTI_CURRENCIES_INDEPENDENT')) {
+		if (is_plugin_active('woocommerce_wpml') && class_exists('woocommerce_wpml') && defined('WCML_MULTI_CURRENCIES_INDEPENDENT')) {
 
 			$woocommerce_wpml = woocommerce_wpml::instance();
 			$woocommerce_wpml_settings = woocommerce_wpml::instance()->get_settings();
@@ -328,7 +329,7 @@ abstract class DGFW {
 			if (!empty($currencies)) {
 				return $currencies;
 			}
-		}
+		} 
 
 		// check for Aelia Currency Switcher
 		if (class_exists('\Aelia\WC\CurrencySwitcher\WC_Aelia_CurrencySwitcher')) {
