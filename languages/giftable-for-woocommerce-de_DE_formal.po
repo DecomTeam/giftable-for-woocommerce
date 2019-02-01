@@ -1,0 +1,630 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Giftable for WooCommerce\n"
+"POT-Creation-Date: 2016-11-03 12:12+0100\n"
+"PO-Revision-Date: 2016-11-03 12:26+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: giftable-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/ScreenEditCategory.php:46 admin/templates/edit-category.php:9
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: admin/ScreenEditCategory.php:154
+msgid "Next"
+msgstr "Weiter"
+
+#: admin/ScreenEditCategory.php:155
+msgid "Back"
+msgstr "Zurück"
+
+#: admin/ScreenEditCategory.php:156
+msgid "Remove"
+msgstr "Entfernen"
+
+#: admin/ScreenEditCategory.php:157
+msgid "AND"
+msgstr "UND"
+
+#: admin/ScreenEditCategory.php:158
+msgid "OR"
+msgstr "ODER"
+
+#: admin/ScreenEditCategory.php:159
+msgid "Choose condition type:"
+msgstr "Wählen Sie einen Bedingungstyp:"
+
+#: admin/ScreenEditCategory.php:160
+msgid "First condition"
+msgstr "Erste Bedingung"
+
+#: admin/ScreenEditCategory.php:161
+msgid ""
+"Are you sure you want do remove this condition and all its child conditions?"
+msgstr ""
+"Sind Sie sicher, dass Sie diese und alle untergeordneten Bedingungen "
+"entfernen möchten?"
+
+#: admin/ScreenEditCategory.php:162
+msgid "Amounts"
+msgstr "Betrag"
+
+#: admin/ScreenEditCategory.php:163
+msgid ""
+"This condition will be met if the <strong>total cart amount</strong> is "
+"within the defined min/max amounts range."
+msgstr ""
+"Diese Bedingung wird erfüllt werden, wenn der <strong>gesamte Warenkorb "
+"Betrag</strong> innerhalb des definierten min/Max Bereich liegt."
+
+#: admin/ScreenEditCategory.php:164
+msgid "Items"
+msgstr "Anzahl"
+
+#: admin/ScreenEditCategory.php:165
+msgid ""
+"This condition will be met if the <strong>total number of items in the cart</"
+"strong> is within the defined min/max items range."
+msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn die <strong>Gesamtanzahl der Artikel "
+"im Warenkorb</strong> innerhalb des min-/Max- Bereiches ist."
+
+#: admin/ScreenEditCategory.php:166
+msgid "Products"
+msgstr "Produkte"
+
+#: admin/ScreenEditCategory.php:167
+msgid ""
+"This condition will be met if the customer has at least one item of any of "
+"the selected products in their cart. To specify a minimum quantity for each "
+"selected product, click the <strong>Product Quantities</strong> button below."
+msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn der Kunde mindestens ein Artikel von "
+"den ausgewählten Produkten im Warenkorb hat. Um eine Mindestmenge für jedes "
+"ausgewählte Produkt einzurichten, klicken Sie unten auf <strongProdukt "
+"Anzahl</strong."
+
+#: admin/ScreenEditCategory.php:168
+msgid "Product Categories"
+msgstr "Produktkategorien"
+
+#: admin/ScreenEditCategory.php:169
+msgid "Time Period"
+msgstr "Zeitraum"
+
+#: admin/ScreenEditCategory.php:170
+msgid ""
+"This condition will be met if the time of customer checkout is within the "
+"defined start/end time interval."
+msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn die Bestellung innerhalb des "
+"definierten Zeitintervalls getätigt wurde."
+
+#: admin/ScreenEditCategory.php:171 admin/ScreenEditCategory.php:198
+msgid "Users"
+msgstr "Benutzer"
+
+#: admin/ScreenEditCategory.php:172
+msgid ""
+"This condition will be met if the customer is logged in as any of the "
+"selected users below."
+msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn der Kunde als einer der unten "
+"ausgewählten Benutzer angemeldet ist."
+
+#: admin/ScreenEditCategory.php:173
+msgid "User Roles"
+msgstr "Benutzerrollen"
+
+#: admin/ScreenEditCategory.php:174
+msgid ""
+"This condition will be met if the customer is a logged in user and has one "
+"of the user roles selected below."
+msgstr ""
+"Diese Bedingung erfüllt werden, wenn der Benutzer angemeldet ist und eine "
+"der unten ausgewählten Benutzerrollen hat."
+
+#: admin/ScreenEditCategory.php:175
+msgid "Min amount"
+msgstr "Min. Betrag"
+
+#: admin/ScreenEditCategory.php:176
+msgid "Max amount"
+msgstr "Max. Betrag"
+
+#: admin/ScreenEditCategory.php:177
+msgid "Set amount range. Leave empty for no limits."
+msgstr "Betrag eintragen oder frei lassen für uneingeschränkt"
+
+#: admin/ScreenEditCategory.php:178
+msgid "Min items"
+msgstr "Min. Anzahl"
+
+#: admin/ScreenEditCategory.php:179
+msgid "Max items"
+msgstr "Max. Anzahl"
+
+#: admin/ScreenEditCategory.php:180
+msgid "Set items range. Leave empty for no limits."
+msgstr "Anzahl eintragen oder frei lassen für uneingeschränkt"
+
+#: admin/ScreenEditCategory.php:181
+msgid "Start date"
+msgstr "Anfangsdatum"
+
+#: admin/ScreenEditCategory.php:182
+msgid "End date"
+msgstr "Enddatum"
+
+#: admin/ScreenEditCategory.php:183
+msgid "Set start and end of this period."
+msgstr "Legen Sie Anfang- und Enddatum dieses Zeitraums fest."
+
+#: admin/ScreenEditCategory.php:184
+msgid "Terms"
+msgstr "Bedingungen"
+
+#: admin/ScreenEditCategory.php:185
+msgid "Select Product Categories"
+msgstr "Produktkategorien auswählen:"
+
+#: admin/ScreenEditCategory.php:186
+msgid "Select product categories this gift category applies for."
+msgstr ""
+"Wählen sie die Produkt-Kategorien auf welche sich diese Geschenk-Kategorie "
+"bezieht"
+
+#: admin/ScreenEditCategory.php:187
+msgid ""
+"This condition will be met then the customer has at least one product "
+"belonging to any of the selected product categories in their cart. To "
+"specify minimum amounts and/or items for each selected category, click the "
+"<strong>Amounts and Quantities</strong> button below."
+msgstr ""
+"Diese Bedingung wird erfüllt sein, wenn der Kunde mindestens ein Produkt aus "
+"einer der ausgewählten Produktkategorien in ihren Warenkorb hat. Um den "
+"Mindestbetrag und/oder Anzahl für jede ausgewählte Kategorie festzulegen, "
+"klicken Sie untan auf <strong>Beträge und Mengen</strong>."
+
+#: admin/ScreenEditCategory.php:188
+msgid "Amounts and Quantities"
+msgstr "Beträge und Mengen"
+
+#: admin/ScreenEditCategory.php:189
+msgid ""
+"Set up the minimum amount and/or number of items for each selected category."
+msgstr ""
+" Mindestbetrag und/oder Anzahl der Produkte  für jede ausgewählte Kategorie "
+"einstellen."
+
+#: admin/ScreenEditCategory.php:190
+msgid ""
+"By default, this condition will be met if the customer has at least one "
+"product belonging to any of the selected product categories in their cart. "
+"You can change minimum amount and/or items for each selected category here. "
+"Leave the fields empty for default value (one item minimum, regardless of "
+"the amount)."
+msgstr ""
+"Standardmäßig wird diese Bedingung erfüllt sein, wenn der Kunde mindestens "
+"ein Produkt aus einer der ausgewählten Produktkategorien im Warenkorb hat. "
+"Sie können den Mindestbetrag und/oder Menge für jede ausgewählte Kategorie "
+"hier ändern. Für Standardwerte lassen Sie die Felder leer (ein Artikel "
+"mindestens, unabhängig vom betrag)."
+
+#: admin/ScreenEditCategory.php:191
+msgid "Posts"
+msgstr "Beiträge"
+
+#: admin/ScreenEditCategory.php:192
+msgid "Select Products"
+msgstr "Produkte auswählen"
+
+#: admin/ScreenEditCategory.php:193
+msgid "Select products this gift category applies for."
+msgstr ""
+"Wählen sie die Produkte auf welche sich diese Geschenk-Kategorie bezieht"
+
+#: admin/ScreenEditCategory.php:194
+msgid "Product Quantities"
+msgstr "Produkt anzahl"
+
+#: admin/ScreenEditCategory.php:195
+msgid "Set minimum quantity for each selected product."
+msgstr "Mindestbestellmenge für jedes ausgewählte Produkt."
+
+#: admin/ScreenEditCategory.php:196
+msgid "Roles"
+msgstr "Rollen"
+
+#: admin/ScreenEditCategory.php:197
+msgid "Select user roles this gift category applies for."
+msgstr ""
+"Wählen sie die Benutzerrollen auf welche sich diese Geschenk-Kategorie "
+"bezieht"
+
+#: admin/ScreenEditCategory.php:199
+msgid "Select users this gift category applies for."
+msgstr ""
+"Wählen sie die Benutzer auf welche sich diese Geschenk-Kategorie bezieht"
+
+#: admin/ScreenEditCategory.php:200
+msgid "Page "
+msgstr "Seite"
+
+#: admin/ScreenEditCategory.php:201
+msgid " of "
+msgstr " von "
+
+#: admin/ScreenEditCategory.php:202
+msgid " at "
+msgstr " um "
+
+#: admin/ScreenEditCategory.php:203
+msgid "Currency"
+msgstr "Währung"
+
+#: admin/ScreenEditCategory.php:204
+msgid ""
+"<strong>Multi-currency Note</strong>: This condition can be met only by "
+"customers shopping in the selected currency. You can cover other currencies "
+"by adding another \"OR\" Amount condition with appropriate min/max amounts "
+"for each enabled currency."
+msgstr ""
+"<strong>Multi-Währungs-Hinweis</ strong>: Diese Bedingung kann nur von "
+"Kunden erfüllt werden, die in der ausgewählten Währung einkaufen. Sie können "
+"andere Währungen abdecken, indem Sie für jede aktivierte Währung eine andere "
+"\"ODER\" - Wert bedingung mit entsprechenden Min / Max-Beträgen hinzufügen."
+
+#: admin/ScreenEditProduct.php:68 admin/ScreenEditProduct.php:97
+#: admin/Settings.php:19 admin/templates/variation-giftable-option.php:14
+msgid "Giftable"
+msgstr "Verschenkbar"
+
+#: admin/ScreenEditProduct.php:74
+msgid "Gift"
+msgstr "Geschenk"
+
+#: admin/ScreenEditProduct.php:84
+msgid "Gift options"
+msgstr "Geschenkoptionen"
+
+#: admin/ScreenEditProduct.php:98
+msgid ""
+"Giftable products can be offered as free gifts for customers based on any "
+"combination of conditions set up as Gift categories (assigned to a product "
+"in the Gift options tab below). If a variable product is marked as giftable, "
+"all of its variations will be giftable too. To mark only some variations as "
+"giftable, edit them in the Variations tab."
+msgstr ""
+"Sie können Geschenke an ihre Kunden vergeben basierend auf einer beliebigen "
+"Anzahl an Kombination von Bedingungen die sie den Geschenk-Kategorien "
+"zuweisen. Basis angeboten werden (Produkte können sie unter der Geschenk-"
+"Schaltfläche verwalten). Wenn eine variables Produkt als Verschenkbar "
+"markiert ist, werden alle seine Variationen Verschenkbar sein. Um nur einige "
+"Varianten als Verschenkbar zu markieren, bearbeiten Sie sie diese Variation "
+"unter der Variation Schaltfläche."
+
+#: admin/ScreenProducts.php:50
+msgid "Gifts and giftable products"
+msgstr "Geschenke und verschenkbare produkte"
+
+#: admin/ScreenProducts.php:97
+msgid "Select a gift category"
+msgstr "Wählen Sie eine Geschenk-Kategorie "
+
+#: admin/Settings.php:29
+msgid "Gifts Options"
+msgstr "Geschenke-Optionen"
+
+#: admin/Settings.php:32
+msgid "Enable Gifts"
+msgstr "Geschenke aktivieren"
+
+#: admin/Settings.php:33
+msgid "Enable gifts functionality for this shop"
+msgstr "Geschenke-Funktionalität für diesen Shop aktivieren"
+
+#: admin/Settings.php:42
+msgid "Gifts carousel title"
+msgstr "Geschenk Karussell Überschrift"
+
+#: admin/Settings.php:43
+msgid "The title for the gifts carousel box shown to customers."
+msgstr "Titel für den Geschenk Karussel der für den besucher dargesstelt wird."
+
+#: admin/Settings.php:45 public/templates/available-gifts.php:15
+msgid "Choose your free gift"
+msgstr "Wählen Sie Ihr Geschenk"
+
+#: admin/Settings.php:51
+msgid "Gifts carousel description"
+msgstr "Geschenk Karussell beschreibung"
+
+#: admin/Settings.php:52
+msgid "Description of the available gifts box on the cart page."
+msgstr "Beschreibung der Geschenke-Box auf der Warenkorb-Seite."
+
+#: admin/Settings.php:61
+msgid "Add gift button title"
+msgstr "Titel für Button Geschenk hinzufügen "
+
+#: admin/Settings.php:62
+msgid "Text for add gift to cart buttons show to customers."
+msgstr "Text für den Button„Geschenk zum Warenkorb hinzufügen“"
+
+#: admin/Settings.php:64 public/templates/available-gifts.php:37
+msgid "Add to cart"
+msgstr "In Warenkorb"
+
+#: admin/Settings.php:70
+msgid "Select options button title"
+msgstr "Option Button Überschrift"
+
+#: admin/Settings.php:71
+msgid "Text for select options buttons (for gifts with variations)."
+msgstr "Text für Variations-Optionen Button (für Geschenke mit Variationen)."
+
+#: admin/Settings.php:73 public/templates/available-gifts.php:35
+msgid "Select options"
+msgstr "Produkt wählen"
+
+#: admin/Settings.php:79
+msgid "Gift note in the cart"
+msgstr "Geschenk-Hinweis im Warenkorb"
+
+#: admin/Settings.php:80
+msgid "Show note for gifts in the cart"
+msgstr "Geschenk-Hinweis im Warenkorb anzeigen"
+
+#: admin/Settings.php:89
+msgid "Cart gift note title"
+msgstr "Geschenk-Hinweistitel"
+
+#: admin/Settings.php:90
+msgid "Title of the gift note shown for each gift in the cart"
+msgstr "Titel vom Geschenk-Hinweis für jedes Geschenk im Warenkorb angezeigen"
+
+#: admin/Settings.php:92 public/Public.php:415 public/Public.php:418
+msgid "Note"
+msgstr "Bemerkung"
+
+#: admin/Settings.php:98
+msgid "Cart gift note text"
+msgstr "Warenkorb Geschenk Hinweistext"
+
+#: admin/Settings.php:99
+msgid "Text of the gift note shown for each gift in the cart"
+msgstr "Text der Geschenk-Notiz für jedes Geschenk im Warenkorb angezeigen"
+
+#: admin/Settings.php:101 public/Public.php:416 public/Public.php:419
+msgid "This product is a free gift."
+msgstr "Dieses Produkt ist ein Geschenk."
+
+#: admin/Settings.php:107
+msgid "Number of gifts per page on large screens (desktop)"
+msgstr "Anzahl der Geschenke pro Seite auf großen Bildschirmen (Desktop)"
+
+#: admin/Settings.php:114
+msgid "Number of gifts per page on medium screens (tablet)"
+msgstr "Anzahl der Geschenke pro Seite auf Medium-Bildschirme (Tablet)"
+
+#: admin/Settings.php:121
+msgid "Number of gifts per page on small screens (phone)"
+msgstr "Anzahl der Geschenke pro Seite auf kleinen Bildschirmen (Handy)"
+
+#: admin/templates/category-criteria.php:10
+msgid "Loading..."
+msgstr "Laden..."
+
+#: admin/templates/category-criteria.php:14
+#: admin/templates/criteria-empty.php:10
+msgid "Add conditions"
+msgstr "Bedingung hinzufügen"
+
+#: admin/templates/category-enabled.php:13
+msgid "Yes"
+msgstr "Ja"
+
+#: admin/templates/category-enabled.php:13
+msgid "No"
+msgstr "Nein"
+
+#: admin/templates/edit-category.php:15
+msgid "Number of gifts allowed"
+msgstr "Anzahl der erlaubten Gratis Artikel"
+
+#: admin/templates/edit-category.php:21
+msgid "Gift category conditions"
+msgstr "Geschenk Kategorie Bedingungen"
+
+#: admin/templates/order-giftable-note.php:8
+msgid "Note:"
+msgstr "Bemerkungen"
+
+#: admin/templates/order-giftable-note.php:8
+msgid ""
+"This item was awarded as a free gift via the Giftable for WooCommerce plugin."
+msgstr ""
+"Dieser Artikel wurde als Geschenk zugeteilt über das Giftable für "
+"WooCommerce Plugin."
+
+#: admin/templates/product-gift-options.php:20
+msgid ""
+"NOTE: This product is not marked as giftable, but some of its variations "
+"are. Only those variations marked as giftable will be available as gifts "
+"when selected gift categories’ conditions are met."
+msgstr ""
+"Hinweis: Dieses Produkt ist nicht als Verschenkbar markiert, aber einige "
+"seiner Variationen sind es. Nur Verschenkbar markiert Variationen werden als "
+"Geschenke verfügbar sein, wenn die vorgegebenen Geschenk Bedingungen erfüllt "
+"sind."
+
+#: admin/templates/product-gift-options.php:23 includes/DGFW.php:117
+msgid "Gift categories"
+msgstr "Geschenk Kategorien"
+
+#: admin/templates/product-gift-options.php:42
+msgid "Show tabs"
+msgstr "Tabs anzeigen"
+
+#: admin/templates/variable-actions.php:14
+msgid "Giftable variations"
+msgstr "Verschenkbar Variationen"
+
+#: admin/templates/variable-actions.php:15
+msgid "Show giftable variations only"
+msgstr "Verschenkbar Variationen Nur"
+
+#: admin/templates/variation-giftable-option.php:14
+msgid ""
+"If more than one product variation is marked as giftable, customers can "
+"select between them when they choose this product as their gift."
+msgstr ""
+"Wenn mehr als eine Produktvariation als Verschenkbar markiert ist, kann der "
+"Kunde zwischen ihnen auswählen, wenn er dieses Produkt als Geschenk "
+"ausgewählt hat."
+
+#: includes/Category.php:75
+msgid "No conditions added for this gift category yet."
+msgstr ""
+"Es wurde noch keine Bedingungen hinzugefügt für diese Geschenk-Kategorie."
+
+#: includes/DGFW.php:85
+msgid ""
+"<strong>Giftable for WooCommerce</strong> can‘t work without WooCommerce; "
+"the plug-in has been <strong>deactivated</strong>"
+msgstr ""
+"<strong>Giftable für WooCommerce</strong> funktioniert nicht ohne "
+"WooCommerce; das Plug-in wurde <strong>deaktiviert</strong>"
+
+#: includes/DGFW.php:107
+msgctxt "taxonomy general name"
+msgid "Gift categories"
+msgstr "Geschenk-Kategorien"
+
+#: includes/DGFW.php:108
+msgctxt "taxonomy singular name"
+msgid "Gift category"
+msgstr "Geschenk-Kategorie"
+
+#: includes/DGFW.php:109
+msgid "Search Gift categories"
+msgstr "Geschenk-Kategorien suchen"
+
+#: includes/DGFW.php:110
+msgid "All Gift categories"
+msgstr "Alle Geschenk-Kategorien"
+
+#: includes/DGFW.php:111
+msgid "Parent Gift category"
+msgstr "Übergeordnete Geschenk-Kategorie"
+
+#: includes/DGFW.php:112
+msgid "Parent Gift category:"
+msgstr "Übergeordnete Geschenk-Kategorie:"
+
+#: includes/DGFW.php:113
+msgid "Edit Gift category"
+msgstr "Geschenk-Kategorie bearbeiten"
+
+#: includes/DGFW.php:114
+msgid "Update Gift category"
+msgstr "Geschenk-Kategorie aktualisieren"
+
+#: includes/DGFW.php:115
+msgid "Add New Gift category"
+msgstr "Neue Geschenk-Kategorie hinzufügen"
+
+#: includes/DGFW.php:116
+msgid "New Gift category Name"
+msgstr "Neuer Geschenk-Kategorie Name"
+
+#: includes/DGFW.php:124
+msgid "gifts"
+msgstr "geschenke"
+
+#: public/Public.php:209
+msgid "Some gifts have been removed from your cart."
+msgstr "Einige Geschenke wurden aus Ihrem Warenkorb entfernt."
+
+#: public/Public.php:306 public/Public.php:504
+msgid "Your free gift has been added."
+msgstr "Ihr Geschenk wurde hinzugefügt."
+
+#: public/Public.php:405
+msgid "FREE!"
+msgstr "KOSTENLOS!"
+
+#. Plugin Name of the plugin/theme
+msgid "Giftable for WooCommerce"
+msgstr "Giftable für WooCommerce"
+
+#. Plugin URI of the plugin/theme
+msgid "http://decom.ba/wordpress-plugins/giftable-for-woocommerce"
+msgstr "http://decom.ba/wordpress-plugins/giftable-for-woocommerce"
+
+#. Description of the plugin/theme
+msgid ""
+"Offer free gifts to your customers based on any number of easy to set up "
+"conditions (e.g. total amount and/or number of cart items on checkout)."
+msgstr ""
+"Bieten Sie für ihre Kunden kostenlose Geschenke an, basierend auf einer "
+"beliebigen Anzahl von Bedingungen die sie einfach einrichten können (z. B. "
+"Gesamtbetrag bzw. Anzahl der Artikel im Warenkorb)."
+
+#. Author of the plugin/theme
+msgid "Decom"
+msgstr "Decom"
+
+#. Author URI of the plugin/theme
+msgid "http://decom.ba"
+msgstr "http://decom.ba"
+
+#~ msgid ""
+#~ "This condition will be met if the customr is a logged in user and has one "
+#~ "of the user roles selected below."
+#~ msgstr ""
+#~ "Diese Bedingung erfüllt werden, wenn der Benutzer angemeldet ist und eine "
+#~ "der unten ausgewählten Benutzerrollen hat."
+
+#~ msgid ""
+#~ "Giftable products can be offered as free gifts for customers based on any "
+#~ "combination of conditions set up as Gift categories..."
+#~ msgstr ""
+#~ "Verschenkbare Produkte können angeboten werden für Kunden, basierend auf "
+#~ "einer vielzahl von Bedingungen, die als Geschenk Kategorien festgelegt "
+#~ "wurden."
+
+#~ msgid "Gifts"
+#~ msgstr "Geschenke"
+
+#~ msgid "Free gift..."
+#~ msgstr "Kostenloses Geschenk"
+
+#~ msgid "WooCommerce plugin not installed"
+#~ msgstr "WooCommerce Plugin nicht installiert"
+
+#~ msgid "Giftable for WooCommerce requires Woocommerce plugin."
+#~ msgstr "Giftable für Woocommerce erfordert Woocommerce Plugin."
+
+#~ msgid "Add free gift"
+#~ msgstr "Kostenloses Geschenk hinzufügen"
+
+#~ msgid "Import custom reports of Woocommerce user activity as CSV"
+#~ msgstr ""
+#~ "Benutzerdefinierte Berichte der Woocommerce Benutzeraktivität im CSV-"
+#~ "Format importieren"

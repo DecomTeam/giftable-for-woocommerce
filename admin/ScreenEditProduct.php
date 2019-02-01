@@ -193,7 +193,8 @@ class DGFW_ScreenEditProduct extends DGFW_Screen {
     public static function save_giftable_variations($product_id)
     {
         $product = wc_get_product( $product_id );
-        $children = $product->get_visible_children();
+        //$children = $product->get_visible_children();
+	    $children = $product->get_children( true );
 
         $post = get_post($product_id);
 

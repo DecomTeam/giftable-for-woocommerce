@@ -3,6 +3,11 @@
  * Decom Gifts for WooCommerce Admin Styles
  *
  */
+/*----------  Columns  ----------*/
+#taxonomy-dgfw_gift_categories.column-taxonomy-dgfw_gift_categories {
+  width: 20%;
+}
+
 /*----------  Buttons  ----------*/
 .button.dgfw-button {
   margin: 0.5em 1em;

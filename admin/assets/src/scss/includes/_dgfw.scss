@@ -1,5 +1,11 @@
-/*----------  Buttons  ----------*/
+/*----------  Columns  ----------*/
+#taxonomy-dgfw_gift_categories {
+    &.column-taxonomy-dgfw_gift_categories {
+        width: 20%;
+    }
+}
 
+/*----------  Buttons  ----------*/
 .button {
     &.dgfw-button {
 

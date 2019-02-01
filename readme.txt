@@ -3,8 +3,8 @@
 Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
-Tested up to: 4.9.7
-Stable tag: 1.0.2
+Tested up to: 5.0.3
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,9 +59,6 @@ Yes. You will need to translate all gift categories, gifts and giftable products
 
 Yes. For now the plugin integrates well with WooCommerce Multilingual multi-currency feature, and the Aelia Currency Switcher plugin.
 
-= Why is this plugin free? =
-
-This plugin is completely free, and will remain so. We make enough money developing custom solutions for WordPress and WooCommerce, and this is our way to give back to the community.
 
 == Screenshots ==
 
@@ -70,7 +67,10 @@ This plugin is completely free, and will remain so. We make enough money develop
 3. Adding new gift products
 
 == Changelog ==
-
+= 1.0.3 =
+* Fix admin black screen when Variable product is selected and saved
+* Fix admin column width on smaller screens
+* added de_DE_formal po/mo files
 = 1.0.2 =
 * when WPML activated - fix Gift Categories (blank screen)
 = 1.0.1 =
