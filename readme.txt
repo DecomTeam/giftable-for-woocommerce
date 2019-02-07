@@ -4,7 +4,7 @@ Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
 Tested up to: 5.0.3
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,8 +67,11 @@ Yes. For now the plugin integrates well with WooCommerce Multilingual multi-curr
 3. Adding new gift products
 
 == Changelog ==
+= 1.0.4 =
+* Fix WPML not copying things when WPML Editor is used: wpml-config.xml
+* Thanks to @jerbnl as he reported this
 = 1.0.3 =
-* Fix admin black screen when Variable product is selected and saved
+* Fix admin blank screen when Variable product is selected and saved
 * Fix admin column width on smaller screens
 * added de_DE_formal po/mo files
 = 1.0.2 =
