@@ -1,8 +1,8 @@
 <wpml-config>
-    <taxonomies>
-        <taxonomy translate="1">dgfw_gift_categories</taxonomy>
-    </taxonomies>
-    <admin-texts>
+  <taxonomies>
+    <taxonomy translate="1">dgfw_gift_categories</taxonomy>
+  </taxonomies>
+   <admin-texts>
         <key name="woocommerce_dgfw_carousel_title" />
         <key name="woocommerce_dgfw_carousel_description" />
         <key name="woocommerce_dgfw_gift_button_title" />
@@ -10,6 +10,11 @@
         <key name="woocommerce_dgfw_cart_gift_note_title" />
         <key name="woocommerce_dgfw_cart_gift_note_text" />
     </admin-texts>
+  <custom-fields>
+    <custom-field action="copy">_dgfw_giftable</custom-field>
+    <custom-field action="copy">_dgfw_gift_tabs</custom-field>
+    <custom-field action="copy">_dgfw_giftable_variation</custom-field>
+    <custom-field action="copy">_dgfw_has_giftable_variations</custom-field>
+    <custom-field action="copy">_dgfw_giftable_variation_original</custom-field>
+  </custom-fields>
 </wpml-config>
-
-
