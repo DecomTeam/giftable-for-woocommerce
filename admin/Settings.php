@@ -104,6 +104,15 @@ class WC_Settings_Gifts extends WC_Settings_Page {
 			),
 
 			array(
+				'title'    => __( 'Cart gift price text', DGFW::TRANSLATION ),
+				'desc'     => __( 'Text of the gift price shown for each gift in the cart', DGFW::TRANSLATION ),
+				'id'       => 'woocommerce_dgfw_cart_gift_price_text',
+				'default'  => __( 'FREE!', DGFW::TRANSLATION ),
+				'type'     => 'text',
+				'desc_tip' =>  true,
+			),
+
+			array(
 				'title'    => __( 'Number of gifts per page on large screens (desktop)', DGFW::TRANSLATION ),
 				'id'       => 'woocommerce_dgfw_carousel_gifts_large',
 				'default'  => 4,
