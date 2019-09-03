@@ -4,7 +4,7 @@ Contributors: decomteam, pixelhappystudio
 Tags: gifts, giftable, free, woocommerce, woocommerce gifts, woocommerce-gift, gifts for woocommerce, woocommerce cart gifts
 Requires at least: 4.4
 Tested up to: 5.0.3
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,10 @@ Yes. For now the plugin integrates well with WooCommerce Multilingual multi-curr
 3. Adding new gift products
 
 == Changelog ==
+= 1.0.5 =
+* Bug fixes
+* Fix error with YITH WooCommerce Multi Vendor Premium (thanks YITH support for a fix)
+* is_object() for gift_cart_thumbnail()
 = 1.0.4 =
 * Fix WPML not copying things when WPML Editor is used: wpml-config.xml
 * Thanks to @jerbnl as he reported this

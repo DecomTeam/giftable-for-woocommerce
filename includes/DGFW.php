@@ -18,7 +18,7 @@ abstract class DGFW {
 	const NAME_VARS = 'giftable_for_woocommerce';
 	const TRANSLATION = 'giftable-for-woocommerce';
 
-	const VERSION = '1.0.4';
+	const VERSION = '1.0.5';
 
 	const GIFTS_POST_TYPE = 'dgfw_gifts';
 	const GIFTS_TAXONOMY = 'dgfw_gift_categories';
@@ -559,9 +559,16 @@ abstract class DGFW {
 
 			$product_variation_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
 
-			$item_product = $item->get_product();
+			/**
+			 *
+			 * #2019 - changed in 1.0.5
+			 * Old: $item_product = $item->get_product();
+			*/
+
+			$item_product = is_callable( $item, 'get_product' ) ? $item->get_product() : false;
 
 			if ($item_product && $this->is_gift($item_product)) {
+
 
 				// since we're switching giftable variations to original variations/products
 				// we'll need a flag for giftable items in some filters/actions later on

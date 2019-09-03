@@ -481,11 +481,12 @@ class DGFW_Public extends DGFW {
 	/**
 	 *
 	 * For giftable variations, use original variation image in the cart
+	 * #2019 - addded is_object($cart_item['data'])
 	 *
 	 */
 	public function gift_cart_thumbnail($image, $cart_item = false, $cart_item_key = false)
 	{
-		if ($cart_item && $cart_item['variation_id'] && $this->is_gift($cart_item['data']) ) {
+		if ($cart_item && is_object($cart_item['data']) && $cart_item['variation_id'] && $this->is_gift($cart_item['data']) ) {
 			$original_variation_id = get_post_meta($cart_item['variation_id'], '_' . DGFW::GIFT_VARIATION_OPTION . '_original', true);
 
 			if ($original_variation_id && $original_variation = WC()->product_factory->get_product($original_variation_id)) {
