@@ -398,7 +398,8 @@ class DGFW_Public extends DGFW {
 	public function gift_cart_price($price, $_product)
 	{
 		if ($this->is_gift($_product)) {
-			return __('FREE!', DGFW::TRANSLATION);
+			$value = WC_Admin_Settings::get_option('woocommerce_dgfw_cart_gift_price_text', __('FREE!', DGFW::TRANSLATION));
+			return __($value, DGFW::TRANSLATION);
 		}
 
 		return $price;
